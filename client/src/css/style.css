@@ -1,0 +1,38 @@
+::-webkit-scrollbar {
+  display: none; }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  scrollbar-width: none; }
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  line-height: 1.6; }
+  @media only screen and (max-width: 64.5em) {
+    html {
+      font-size: 55%; } }
+  @media only screen and (max-width: 48.5em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 40.5em) {
+    html {
+      font-size: 45%; } }
+  @media only screen and (max-width: 26em) {
+    html {
+      font-size: 40%; } }
+  @media only screen and (min-width: 114em) {
+    html {
+      font-size: 100%; } }
+
+body {
+  width: 100vw; }
+
+.App {
+  background-color: black;
+  color: white;
+  font-size: 2.5rem; }

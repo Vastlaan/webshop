@@ -1,0 +1,41 @@
+::-webkit-scrollbar{
+	display:none;
+}
+*,
+*::after,
+*::before{
+	margin: 0;
+	padding:0;
+	box-sizing: inherit;
+	scrollbar-width:none;
+}
+
+html{
+	font-size: 62.5%;
+	box-sizing: border-box;
+	line-height: 1.6;
+	@include respond(l){
+		font-size: 55%;
+	}
+	@include respond(m) {
+		font-size: 50%;
+	}
+	@include respond(s) {
+		font-size: 45%;
+	}
+	@include respond(xs) {
+		font-size: 40%;
+	}
+	@include respond(xxl) {
+		font-size: 100%;
+	}
+}
+
+body{
+	width:100vw;
+}
+.App{
+	background-color: black;
+	color:white;
+	font-size: 2.5rem;
+}
