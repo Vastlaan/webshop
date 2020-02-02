@@ -1,13 +1,13 @@
-::-webkit-scrollbar{
-	display:none;
-}
+// ::-webkit-scrollbar{
+// 	display:none;
+// }
 *,
 *::after,
 *::before{
 	margin: 0;
 	padding:0;
 	box-sizing: inherit;
-	scrollbar-width:none;
+	//scrollbar-width:none;
 }
 
 html{
@@ -32,10 +32,8 @@ html{
 }
 
 body{
-	width:100vw;
+	width:100%;
 }
 .App{
-	background-color: black;
-	color:white;
-	font-size: 2.5rem;
+	
 }
