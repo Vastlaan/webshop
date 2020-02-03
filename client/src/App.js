@@ -8,11 +8,12 @@ import Header from './components/Header'
 function App() {
 
 	const [lang, setLang] = useState('NL')
+	const [shoppingCart, setShoppingCart] = useState([])
 
   return (
     <div className="App">
       <InformativePanel lang={lang} setLang={setLang}/>
-      <Header />
+      <Header shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
     </div>
   );
 }
