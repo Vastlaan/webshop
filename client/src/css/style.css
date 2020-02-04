@@ -41,7 +41,7 @@ body {
   display: flex;
   justify-content: space-between;
   font-family: "Dosis", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   flex-wrap: wrap; }
   .informativePanel__section {
     list-style: none;
@@ -85,7 +85,7 @@ body {
 .header {
   background-color: #be9b7b;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap; }
@@ -154,3 +154,45 @@ body {
       font-family: "Rajdhani", sans-serif;
       border-radius: 50%;
       box-shadow: 0rem 0.2rem 0.3rem rgba(0, 0, 0, 0.4); }
+
+.categoriesMenuPanel {
+  max-width: 100%;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #e1e1e1;
+  list-style: none; }
+  .categoriesMenuPanel li {
+    font-weight: 700;
+    font-family: "Dosis", sans-serif;
+    font-size: 2rem;
+    color: #3c2f2f;
+    cursor: pointer;
+    transition: all .3s;
+    text-transform: uppercase; }
+    .categoriesMenuPanel li:hover {
+      color: #4b3832;
+      text-decoration: underline; }
+
+.mirrorCategories {
+  display: flex; }
+  .mirrorCategories__section {
+    flex: 0 0 50%;
+    height: 70rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center; }
+    .mirrorCategories__section--men {
+      background-image: url(../img/man_1.png); }
+    .mirrorCategories__section--women {
+      background-image: url(../img/women_1.png); }
+    .mirrorCategories__section button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }

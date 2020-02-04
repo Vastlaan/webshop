@@ -23,8 +23,16 @@ const InformativePanel = (props) =>{
 								<FiChevronUp className='iconRight informativePanel__section--lang' onClick={()=>setDisplayLangPanel(false)}/>
 
 								<div className='informativePanel__langMenu'>
-									<div className='informativePanel__section--flag' onClick={()=>props.setLang('NL')}><img src={FlagNL} alt='Netherlands flag'/>Nederlands</div>
-									<div className='informativePanel__section--flag' onClick={()=>props.setLang('EN')}><img src={FlagUK} alt='UK flag'/>English</div>
+									<div className='informativePanel__section--flag' onClick={()=>{
+										props.setLang('NL')
+										return setDisplayLangPanel(false)
+										
+									}}><img src={FlagNL} alt='Netherlands flag'/>Nederlands</div>
+									<div className='informativePanel__section--flag'onClick={()=>{
+										props.setLang('EN')
+										setDisplayLangPanel(false)
+										return
+									}}><img src={FlagUK} alt='UK flag'/>English</div>
 								</div>
 							</li>
 						)
@@ -58,8 +66,16 @@ const InformativePanel = (props) =>{
 								<FiChevronUp className='iconRight informativePanel__section--lang' onClick={()=>setDisplayLangPanel(false)}/>
 
 								<div className='informativePanel__langMenu'>
-									<div className='informativePanel__section--flag' onClick={()=>props.setLang('NL')}><img src={FlagNL} alt='Netherlands flag'/>Nederlands</div>
-									<div className='informativePanel__section--flag' onClick={()=>props.setLang('EN')}><img src={FlagUK} alt='UK flag'/>English</div>
+									<div className='informativePanel__section--flag' onClick={()=>{
+										props.setLang('NL')
+										setDisplayLangPanel(false)
+										return
+									}}><img src={FlagNL} alt='Netherlands flag'/>Nederlands</div>
+									<div className='informativePanel__section--flag' onClick={()=>{
+										props.setLang('EN')
+										setDisplayLangPanel(false)
+										return
+									}}><img src={FlagUK} alt='UK flag'/>English</div>
 								</div>
 							</li>
 						)

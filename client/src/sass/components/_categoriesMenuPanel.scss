@@ -1,0 +1,26 @@
+.categoriesMenuPanel{
+	max-width:100%;
+	padding:1rem 2rem;
+	border-bottom: 1px solid $color-grey;
+	display:flex;
+	justify-content: space-around;
+	
+	flex-wrap: wrap;
+	background-color: $color-grey;
+	list-style: none;
+
+	li{
+		font-weight: 700;
+		font-family: $font-dosis;
+		font-size: 2rem;
+		color:$color-primary-dark;
+		cursor:pointer;
+		transition:all .3s;
+		text-transform: uppercase;
+
+		&:hover{
+			color:$color-primary;
+			text-decoration: underline;
+		}
+	}
+}
