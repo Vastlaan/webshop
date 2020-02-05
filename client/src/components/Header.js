@@ -4,7 +4,7 @@ import { FiSearch, FiShoppingCart } from "react-icons/fi";
 const Header = (props) =>{
 	return(
 		<div className='header'>
-			<div className='header__name'>
+			<div className='header__name' onClick={()=>window.location.href='/'}>
 				<h1>Claire Hempbury</h1>
 				<h2>outstanding fashion</h2>
 			</div>

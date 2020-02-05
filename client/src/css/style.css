@@ -94,7 +94,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    line-height: 1; }
+    line-height: 1;
+    cursor: pointer; }
     .header__name h1 {
       font-size: 5rem;
       letter-spacing: .2rem;
@@ -165,16 +166,19 @@ body {
   background-color: #e1e1e1;
   list-style: none; }
   .categoriesMenuPanel li {
+    padding: .5rem 1rem;
     font-weight: 700;
     font-family: "Dosis", sans-serif;
     font-size: 2rem;
     color: #3c2f2f;
     cursor: pointer;
     transition: all .3s;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    border-radius: 3px; }
     .categoriesMenuPanel li:hover {
-      color: #4b3832;
-      text-decoration: underline; }
+      color: white;
+      background-color: black;
+      position: relative; }
 
 .mirrorCategories {
   display: flex; }
@@ -183,16 +187,42 @@ body {
     height: 70rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
     position: relative;
     background-size: cover;
     background-position: center; }
     .mirrorCategories__section--men {
-      background-image: url(../img/man_1.png); }
+      background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(../img/man_1.png);
+      transition: all .6s; }
     .mirrorCategories__section--women {
-      background-image: url(../img/women_1.png); }
+      background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(../img/women_1.png);
+      transition: all .6s; }
+    .mirrorCategories__section h3 {
+      font-size: 5rem;
+      font-weight: 300;
+      display: block;
+      transform: translateY(-15rem);
+      font-family: "Poiret One", cursive;
+      letter-spacing: .3rem;
+      text-transform: uppercase;
+      color: white; }
     .mirrorCategories__section button {
+      border: none;
+      border-radius: 3px;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, -50%);
+      background-color: #4b3832;
+      padding: 1rem 4rem;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      transition: all .3s; }
+      .mirrorCategories__section button:focus {
+        outline: none; }
+      .mirrorCategories__section button:hover {
+        background-color: #be9b7b;
+        color: #3c2f2f; }

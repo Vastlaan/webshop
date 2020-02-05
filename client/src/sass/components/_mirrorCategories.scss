@@ -6,24 +6,66 @@
 		height:70rem;
 		display:flex;
 		align-items: center;
+		justify-content: center;
 		overflow:hidden;
 		position:relative;
 		background-size: cover;
 		background-position: center;
 
 		&--men{
-			background-image: url(../img/man_1.png);
+			background-image: linear-gradient(to bottom right, rgba(0,0,0,.15), rgba(0,0,0,.15)),url(../img/man_1.png);
+			transition:all .6s;
+			&:hover{
+				//background-image: linear-gradient(to bottom right, rgba(0,0,0,.30), rgba(0,0,0,.30)),url(../img/man_1.png);
+			}
+
+
 		}
 		&--women{
-			background-image: url(../img/women_1.png);
+			background-image: linear-gradient(to bottom right, rgba(0,0,0,.15), rgba(0,0,0,.15)),url(../img/women_1.png);
+			transition:all .6s;
+			&:hover{
+				//background-image: linear-gradient(to bottom right, rgba(0,0,0,.30), rgba(0,0,0,.30)),url(../img/women_1.png);
+			}
+
+		}
+
+		h3{
+			font-size: 5rem;
+			font-weight: 300;
+			display:block;
+			transform: translateY(-15rem);
+			font-family: $font-poiret;
+			letter-spacing: .3rem;
+			text-transform: uppercase;
+			color:white;
+
 		}
 
 		
 		button{
+			border:none;
+			border-radius: 3px;
 			position:absolute;
 			top:50%;
 			left:50%;
 			transform:translate(-50%, -50%);
+			background-color: $color-primary;
+			padding:1rem 4rem;
+			font-family: $font-rajdhani;
+			font-size: 3rem;
+			color:white;
+			cursor:pointer;
+			transition:all .3s;
+
+			&:focus{
+				outline:none;
+			}
+			&:hover{
+				background-color: $color-primary-light;	
+				color:$color-primary-dark;
+			}
+			
 		}
 	}
 }
