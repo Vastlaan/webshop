@@ -227,28 +227,29 @@ body {
         background-color: #be9b7b;
         color: #3c2f2f; }
 
-.newCollectionPanel {
+.collectionPanel {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 10rem auto;
-  padding: 2rem; }
-  .newCollectionPanel__header {
+  padding: 2rem 2rem 0 2rem;
+  overflow: hidden; }
+  .collectionPanel__header {
     position: relative;
     margin: 5rem auto;
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 2rem; }
-    .newCollectionPanel__header h1 {
+    .collectionPanel__header h1 {
       font-family: "Rajdhani", sans-serif;
       font-weight: 300;
       text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
       font-size: 5rem;
       position: relative; }
-      .newCollectionPanel__header h1:after {
+      .collectionPanel__header h1:after {
         content: "";
         display: inline-block;
         position: absolute;
@@ -258,7 +259,7 @@ body {
         background-color: black;
         max-width: 50%;
         min-width: 50%; }
-      .newCollectionPanel__header h1:before {
+      .collectionPanel__header h1:before {
         content: "";
         display: inline-block;
         position: absolute;
@@ -268,39 +269,48 @@ body {
         background-color: black;
         max-width: 50%;
         min-width: 50%; }
-  .newCollectionPanel__collection {
+  .collectionPanel__collection {
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     overflow-x: scroll;
     position: relative; }
-  .newCollectionPanel__item {
+    .collectionPanel__collection--right {
+      position: absolute;
+      top: 40%;
+      right: 2rem; }
+    .collectionPanel__collection--left {
+      position: fixed;
+      top: 50%;
+      left: 2rem; }
+  .collectionPanel__item {
     flex: 0 0 30%;
     margin: 0 1%;
     display: flex;
     flex-direction: column;
     position: relative; }
-    .newCollectionPanel__item:hover .newCollectionPanel__item--btn {
+    .collectionPanel__item:hover .collectionPanel__item--btn {
       display: flex; }
     @media only screen and (max-width: 64.5em) {
-      .newCollectionPanel__item {
+      .collectionPanel__item {
         flex: 0 0 40%; } }
     @media only screen and (max-width: 40.5em) {
-      .newCollectionPanel__item {
-        flex: 0 0 100%; } }
-    .newCollectionPanel__item--name {
+      .collectionPanel__item {
+        flex: 0 0 95%; } }
+    .collectionPanel__item--name {
       font-family: "Poiret One", cursive;
       font-size: 4rem;
       text-align: center; }
-    .newCollectionPanel__item--image {
+    .collectionPanel__item--image {
       margin: 2rem auto;
       display: flex;
       align-items: center;
       justify-content: center; }
-      .newCollectionPanel__item--image img {
+      .collectionPanel__item--image img {
         max-width: 100%;
         max-height: 20rem; }
-    .newCollectionPanel__item--description {
+    .collectionPanel__item--description {
       width: 100%;
       min-height: 20rem;
       padding: 2rem;
@@ -308,14 +318,14 @@ body {
       justify-content: center;
       font-family: "Dosis", sans-serif;
       font-size: 2rem; }
-    .newCollectionPanel__item--price {
+    .collectionPanel__item--price {
       width: 100%;
       display: flex;
       justify-content: center;
       color: #854442;
       font-family: "Rajdhani", sans-serif;
       font-size: 4rem; }
-    .newCollectionPanel__item--btn {
+    .collectionPanel__item--btn {
       display: none;
       width: 100%;
       height: 100%;
@@ -327,12 +337,19 @@ body {
       justify-content: center;
       align-items: center;
       transition: all .3s; }
-      .newCollectionPanel__item--btn div {
+      .collectionPanel__item--btn div {
         padding: 1rem 5rem;
         background-color: #3c2f2f;
         border-radius: 3px;
         cursor: pointer; }
-        .newCollectionPanel__item--btn div p {
+        .collectionPanel__item--btn div p {
           font-family: "Rajdhani", sans-serif;
           font-size: 2.5rem;
           color: white; }
+
+.collectionPanel__collection::-webkit-scrollbar {
+  width: 0;
+  height: 0; }
+
+.collectionPanel__collection {
+  scrollbar-width: none; }

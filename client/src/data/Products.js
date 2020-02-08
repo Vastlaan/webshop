@@ -41,5 +41,24 @@ export const Products = [
 		 true,
 		 'https://images.unsplash.com/flagged/photo-1553642618-de0381320ff3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
 	),
-	
+	new Product(
+		"Striped dress",
+		 79.00,
+		 ["red", "orange", "blue", "green"],
+		 "Lorem ipsum dolor sit amet, consectetur veniam. Cconsectetur adipisicing elit, sed do eiusmod tempor.",
+		 ["S","M","L"],
+		 ["women", "dress", "bestsellers","new" ],
+		 true,
+		 'https://images.unsplash.com/photo-1548549557-dbe9946621da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+	),
+	new Product(
+		"Charmfull dress",
+		 79.00,
+		 ["red", "orange", "blue", "green"],
+		 "Lorem ipsum dolor sit amet, consectetur veniam. Cconsectetur adipisicing elit, sed do eiusmod tempor.",
+		 ["S","M","L"],
+		 ["women", "dress", "bestsellers","new" ],
+		 true,
+		 'https://images.unsplash.com/photo-1551803091-e20673f15770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+	),
 ]

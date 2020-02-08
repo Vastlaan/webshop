@@ -2,23 +2,23 @@ import React from 'react'
 import {Products} from '../data/Products'
 
 
-const NewCollectionPanel = (props) =>{
+const BestsellersCollectionPanel = (props) =>{
 
-	//this panel navigate to item through category "new" so path should be '/new/item_id'
+	//this panel navigate to item through category "bestsellers" so path should be '/bestsellers/item_id'
 
-	const productsNew = Products.filter(prod=>prod.categories.includes("new"))
+	const productsNew = Products.filter(prod=>prod.categories.includes("bestsellers"))
 
 	return(
 		<div className='collectionPanel'>
 
 			<div className='collectionPanel__header'>
-				<h1>Nieuwe Collectie</h1>
+				<h1>Bestsellers</h1>
 			</div>
-			<div className='collectionPanel__collection' id='newCollectionPanel'>
+			<div className='collectionPanel__collection'>
 			{
 				productsNew.map(prod=>{
 						return(
-							<div className='collectionPanel__item' key={`collpan-${prod.name}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
+							<div className='collectionPanel__item' key={`collpan-${prod.name}`} onClick={()=>window.location.href=`/bestsellers/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -50,4 +50,4 @@ const NewCollectionPanel = (props) =>{
 		)
 }
 
-export default NewCollectionPanel
+export default BestsellersCollectionPanel
