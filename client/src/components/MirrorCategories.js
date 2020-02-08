@@ -1,6 +1,4 @@
 import React from 'react'
-import Women from '../img/women_1.png'
-import Man from '../img/man_1.png'
 
 const MirrorCategories = (props) =>{
 

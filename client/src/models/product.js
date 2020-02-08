@@ -13,3 +13,5 @@ export default class Product{
 		this.imageUrl = imageUrl
 	}
 }
+
+//categories: ["bestsellers", sport", "new", "sale", "women", "men", "sweaters", "vest", "shirts", "underwear", "trousers", "suits", "jackets", "additions"]

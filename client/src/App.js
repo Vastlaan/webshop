@@ -18,7 +18,7 @@ function App() {
       <Header shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
       <CategoriesMenuPanel lang={lang}/>
       <MirrorCategories lang={lang} />
-      <NewCollectionPanel/>
+      <NewCollectionPanel lang={lang}/>
     </div>
   );
 }
