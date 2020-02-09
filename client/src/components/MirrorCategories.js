@@ -7,11 +7,11 @@ const MirrorCategories = (props) =>{
 				<div className='mirrorCategories'>
 					<div className='mirrorCategories__section mirrorCategories__section--men'>
 						<h3>Men Fashion</h3>
-						<button onClick={()=>window.location.href='/men'} >Shop Men Collection</button>
+						<button onClick={()=>window.location.href='/men'} >Shop Now</button>
 					</div>
 					<div className='mirrorCategories__section mirrorCategories__section--women'>
 						<h3>Women Fashion</h3>
-						<button onClick={()=>window.location.href='/women'} >Shop Women Collection</button>
+						<button onClick={()=>window.location.href='/women'} >Shop Now</button>
 					</div>
 				</div>
 			)
@@ -20,11 +20,11 @@ const MirrorCategories = (props) =>{
 		<div className='mirrorCategories'>
 			<div className='mirrorCategories__section mirrorCategories__section--men'>
 				<h3>Mannen Mode</h3>
-				<button onClick={()=>window.location.href='/men'} >Shop Mannen Collectie</button>
+				<button onClick={()=>window.location.href='/men'} >Shop Nu</button>
 			</div>
 			<div className='mirrorCategories__section mirrorCategories__section--women'>
 				<h3>Vrouwen Mode</h3>
-				<button onClick={()=>window.location.href='/women'} >Shop Vrouwen Collectie</button>
+				<button onClick={()=>window.location.href='/women'} >Shop Nu</button>
 			</div>
 		</div>
 		)

@@ -5,7 +5,7 @@
 	align-items: center;
 	justify-content: center;
 	margin: 10rem auto;
-	padding:2rem 2rem 0 2rem;
+	padding:2rem ;
 	overflow:hidden;
 	
 
@@ -58,6 +58,7 @@
 		align-items: center;
 		overflow-x:scroll;
 		position:relative;
+		padding-bottom: 2rem;
 
 		&--right{
 			position:absolute;
@@ -66,7 +67,7 @@
 		}
 		&--left{
 			position:fixed;
-			top:50%;
+			top:40%;
 			left:2rem;
 		}
 	}
@@ -142,6 +143,7 @@
 			height:100%;
 			background-color: rgba(255,255,255,.1);
 			border:1px solid $color-primary;
+			border-radius: 3px;
 			position:absolute;
 			top:0;
 			left:0;
@@ -165,9 +167,13 @@
 	}
 }
 .collectionPanel__collection::-webkit-scrollbar{
-	width:0;
-	height:0;
+	height:7px;
+	background-color: $color-primary-dark;
+}
+.collectionPanel__collection::-webkit-scrollbar-thumb{
+	height:5px;
+	background-color: $color-primary-light;
 }
 .collectionPanel__collection{
-	scrollbar-width:none;
+	scrollbar-width:thin;
 }

@@ -53,7 +53,7 @@ const InformativePanel = (props) =>{
 	}
 	return(
 		<nav className='informativePanel'>
-			<ul className='informativePanel__section'>
+			<ul className='invisibleForSmallDevices informativePanel__section '>
 				<li><a href='/contact'>Contact</a></li>
 				<li><a href='/klantenservice'>Klantenservice</a></li>
 			</ul>

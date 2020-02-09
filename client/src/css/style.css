@@ -34,6 +34,10 @@ body {
 .iconRight {
   margin-left: 1rem; }
 
+@media only screen and (max-width: 40.5em) {
+  .invisibleForSmallDevices {
+    display: none !important; } }
+
 .informativePanel {
   max-width: 100%;
   padding: 1rem 2rem;
@@ -42,7 +46,8 @@ body {
   justify-content: space-between;
   font-family: "Dosis", sans-serif;
   font-size: 2rem;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  background-color: white; }
   .informativePanel__section {
     list-style: none;
     display: flex; }
@@ -85,10 +90,13 @@ body {
 .header {
   background-color: #be9b7b;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: .5rem 2rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap; }
+  @media only screen and (max-width: 40.5em) {
+    .header {
+      flex-direction: column; } }
   .header__name {
     font-family: "Poiret One", cursive;
     display: flex;
@@ -100,6 +108,9 @@ body {
       font-size: 5rem;
       letter-spacing: .2rem;
       text-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.3); }
+      @media only screen and (max-width: 26em) {
+        .header__name h1 {
+          font-size: 4rem; } }
     .header__name h2 {
       font-size: 1.8rem;
       letter-spacing: .3rem; }
@@ -111,6 +122,11 @@ body {
     @media only screen and (max-width: 64.5em) {
       .header__search {
         margin: 0 2rem; } }
+    @media only screen and (max-width: 40.5em) {
+      .header__search {
+        margin: 1rem auto;
+        width: 100%;
+        justify-content: center; } }
     .header__search input {
       border: none;
       height: 3rem;
@@ -122,6 +138,9 @@ body {
       box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3); }
       .header__search input:focus {
         outline: none; }
+      @media only screen and (max-width: 40.5em) {
+        .header__search input {
+          width: 70%; } }
     .header__search--icon {
       width: 5rem;
       background-color: #e1e1e1;
@@ -137,6 +156,11 @@ body {
     justify-content: flex-end;
     padding: 1rem;
     position: relative; }
+    @media only screen and (max-width: 40.5em) {
+      .header__shopping {
+        position: absolute;
+        top: 0;
+        right: 2rem; } }
     .header__shopping--icon {
       font-size: 3rem;
       cursor: pointer;
@@ -147,7 +171,7 @@ body {
     .header__shopping--amount {
       position: absolute;
       bottom: 0;
-      right: 3rem;
+      right: 4rem;
       background-color: #854442;
       padding: 0rem .8rem;
       color: snow;
@@ -155,10 +179,13 @@ body {
       font-family: "Rajdhani", sans-serif;
       border-radius: 50%;
       box-shadow: 0rem 0.2rem 0.3rem rgba(0, 0, 0, 0.4); }
+      @media only screen and (max-width: 40.5em) {
+        .header__shopping--amount {
+          bottom: 2rem; } }
 
 .categoriesMenuPanel {
   max-width: 100%;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
   border-bottom: 1px solid #e1e1e1;
   display: flex;
   justify-content: space-around;
@@ -179,6 +206,9 @@ body {
       color: white;
       background-color: black;
       position: relative; }
+
+.landing {
+  margin-top: 17rem; }
 
 .mirrorCategories {
   display: flex; }
@@ -207,6 +237,9 @@ body {
       letter-spacing: .3rem;
       text-transform: uppercase;
       color: white; }
+      @media only screen and (max-width: 40.5em) {
+        .mirrorCategories__section h3 {
+          font-size: 2.5rem; } }
     .mirrorCategories__section button {
       border: none;
       border-radius: 3px;
@@ -221,6 +254,10 @@ body {
       color: white;
       cursor: pointer;
       transition: all .3s; }
+      @media only screen and (max-width: 40.5em) {
+        .mirrorCategories__section button {
+          font-size: 2rem;
+          width: 80%; } }
       .mirrorCategories__section button:focus {
         outline: none; }
       .mirrorCategories__section button:hover {
@@ -234,7 +271,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 10rem auto;
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem;
   overflow: hidden; }
   .collectionPanel__header {
     position: relative;
@@ -275,14 +312,15 @@ body {
     display: flex;
     align-items: center;
     overflow-x: scroll;
-    position: relative; }
+    position: relative;
+    padding-bottom: 2rem; }
     .collectionPanel__collection--right {
       position: absolute;
       top: 40%;
       right: 2rem; }
     .collectionPanel__collection--left {
       position: fixed;
-      top: 50%;
+      top: 40%;
       left: 2rem; }
   .collectionPanel__item {
     flex: 0 0 30%;
@@ -331,6 +369,7 @@ body {
       height: 100%;
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid #4b3832;
+      border-radius: 3px;
       position: absolute;
       top: 0;
       left: 0;
@@ -348,8 +387,100 @@ body {
           color: white; }
 
 .collectionPanel__collection::-webkit-scrollbar {
-  width: 0;
-  height: 0; }
+  height: 7px;
+  background-color: #3c2f2f; }
+
+.collectionPanel__collection::-webkit-scrollbar-thumb {
+  height: 5px;
+  background-color: #be9b7b; }
 
 .collectionPanel__collection {
-  scrollbar-width: none; }
+  scrollbar-width: thin; }
+
+.footer {
+  margin-top: 10rem;
+  width: 100%;
+  min-height: 30rem;
+  background-color: #be9b7b;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 2fr repeat(2, 1fr);
+  grid-template-rows: 80% 10% 10%; }
+  @media only screen and (max-width: 40.5em) {
+    .footer {
+      grid-template-rows: 50% 40% 10%; } }
+  .footer__name {
+    align-self: center;
+    grid-column: 1/2;
+    grid-row: 1/2; }
+    @media only screen and (max-width: 40.5em) {
+      .footer__name {
+        grid-column: 1/-1;
+        grid-row: 1/2; } }
+    .footer__name--logo {
+      font-family: "Poiret One", cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      cursor: pointer; }
+      .footer__name--logo h1 {
+        font-size: 5rem;
+        letter-spacing: .2rem;
+        text-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.3); }
+      .footer__name--logo h2 {
+        font-size: 1.8rem;
+        letter-spacing: .3rem; }
+      .footer__name--logo-social {
+        width: 100%;
+        margin-top: 2rem;
+        list-style: none;
+        display: flex;
+        justify-content: space-around; }
+        .footer__name--logo-social li {
+          font-size: 3rem;
+          color: #4b3832; }
+  .footer__list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; }
+    .footer__list ul a {
+      text-decoration: none;
+      color: #4b3832;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      margin: .5rem auto;
+      transition: all .3s; }
+      .footer__list ul a:hover {
+        color: black; }
+      @media only screen and (max-width: 40.5em) {
+        .footer__list ul a {
+          margin: 0 auto; } }
+  .footer__service {
+    grid-column: 2/3;
+    grid-row: 1/2; }
+    @media only screen and (max-width: 40.5em) {
+      .footer__service {
+        grid-column: 1/3;
+        grid-row: 2/3; } }
+  .footer__legal {
+    grid-column: 3/4;
+    grid-row: 1/2; }
+    @media only screen and (max-width: 40.5em) {
+      .footer__legal {
+        grid-column: 2/4;
+        grid-row: 2/3; } }
+  .footer__copyright {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    border-top: 1px solid #4b3832;
+    padding-top: 1rem; }
+    .footer__copyright p {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.6rem;
+      color: #3c2f2f;
+      text-align: center;
+      letter-spacing: .2rem; }

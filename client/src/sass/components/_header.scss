@@ -1,10 +1,16 @@
 .header{
 	background-color: $color-primary-light;
 	width:100%;
-	padding:1rem 2rem;
+	padding:.5rem 2rem;
 	display:flex;
 	align-items: center;
 	flex-wrap: wrap;
+
+	@include respond(s){
+		flex-direction: column;
+	}
+
+
 
 	&__name{
 		
@@ -20,6 +26,9 @@
 			font-size: 5rem;
 			letter-spacing: .2rem;
 			text-shadow: .3rem .3rem .3rem rgba(0,0,0,.3);
+			@include respond(xs){
+				font-size: 4rem;
+			}
 		}
 		h2{
 			font-size: 1.8rem;
@@ -34,9 +43,15 @@
 		flex:1;
 		margin:0 5rem;
 		align-items: center;
+		
 
 		@include respond(l){
 			margin:0 2rem;
+		}
+		@include respond(s){
+			margin: 1rem auto;
+			width:100%;
+			justify-content: center;
 		}
 
 		input{
@@ -51,6 +66,9 @@
 
 			&:focus{
 				outline:none;
+			}
+			@include respond(s){
+				width:70%;
 			}
 		}
 
@@ -74,6 +92,12 @@
 		padding:1rem;
 		position:relative;
 
+		@include respond(s){
+			position:absolute;
+			top:0;
+			right:2rem;
+		}
+
 
 		&--icon{
 			font-size: 3rem;
@@ -88,7 +112,7 @@
 		&--amount{
 			position:absolute;
 			bottom:0;
-			right:3rem;
+			right:4rem;
 			background-color: $color-reddish;
 			padding:0rem .8rem;
 			color:snow;
@@ -96,6 +120,10 @@
 			font-family: $font-rajdhani;
 			border-radius: 50%;
 			box-shadow: 0rem .2rem .3rem rgba(0,0,0,.4);
+
+			@include respond(s){
+				bottom:2rem;
+			}
 		}
 
 	}

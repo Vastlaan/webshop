@@ -45,6 +45,8 @@ const NewCollectionPanel = (props) =>{
 						)
 				})
 			}
+
+			
 			</div>
 		</div>
 		)
