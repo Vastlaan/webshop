@@ -58,12 +58,14 @@
 
 	&__langMenu{
 
+		background-color: white;
+
 		border-left:1px solid $color-grey;
 		border-right:1px solid $color-grey;
 		border-bottom:1px solid $color-grey;
 		padding:1rem;
 		position:absolute;
-		bottom:-11.2rem;
+		bottom:-9.4rem;
 		left:0;
 		width:20rem;
 	}

@@ -3,6 +3,7 @@ import { FaFacebook, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa
 
 const Footer =(props)=>{
 
+	const currentYear = new Date().getFullYear()
 	return(
 		<div className='footer'>
 			<div className='footer__name'>
@@ -33,7 +34,7 @@ const Footer =(props)=>{
 			</div>
 
 			<div className='footer__copyright'>
-				<p>&copy; 2020 Michal Antczak. All rights reserved.</p>
+				<p>&copy; {currentYear} Michal Antczak. All rights reserved.</p>
 			</div>
 		</div>
 		)

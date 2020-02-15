@@ -1,5 +1,6 @@
 import Product from '../models/product.js';
 
+
 export const Products = [
 	new Product(
 		"Long sleeved dress",
@@ -9,7 +10,8 @@ export const Products = [
 		 ["S","M","L","XL"],
 		 ["women", "sale", "new" ],
 		 true,
-		 'https://images.unsplash.com/photo-1550639525-c97d455acf70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+		 'https://images.unsplash.com/photo-1550639525-c97d455acf70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz1"
 	),
 	new Product(
 		"Trui",
@@ -19,7 +21,8 @@ export const Products = [
 		 ["S","M","L"],
 		 ["women", "new" ],
 		 false,
-		 'https://images.unsplash.com/photo-1521319550444-63f5e4d5786d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+		 'https://images.unsplash.com/photo-1521319550444-63f5e4d5786d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz2"
 	),
 	new Product(
 		"Nike Free",
@@ -29,7 +32,8 @@ export const Products = [
 		 ["S","M","L"],
 		 ["women", "men", "sport" ],
 		 false,
-		 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjQzMzEwfQ&auto=format&fit=crop&w=1000&q=80'
+		 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjQzMzEwfQ&auto=format&fit=crop&w=1000&q=80',
+		 "kz3"
 	),
 	new Product(
 		"Mannen pak",
@@ -39,7 +43,8 @@ export const Products = [
 		 ["S","M","L"],
 		 ["women", "men", "suits", "bestsellers", "new" ],
 		 true,
-		 'https://images.unsplash.com/flagged/photo-1553642618-de0381320ff3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+		 'https://images.unsplash.com/flagged/photo-1553642618-de0381320ff3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+		 "kz4"
 	),
 	new Product(
 		"Striped dress",
@@ -49,7 +54,8 @@ export const Products = [
 		 ["S","M","L"],
 		 ["women", "dress", "bestsellers","new" ],
 		 true,
-		 'https://images.unsplash.com/photo-1548549557-dbe9946621da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+		 'https://images.unsplash.com/photo-1548549557-dbe9946621da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz5"
 	),
 	new Product(
 		"Charmfull dress",
@@ -59,6 +65,7 @@ export const Products = [
 		 ["S","M","L"],
 		 ["women", "dress", "bestsellers","new" ],
 		 true,
-		 'https://images.unsplash.com/photo-1551803091-e20673f15770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+		 'https://images.unsplash.com/photo-1551803091-e20673f15770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz6"
 	),
 ]
