@@ -6,20 +6,20 @@ const CategoriesMenuPanel = (props) =>{
 	if(props.lang==="EN"){
 		return(
 			<ul className='categoriesMenuPanel'>
-				<Link className='categoriesMenuPanel__link' to='/sale'>SALE</Link>
-				<Link className='categoriesMenuPanel__link' to='/men'>MEN</Link>
-				<Link className='categoriesMenuPanel__link' to='/women'>Women</Link>
-				<Link className='categoriesMenuPanel__link' to='/bestsellers'>BESTSELLERS</Link>
+				<Link className='categoriesMenuPanel__link' to='/sale/home'>SALE</Link>
+				<Link className='categoriesMenuPanel__link' to='/men/home'>MEN</Link>
+				<Link className='categoriesMenuPanel__link' to='/women/home'>Women</Link>
+				<Link className='categoriesMenuPanel__link' to='/bestsellers/home'>BESTSELLERS</Link>
 				<Link className='invisibleForSmallDevices categoriesMenuPanel__link' to='/new/home'>New Collection</Link>
 			</ul>
 			)
 	}
 	return(
 		<ul className='categoriesMenuPanel'>
-			<Link className='categoriesMenuPanel__link' to='/sale'>SALE</Link>
-			<Link className='categoriesMenuPanel__link' to='/men'>MANNEN</Link>
-			<Link className='categoriesMenuPanel__link' to='/women'>VROUWEN</Link>
-			<Link className='categoriesMenuPanel__link' to='/bestsellers'>BESTSELLERS</Link>
+			<Link className='categoriesMenuPanel__link' to='/sale/home'>SALE</Link>
+			<Link className='categoriesMenuPanel__link' to='/men/home'>MANNEN</Link>
+			<Link className='categoriesMenuPanel__link' to='/women/home'>VROUWEN</Link>
+			<Link className='categoriesMenuPanel__link' to='/bestsellers/home'>BESTSELLERS</Link>
 			<Link className='invisibleForSmallDevices categoriesMenuPanel__link' to='/new/home'>NIEUWE COLLECTIE</Link>
 		</ul>
 		)

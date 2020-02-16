@@ -4,10 +4,10 @@ import Item from './Item'
 
 
 
-function NewCollection(props) {
+function Bestsellers(props) {
 
 	const {prodId} = props.match.params
-	const products = Products.filter(prod=>prod.categories.includes('new'))
+	const products = Products.filter(prod=>prod.categories.includes('bestsellers'))
 
 	let item 
 
@@ -23,7 +23,7 @@ function NewCollection(props) {
 	      	
 	      	{item?<Item item={item} lang={props.lang}/>:null}
 
-	      	<h1 className="newCollection__header">Nieuw Collectie</h1>
+	      	<h1 className="newCollection__header">Bestsellers</h1>
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 	      		{
@@ -64,4 +64,4 @@ function NewCollection(props) {
 	
 }
 
-export default NewCollection;
+export default Bestsellers;
