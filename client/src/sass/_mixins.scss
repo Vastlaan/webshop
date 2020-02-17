@@ -1,0 +1,7 @@
+@mixin header{
+	text-align: center;
+	font-family: $font-rajdhani;
+	font-weight: 300;
+	text-shadow: .2rem .2rem .2rem rgba(0,0,0,.3);
+	font-size: 5rem;
+}

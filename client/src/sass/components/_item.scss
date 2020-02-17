@@ -3,6 +3,11 @@
 	align-items: center;
 	justify-content: center;
 
+	@include respond(s){
+		margin-top: 5rem;
+	}
+	
+
 	&__main{
 		width:90%;
 		display:grid;
@@ -70,12 +75,19 @@
 					justify-content: flex-start;
 				}
 				div{
+					display:flex;
+					justify-content: center;
 					margin:1rem;
 					border:1px solid $color-primary-light;
 					padding:1rem 2rem;
 					font-size: 2rem;
 					cursor:pointer;
 					transition:all .3s;
+
+					@include respond(xs){
+						padding:0 ;
+						width:3rem;
+					}
 
 					&:hover{
 						transform:scale(1.2);
@@ -96,6 +108,11 @@
 					border-radius: 50%;
 					cursor:pointer;
 					transition:all .3s;
+
+					@include respond(xs){
+						padding:1rem ;
+						width:2rem;
+					}
 
 					&:hover{
 						transform:scale(1.2);

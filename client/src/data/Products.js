@@ -29,7 +29,7 @@ export const Products = [
 		 19.99,
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-		 ["S","M","L"],
+		 ["38", "39", "40", "41","42","43","44","45","46"],
 		 ["women", "men", "sport" ],
 		 false,
 		 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjQzMzEwfQ&auto=format&fit=crop&w=1000&q=80',
@@ -67,5 +67,27 @@ export const Products = [
 		 true,
 		 'https://images.unsplash.com/photo-1551803091-e20673f15770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
 		 "kz6"
+	),
+	new Product(
+		"Shirt Men",
+		 17.49,
+		 ["blue", "grey", "red"],
+		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+		 ["S","M","L"],
+		 ["men", "new", "sale", "bestsellers", "shirts" ],
+		 true,
+		 'https://images.unsplash.com/photo-1557153939-92dd234d7bd0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=5304&q=80',
+		 "kz7"
+	),
+	new Product(
+		"Shirt Men",
+		 19.99,
+		 ["blue"],
+		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+		 ["S","M","L", "XL", "XXL"],
+		 ["men", "new", "sale", "shirts" ],
+		 true,
+		 'https://images.unsplash.com/photo-1509585585779-17594514ad43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz8"
 	),
 ]

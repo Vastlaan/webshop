@@ -55,9 +55,6 @@ function Bestsellers(props) {
 	      			})
 	      		}
 	      	</div>
-
-	     
-
 	  	</div>
 		)
 

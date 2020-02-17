@@ -502,6 +502,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; }
+  @media only screen and (max-width: 40.5em) {
+    .item {
+      margin-top: 5rem; } }
   .item__main {
     width: 90%;
     display: grid;
@@ -553,12 +556,18 @@ body {
           .item__main--info-sizes {
             justify-content: flex-start; } }
         .item__main--info-sizes div {
+          display: flex;
+          justify-content: center;
           margin: 1rem;
           border: 1px solid #be9b7b;
           padding: 1rem 2rem;
           font-size: 2rem;
           cursor: pointer;
           transition: all .3s; }
+          @media only screen and (max-width: 26em) {
+            .item__main--info-sizes div {
+              padding: 0;
+              width: 3rem; } }
           .item__main--info-sizes div:hover {
             transform: scale(1.2); }
       .item__main--info-colors {
@@ -575,6 +584,10 @@ body {
           border-radius: 50%;
           cursor: pointer;
           transition: all .3s; }
+          @media only screen and (max-width: 26em) {
+            .item__main--info-colors div {
+              padding: 1rem;
+              width: 2rem; } }
           .item__main--info-colors div:hover {
             transform: scale(1.2); }
       .item__main--info-btn {
@@ -654,3 +667,44 @@ body {
             border: 1px solid #854442;
             padding: 1rem 2rem;
             text-align: center; }
+
+.men {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem; }
+  @media only screen and (max-width: 26em) {
+    .men {
+      padding: 1rem; } }
+  .men__header {
+    text-align: center;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 300;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
+    font-size: 5rem;
+    width: 100%;
+    text-transform: uppercase; }
+  .men__categories {
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    padding: 2rem;
+    margin: 5rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    @media only screen and (max-width: 26em) {
+      .men__categories {
+        padding: 1rem; } }
+    .men__categories--each {
+      min-width: 15%;
+      display: flex;
+      font-size: 2rem;
+      font-family: "Poiret One", cursive;
+      font-weight: 900;
+      margin: 2rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s;
+      letter-spacing: .2rem;
+      color: #be9b7b; }
+      .men__categories--each:hover {
+        color: #4b3832; }
