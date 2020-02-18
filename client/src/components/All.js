@@ -4,17 +4,15 @@ import Item from './Item'
 
 
 
-function Bestsellers(props) {
+function All(props) {
 
 	const {prodId} = props.match.params
-	const products = Products.filter(prod=>prod.categories.includes('bestsellers'))
 
 	let item 
 
 	if(prodId!=="home"){
-		item=products.find(p=>p.id===prodId)
+		item=Products.find(p=>p.id===prodId)
 	}
-
 
 	return(
 		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
@@ -22,13 +20,13 @@ function Bestsellers(props) {
 	      	
 	      	{item?<Item item={item} lang={props.lang}/>:null}
 
-	      	<h1 className="newCollection__header">Bestsellers</h1>
+	      	<h1 className="newCollection__header">Matching Items</h1>
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 	      		{
-	      			products.map(prod=>{
+	      			Products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`bestsellers-${prod.name}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`all-${prod.id}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -60,4 +58,4 @@ function Bestsellers(props) {
 	
 }
 
-export default Bestsellers;
+export default All;

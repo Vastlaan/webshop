@@ -15,8 +15,6 @@ function NewCollection(props) {
 		item=products.find(p=>p.id===prodId)
 	}
 
-	console.log(products, item)
-
 	return(
 		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
 		      
@@ -29,7 +27,7 @@ function NewCollection(props) {
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`newcoll-${prod.name}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`newcoll-${prod.id}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -55,9 +53,6 @@ function NewCollection(props) {
 	      			})
 	      		}
 	      	</div>
-
-	     
-
 	  	</div>
 		)
 

@@ -1,10 +1,12 @@
 .header{
 	background-color: $color-primary-light;
 	width:100%;
-	padding:.5rem 2rem;
+	padding:1rem 2rem;
 	display:flex;
 	align-items: center;
 	flex-wrap: wrap;
+	position:relative;
+
 
 	@include respond(s){
 		flex-direction: column;
@@ -126,5 +128,14 @@
 			}
 		}
 
+	}
+
+	&__results{
+		position:absolute;
+		left:0;
+		bottom:-45rem;
+		width:100%;
+		height:45rem;
+		background-color: white;
 	}
 }

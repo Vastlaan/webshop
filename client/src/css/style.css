@@ -95,10 +95,11 @@ body {
 .header {
   background-color: #be9b7b;
   width: 100%;
-  padding: .5rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  position: relative; }
   @media only screen and (max-width: 40.5em) {
     .header {
       flex-direction: column; } }
@@ -187,6 +188,13 @@ body {
       @media only screen and (max-width: 40.5em) {
         .header__shopping--amount {
           bottom: 2rem; } }
+  .header__results {
+    position: absolute;
+    left: 0;
+    bottom: -45rem;
+    width: 100%;
+    height: 45rem;
+    background-color: white; }
 
 .categoriesMenuPanel {
   max-width: 100%;

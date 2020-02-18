@@ -46,7 +46,7 @@ const Men = (props) =>{
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`newcoll-${prod.name}`} onClick={()=>window.location.href=`/men/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`women-${prod.name}`} onClick={()=>window.location.href=`/men/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>

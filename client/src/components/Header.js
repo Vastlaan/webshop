@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Products} from '../data/Products'
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
 
 const Header = (props) =>{
+
+	const [searchedItems, setSearchedItems] = useState([])
+
+	const renderSearchedItems = async (event)=>{
+		const phrase = event.target.value
+		if(phrase===""){
+			return await setSearchedItems([])
+		}
+		const matchingItems = Products.filter(prod=>prod.name.toUpperCase().includes(phrase.toUpperCase()))
+		console.log(matchingItems)
+		return await setSearchedItems(matchingItems)
+	}
+
+
 	return(
 		<div className='header'>
 			<div className='header__name' onClick={()=>window.location.href='/'}>
@@ -9,7 +24,7 @@ const Header = (props) =>{
 				<h2>outstanding fashion</h2>
 			</div>
 			<div className='header__search'>
-				<input type='text' />
+				<input type='text' onChange={(event)=>renderSearchedItems(event)} />
 				<FiSearch className='header__search--icon'/>
 
 			</div>
@@ -17,6 +32,46 @@ const Header = (props) =>{
 				<h1><FiShoppingCart className='iconRight header__shopping--icon'/></h1>
 				<div className='header__shopping--amount'>{props.shoppingCart.length}</div>
 			</div>
+			{
+				searchedItems.length>0?
+				<div className='header__results'>
+					<div className='collectionPanel__collection'  style ={{ flexWrap:'wrap', overflowX:'hidden'}} >
+			{
+				searchedItems.map(prod=>{
+						return(
+							<div className='collectionPanel__item'  style={{width:'100%'}} key={`collpan-${prod.id}`} onClick={()=>window.location.href=`/all/${prod.id}`}>
+								<div className='collectionPanel__item--name'>
+									<p>{prod.name}</p>
+								</div>
+								<div className='collectionPanel__item--image'>
+									<img src={prod.imageUrl} alt={prod.name} />
+								</div>
+								
+								<div className='collectionPanel__item--description'>
+									<p>{prod.description}</p>
+								</div>
+								<div className='collectionPanel__item--price'>
+									<p> &euro; {prod.price}</p>
+								</div>
+								
+								<div className='collectionPanel__item--btn'>
+									<div onClick={()=>window.location.href=`/all/${prod.id}`}>
+										<p>Shop nu</p>
+									</div>
+								</div>
+								
+								
+								
+							</div>
+						)
+				})
+			}
+
+			
+			</div>
+				</div>
+				:null
+			}
 		</div>
 		)
 }

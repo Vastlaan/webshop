@@ -29,7 +29,7 @@ function Sale(props) {
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`newcoll-${prod.name}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`sale-${prod.name}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
