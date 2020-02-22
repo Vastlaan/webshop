@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Products} from '../data/Products'
-import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import { FiSearch, FiShoppingCart} from "react-icons/fi";
+import { MdClose} from "react-icons/md";
+import {renderDescription} from '../utils/renderDescription'
 
 const Header = (props) =>{
 
@@ -35,11 +37,12 @@ const Header = (props) =>{
 			{
 				searchedItems.length>0?
 				<div className='header__results'>
+					<div className='header__results--close'><MdClose/></div>
 					<div className='collectionPanel__collection'  style ={{ flexWrap:'wrap', overflowX:'hidden'}} >
 			{
 				searchedItems.map(prod=>{
 						return(
-							<div className='collectionPanel__item'  style={{width:'100%'}} key={`collpan-${prod.id}`} onClick={()=>window.location.href=`/all/${prod.id}`}>
+							<div className='collectionPanel__item'  style={{width:'100%', transform:'scale(0.9)'}} key={`collpan-${prod.id}`} onClick={()=>window.location.href=`/all/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -48,7 +51,7 @@ const Header = (props) =>{
 								</div>
 								
 								<div className='collectionPanel__item--description'>
-									<p>{prod.description}</p>
+									<p>{renderDescription(prod.description, 100)}</p>
 								</div>
 								<div className='collectionPanel__item--price'>
 									<p> &euro; {prod.price}</p>

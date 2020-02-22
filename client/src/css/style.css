@@ -3,7 +3,8 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  scrollbar-width: thin; }
 
 html {
   font-size: 62.5%;
@@ -90,7 +91,8 @@ body {
     position: absolute;
     bottom: -9.4rem;
     left: 0;
-    width: 20rem; }
+    width: 20rem;
+    z-index: 99; }
 
 .header {
   background-color: #be9b7b;
@@ -195,6 +197,14 @@ body {
     width: 100%;
     height: 45rem;
     background-color: white; }
+    .header__results--close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 10rem; }
 
 .categoriesMenuPanel {
   max-width: 100%;
@@ -414,10 +424,16 @@ body {
 .collectionPanel__collection::-webkit-scrollbar {
   height: 11px;
   background-color: #3c2f2f; }
+  @media only screen and (max-width: 40.5em) {
+    .collectionPanel__collection::-webkit-scrollbar {
+      display: none; } }
 
 .collectionPanel__collection::-webkit-scrollbar-thumb {
   height: 9px;
   background-color: #be9b7b; }
+  @media only screen and (max-width: 40.5em) {
+    .collectionPanel__collection::-webkit-scrollbar-thumb {
+      display: none; } }
 
 .collectionPanel__collection {
   scrollbar-width: thin; }
@@ -515,34 +531,8 @@ body {
   font-family: "Rajdhani", sans-serif;
   font-weight: 300;
   text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
-  font-size: 5rem; }
-
-.newCollection__page {
-  z-index: 9;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center; }
-  .newCollection__page-less {
-    font-size: 2rem;
-    color: #4b3832;
-    cursor: pointer;
-    transition: all .3s; }
-    .newCollection__page-less:hover {
-      color: #be9b7b; }
-  .newCollection__page-num {
-    margin: 0 1rem;
-    font-size: 2.5rem;
-    font-family: "Rajdhani", sans-serif;
-    padding: 0 1rem;
-    border: 1px solid #3c2f2f; }
-  .newCollection__page-more {
-    font-size: 2rem;
-    color: #4b3832;
-    cursor: pointer;
-    transition: all .3s; }
-    .newCollection__page-more:hover {
-      color: #be9b7b; }
+  font-size: 5rem;
+  margin-bottom: 2.5rem; }
 
 .item {
   display: flex;
@@ -562,7 +552,7 @@ body {
       .item__main {
         width: 100%; } }
     .item__main--name {
-      grid-column: 2/3;
+      grid-column: 1/3;
       grid-row: 1/2;
       text-align: center;
       font-family: "Rajdhani", sans-serif;
@@ -571,7 +561,8 @@ body {
       font-size: 5rem; }
       @media only screen and (max-width: 40.5em) {
         .item__main--name {
-          grid-column: 1/3; } }
+          grid-column: 1/3;
+          font-size: 3.5rem; } }
     .item__main--image {
       grid-column: 1/2;
       grid-row: 2/3;
@@ -714,6 +705,33 @@ body {
             border: 1px solid #854442;
             padding: 1rem 2rem;
             text-align: center; }
+
+.page {
+  z-index: 9;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center; }
+  .page-less {
+    font-size: 2rem;
+    color: #4b3832;
+    cursor: pointer;
+    transition: all .3s; }
+    .page-less:hover {
+      color: #be9b7b; }
+  .page-num {
+    margin: 0 1rem;
+    font-size: 2.5rem;
+    font-family: "Rajdhani", sans-serif;
+    padding: 0 1rem;
+    border: 1px solid #3c2f2f; }
+  .page-more {
+    font-size: 2rem;
+    color: #4b3832;
+    cursor: pointer;
+    transition: all .3s; }
+    .page-more:hover {
+      color: #be9b7b; }
 
 .men {
   display: flex;

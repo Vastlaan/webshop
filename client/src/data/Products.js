@@ -8,7 +8,7 @@ export const Products = [
 		 ["black", "grey", "red"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
 		 ["S","M","L","XL"],
-		 ["women", "sale", "new" ],
+		 ["women", "sale", "new","dresses" ],
 		 true,
 		 'https://images.unsplash.com/photo-1550639525-c97d455acf70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
 		 "kz1"
@@ -30,7 +30,7 @@ export const Products = [
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
 		 ["38", "39", "40", "41","42","43","44","45","46"],
-		 ["women", "men", "sport" ],
+		 ["women", "men", "sport","shoes" ],
 		 false,
 		 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjQzMzEwfQ&auto=format&fit=crop&w=1000&q=80',
 		 "kz3"
@@ -52,7 +52,7 @@ export const Products = [
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur veniam. Cconsectetur adipisicing elit, sed do eiusmod tempor.",
 		 ["S","M","L"],
-		 ["women", "dress", "bestsellers","new" ],
+		 ["women", "dresses", "bestsellers","new" ],
 		 true,
 		 'https://images.unsplash.com/photo-1548549557-dbe9946621da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
 		 "kz5"
@@ -63,7 +63,7 @@ export const Products = [
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur veniam. Cconsectetur adipisicing elit, sed do eiusmod tempor.",
 		 ["S","M","L"],
-		 ["women", "dress", "bestsellers","new" ],
+		 ["women", "dresses", "bestsellers","new" ],
 		 true,
 		 'https://images.unsplash.com/photo-1551803091-e20673f15770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
 		 "kz6"
@@ -85,9 +85,42 @@ export const Products = [
 		 ["blue"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
 		 ["S","M","L", "XL", "XXL"],
-		 ["men", "new", "sale", "shirts" ],
+		 ["men", "new", "sale", "shirts","vests"],
 		 true,
 		 'https://images.unsplash.com/photo-1509585585779-17594514ad43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
 		 "kz8"
+	),
+	new Product(
+		"Jacket Men",
+		 99.99,
+		 ["black"],
+		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut laboelit, sed do eiusmod tempor incidire et dolore magna aliqua. Ut enim ad melit, sed do eiusmod tempor incelit, sed do eiusmod tempor incidiidiinim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+		 ["S","M","L", "XL"],
+		 ["men", "new", "sale", "jackets"],
+		 true,
+		 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz9"
+	),
+	new Product(
+		"Jacket elegant women",
+		 19.99,
+		 ["creamy", "white", "brown"],
+		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmoLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiud tempor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiu Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+		 ["S","M","L"],
+		 ["women", "new", "bestsellers", "jackets"],
+		 false,
+		 'https://images.unsplash.com/photo-1578102718171-ec1f91680562?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz10"
+	),
+	new Product(
+		"Underwear complet",
+		 19.99,
+		 ["white"],
+		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+		 ["S","M","L"],
+		 ["women",  "underwear"],
+		 false,
+		 'https://images.unsplash.com/photo-1553944136-9c5591630cee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+		 "kz11"
 	),
 ]

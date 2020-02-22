@@ -3,7 +3,7 @@ import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
 
-const CATEGORIES =  ["sweaters", "vests", "shirts", "underwear", "trousers", "suits", "jackets", "additions"].sort((a,b)=>{
+const CATEGORIES =  ["sweaters", "vests", "shirts", "underwear", "trousers", "suits", "jackets", "additions", "shoes"].sort((a,b)=>{
 	if(a < b) { return -1; }
     if(a > b) { return 1; }
     return 0;

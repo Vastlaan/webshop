@@ -186,10 +186,16 @@
 .collectionPanel__collection::-webkit-scrollbar{
 	height:11px;
 	background-color: $color-primary-dark;
+	@include respond(s){
+		display:none;
+	}
 }
 .collectionPanel__collection::-webkit-scrollbar-thumb{
 	height:9px;
 	background-color: $color-primary-light;
+	@include respond(s){
+		display:none;
+	}
 }
 .collectionPanel__collection{
 	scrollbar-width:thin;

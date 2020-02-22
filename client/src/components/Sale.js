@@ -1,21 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
+import Page from './Page'
 
 
 function Sale(props) {
 
 	const {prodId} = props.match.params
-	const products = Products.filter(prod=>prod.categories.includes('sale'))
+	const allProducts = Products.filter(prod=>prod.categories.includes('new'))
+	const interval = 3
+	const maxPages = Math.ceil(allProducts.length / interval)
 
+	const [page, setPage] = useState(1)
+
+	const products = allProducts.filter((prod,i)=>{
+		const first = (page * interval) - interval
+		const last = (page * interval) -1
+		return i>=first && i<=last
+	})
+	
 	let item 
 
 	if(prodId!=="home"){
-		item=products.find(p=>p.id===prodId)
+		item=allProducts.find(p=>p.id===prodId)
 	}
-
-	console.log(products, item)
 
 	return(
 		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
@@ -56,7 +65,7 @@ function Sale(props) {
 	      		}
 	      	</div>
 
-	     
+	     	<Page page={page} setPage={setPage} maxPages={maxPages}/>
 
 	  	</div>
 		)

@@ -1,15 +1,16 @@
-import React ,{useState} from 'react';
+import React, {useState} from 'react';
 import {Products} from '../data/Products'
 import Item from './Item'
+import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
 
 
 
-function Bestsellers(props) {
+function SubCategory(props) {
 
 	const {prodId} = props.match.params
-	const allProducts = Products.filter(prod=>prod.categories.includes('bestsellers'))
+	const allProducts = Products.filter(prod=>prod.categories.includes(props.subCategory)&&prod.categories.includes(props.parentCategory))
 	const interval = 3
 	const maxPages = Math.ceil(allProducts.length / interval)
 
@@ -26,21 +27,34 @@ function Bestsellers(props) {
 	if(prodId!=="home"){
 		item=allProducts.find(p=>p.id===prodId)
 	}
-
+	const {parentCategory} = props
+	let cat1 = props.lang==='NL'?'mannen':'men'
+	if(parentCategory==='women'){
+		cat1=props.lang==='NL'?'vrouwen':'women'
+	}
 
 	return(
-		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
+		 <div className="subCategory" style={{marginTop: '17rem', paddingTop:'5rem'}}>
 		      
 	      	
 	      	{item?<Item item={item} lang={props.lang}/>:null}
 
-	      	<h1 className="newCollection__header">Bestsellers</h1>
+	      	<div className="subCategory__nav">{cat1} > {props.subCategory}</div>
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
+
+	      		{
+	      			products.length<1?
+	      			<div style={{display:'flex', justifyContent:'center', width:'100%', fontSize:'2.5rem', fontFamily:'Courier', color:'orangered'}}>
+	      				Geen artikelen gevonden
+	      			</div>
+	      			:null
+	      		}
+
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`bestsellers-${prod.name}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`newcoll-${prod.id}`} onClick={()=>window.location.href=`/all/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -56,7 +70,7 @@ function Bestsellers(props) {
 								</div>
 								
 								<div className='collectionPanel__item--btn'>
-									<div onClick={()=>window.location.href=`/new/:${prod.id}`}>
+									<div onClick={()=>window.location.href=`/all/:${prod.id}`}>
 										<p>Shop now</p>
 									</div>
 								</div>
@@ -65,6 +79,7 @@ function Bestsellers(props) {
 		      			)
 	      			})
 	      		}
+      			
 	      	</div>
 	      	<Page page={page} setPage={setPage} maxPages={maxPages}/>
 	  	</div>
@@ -73,4 +88,4 @@ function Bestsellers(props) {
 	
 }
 
-export default Bestsellers;
+export default SubCategory;
