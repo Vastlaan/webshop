@@ -1,6 +1,7 @@
 import React from 'react';
 import {Products} from '../data/Products'
 import Item from './Item'
+import {renderDescription} from '../utils/renderDescription'
 
 const CATEGORIES =  ["sweaters", "vests", "shirts", "underwear", "trousers", "suits", "jackets", "additions"].sort((a,b)=>{
 	if(a < b) { return -1; }
@@ -55,7 +56,7 @@ const Men = (props) =>{
 								</div>
 								
 								<div className='collectionPanel__item--description'>
-									<p>{prod.description}</p>
+									<p>{renderDescription(prod.description)}</p>
 								</div>
 								<div className='collectionPanel__item--price'>
 									<p> &euro; {prod.price}</p>

@@ -1,19 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Products} from '../data/Products'
 import Item from './Item'
+import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
+import {renderDescription} from '../utils/renderDescription'
 
 
 
 function NewCollection(props) {
 
 	const {prodId} = props.match.params
-	const products = Products.filter(prod=>prod.categories.includes('new'))
+	const allProducts = Products.filter(prod=>prod.categories.includes('new'))
+	const interval = 2
+	const maxPages = Math.ceil(allProducts.length / interval)
 
+	const [page, setPage] = useState(1)
+
+	const renderNewPage =(direction)=>{
+		if(direction==='down'){
+			setPage(page-1)
+		}else if( direction==='up'){
+			setPage(page+1)
+		}
+		return window.scrollTo(0,0)
+	}
+
+	const products = allProducts.filter((prod,i)=>{
+		const first = (page * interval) - interval
+		const last = (page * interval) -1
+		return i>=first && i<=last
+	})
+	
 	let item 
 
 	if(prodId!=="home"){
-		item=products.find(p=>p.id===prodId)
+		item=allProducts.find(p=>p.id===prodId)
 	}
+
+	
 
 	return(
 		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
@@ -36,7 +59,7 @@ function NewCollection(props) {
 								</div>
 								
 								<div className='collectionPanel__item--description'>
-									<p>{prod.description}</p>
+									<p>{renderDescription(prod.description)}</p>
 								</div>
 								<div className='collectionPanel__item--price'>
 									<p> &euro; {prod.price}</p>
@@ -52,7 +75,20 @@ function NewCollection(props) {
 		      			)
 	      			})
 	      		}
+      			
 	      	</div>
+	      	<div className='newCollection__page'>
+  				<div className='newCollection__page-less' onClick={()=>renderNewPage('down')} style={page===1?{ display: 'none'}:{display:'flex'} } >
+  					<FaChevronLeft/>
+  				</div>
+  				<div className='newCollection__page-num'>
+  					{page}
+  				</div>
+  				<div className='newCollection__page-more' onClick={()=>renderNewPage('up')} style={page===maxPages?{ display: 'none'}:{display:'flex'} } >
+  					<FaChevronRight/>
+  				</div>
+				
+			</div>
 	  	</div>
 		)
 

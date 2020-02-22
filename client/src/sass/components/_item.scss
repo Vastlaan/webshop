@@ -14,7 +14,7 @@
 		padding:2rem;
 		border:1px solid $color-grey;
 		grid-template-columns: 60% 40%;
-		grid-template-rows: 8rem 1fr 1fr;
+		grid-template-rows: 8rem 1fr auto;
 
 		@include respond(s){
 			width:100%;
@@ -165,6 +165,7 @@
 					align-items: center;
 
 					&>*{
+						min-width:1.8rem;
 						color:green;
 						margin-right: 1rem;
 					}

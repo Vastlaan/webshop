@@ -1,5 +1,6 @@
 import React from 'react'
 import {Products} from '../data/Products'
+import {renderDescription} from '../utils/renderDescription'
 
 
 const NewCollectionPanel = (props) =>{
@@ -7,6 +8,7 @@ const NewCollectionPanel = (props) =>{
 	//this panel navigate to item through category "new" so path should be '/new/item_id'
 
 	const productsNew = Products.filter(prod=>prod.categories.includes("new"))
+	
 
 	if(props.lang==='EN'){
 		return(
@@ -17,7 +19,7 @@ const NewCollectionPanel = (props) =>{
 				</div>
 				<div className='collectionPanel__collection' id='newCollectionPanel'>
 				{
-					productsNew.map(prod=>{
+					productsNew.map((prod,i)=>{
 							return(
 								<div className='collectionPanel__item' key={`collpan-${prod.name}`} onClick={()=>window.location.href=`/new/:prodId=${prod.id}`}>
 									<div className='collectionPanel__item--name'>
@@ -28,7 +30,7 @@ const NewCollectionPanel = (props) =>{
 									</div>
 									
 									<div className='collectionPanel__item--description'>
-										<p>{prod.description}</p>
+										<p>{renderDescription(prod.description)}</p>
 									</div>
 									<div className='collectionPanel__item--price'>
 										<p> &euro; {prod.price}</p>
@@ -46,6 +48,7 @@ const NewCollectionPanel = (props) =>{
 							)
 					})
 				}
+			
 				</div>
 			</div>
 			)
