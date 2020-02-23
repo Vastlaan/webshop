@@ -41,7 +41,7 @@ export const Products = [
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisiminim veniam",
 		 ["S","M","L"],
-		 ["women", "men", "suits", "bestsellers", "new" ],
+		 [ "men", "suits", "bestsellers", "new" ],
 		 true,
 		 'https://images.unsplash.com/flagged/photo-1553642618-de0381320ff3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
 		 "kz4"

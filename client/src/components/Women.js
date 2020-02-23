@@ -21,7 +21,7 @@ const Men = (props) =>{
 	}
 
 	return(
-		<div  className='men' style={{marginTop:'17rem'}}>
+		<div  className='men' >
 
 			{item?<Item item={item} lang={props.lang}/>:null}
 
@@ -47,7 +47,7 @@ const Men = (props) =>{
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`women-${prod.name}`} onClick={()=>window.location.href=`/men/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`women-${prod.name}`} onClick={()=>window.location.href=`/women/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>

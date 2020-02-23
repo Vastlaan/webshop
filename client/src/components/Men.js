@@ -21,7 +21,7 @@ const Men = (props) =>{
 	}
 
 	return(
-		<div  className='men' style={{marginTop:'17rem'}}>
+		<div  className='men'>
 
 			{item?<Item item={item} lang={props.lang}/>:null}
 

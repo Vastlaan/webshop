@@ -13,6 +13,7 @@ import Women from './components/Women'
 import All from './components/All'
 import ScrollToTop from './components/ScrollToTop'
 import SubCategory from './components/SubCategory'
+import Login from './components/Login'
 
 const CATEGORIES_MEN =  ["sweaters", "vests", "shirts", "underwear", "trousers", "suits", "jackets", "additions","shoes"]
 const CATEGORIES_WOMEN =  ["sweaters", "vests", "shirts", "underwear", "trousers", "dresses", "jackets", "additions","shoes"]
@@ -39,6 +40,7 @@ function App() {
 
 	     	<Route path="/women/:prodId"  exact={true} render={({match})=><Women match={match} lang={lang}/>} />
 	     	<Route path='/contact' exact={true} component={Contact} />
+	     	<Route path='/login' exact={true} component={Login}/>
 	     	<Footer lang={lang}/>
 	    </div>
 	    </ScrollToTop>

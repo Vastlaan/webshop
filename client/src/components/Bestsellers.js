@@ -29,7 +29,7 @@ function Bestsellers(props) {
 
 
 	return(
-		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
+		 <div className="newCollection" style={{marginTop: '18rem', paddingTop:'5rem'}}>
 		      
 	      	
 	      	{item?<Item item={item} lang={props.lang}/>:null}

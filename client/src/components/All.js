@@ -16,7 +16,7 @@ function All(props) {
 	}
 
 	return(
-		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
+		 <div className="newCollection">
 		      
 	      	
 	      	{item?<Item item={item} lang={props.lang}/>:null}
@@ -27,7 +27,7 @@ function All(props) {
 	      		{
 	      			Products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`all-${prod.id}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`all-${prod.id}`} onClick={()=>window.location.href=`/all/${prod.id}`}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -43,7 +43,7 @@ function All(props) {
 								</div>
 								
 								<div className='collectionPanel__item--btn'>
-									<div onClick={()=>window.location.href=`/new/:${prod.id}`}>
+									<div onClick={()=>window.location.href=`/all/:${prod.id}`}>
 										<p>Shop now</p>
 									</div>
 								</div>

@@ -1,0 +1,7 @@
+.login{
+	padding-top: 18rem;
+	@include respond(s){
+		padding-top: 22rem;
+	}
+
+}

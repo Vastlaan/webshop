@@ -1,5 +1,10 @@
 .newCollection{
 
+	padding-top: 18rem;
+	@include respond(s){
+		padding-top: 22rem;
+	}
+
 	&__header{
 		text-align: center;
 		font-family: $font-rajdhani;
