@@ -14,8 +14,16 @@ const Header = (props) =>{
 			return await setSearchedItems([])
 		}
 		const matchingItems = Products.filter(prod=>prod.name.toUpperCase().includes(phrase.toUpperCase()))
-		console.log(matchingItems)
+		
 		return await setSearchedItems(matchingItems)
+	}
+
+	const clearQuery = async() =>{
+		
+		const input = document.querySelector('#searchField')
+		
+		await setSearchedItems([])
+		return input.value =''
 	}
 
 
@@ -26,7 +34,7 @@ const Header = (props) =>{
 				<h2>outstanding fashion</h2>
 			</div>
 			<div className='header__search'>
-				<input type='text' onChange={(event)=>renderSearchedItems(event)} />
+				<input type='text' id='searchField' onChange={(event)=>renderSearchedItems(event)} />
 				<FiSearch className='header__search--icon'/>
 
 			</div>
@@ -37,7 +45,7 @@ const Header = (props) =>{
 			{
 				searchedItems.length>0?
 				<div className='header__results'>
-					<div className='header__results--close'><MdClose/></div>
+					<div className='header__results--close' onClick={()=>clearQuery()}><MdClose/></div>
 					<div className='collectionPanel__collection'  style ={{ flexWrap:'wrap', overflowX:'hidden'}} >
 			{
 				searchedItems.map(prod=>{

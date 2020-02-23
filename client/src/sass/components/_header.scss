@@ -146,6 +146,15 @@
 			justify-content: center;
 			align-items: center;
 			width:10rem;
+			font-size: 3rem;
+			color:$color-primary-dark;
+			cursor:pointer;
+			transition:all .3s;
+			z-index: 101;
+
+			&:hover{
+				color:$color-primary-light;
+			}
 		}
 	}
 }

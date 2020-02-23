@@ -204,7 +204,14 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 10rem; }
+      width: 10rem;
+      font-size: 3rem;
+      color: #3c2f2f;
+      cursor: pointer;
+      transition: all .3s;
+      z-index: 101; }
+      .header__results--close:hover {
+        color: #be9b7b; }
 
 .categoriesMenuPanel {
   max-width: 100%;
