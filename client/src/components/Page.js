@@ -3,6 +3,10 @@ import {renderNewPage} from '../utils/renderNewPage'
 import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
 
 const Page = ({page, setPage, maxPages}) =>{
+
+	if(maxPages===0){
+		return null
+	}
 	
 	return(
 		<div className='page'>

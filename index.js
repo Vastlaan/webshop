@@ -1,7 +1,14 @@
 const express = require('express');
 const path = require('path')
+const bodyParser = require('body-parser')
 
 const app = express()
+app.use(bodyParser.json())
+
+app.post('/auth/login', (req,res)=>{
+	console.log(req.body)
+	return res.status(200).json({'message':'yes'})
+})
 
 if(process.env.NODE_ENV==='production'){
 

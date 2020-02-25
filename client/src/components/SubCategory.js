@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Products} from '../data/Products'
 import Item from './Item'
-import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
 
@@ -21,7 +20,6 @@ function SubCategory(props) {
 		const last = (page * interval) -1
 		return i>=first && i<=last
 	})
-	
 	let item 
 
 	if(prodId!=="home"){
@@ -39,13 +37,17 @@ function SubCategory(props) {
 	      	
 	      	{item?<Item item={item} lang={props.lang}/>:null}
 
-	      	<div className="subCategory__nav">{cat1} > {props.subCategory}</div>
+	      	<div className="subcategory__nav">
+	      		<a href={`/${parentCategory}/home`}> {cat1} </a>
+	      		 <span> > </span>
+	      		<a>{props.subCategory}</a>
+	      	</div>
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 
 	      		{
 	      			products.length<1?
-	      			<div style={{display:'flex', justifyContent:'center', width:'100%', fontSize:'2.5rem', fontFamily:'Courier', color:'orangered'}}>
+	      			<div style={{display:'flex', justifyContent:'center', width:'100%', fontSize:'2.5rem', fontFamily:'Courier', color:'orangered', margin:'15rem auto'}}>
 	      				Geen artikelen gevonden
 	      			</div>
 	      			:null
