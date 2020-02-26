@@ -3,6 +3,8 @@ import {Users} from '../data/Users'
 
 const Login =(props)=>{
 
+	const {user, setUser} = props
+
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -19,7 +21,7 @@ const Login =(props)=>{
 			headers:{
 				"Content-Type":"application/json"
 			},
-			body: JSON.stringify(user)
+			body: JSON.stringify({email, password})
 		})
 		 .then(res=>res.json())
 		 .then(data=>console.log(data))

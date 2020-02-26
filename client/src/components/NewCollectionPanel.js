@@ -21,7 +21,7 @@ const NewCollectionPanel = (props) =>{
 				{
 					productsNew.map((prod,i)=>{
 							return(
-								<div className='collectionPanel__item' key={`collpan-${prod.name}`} onClick={()=>window.location.href=`/new/:prodId=${prod.id}`}>
+								<div className='collectionPanel__item' key={`${i}-collpan-${prod.name}`} onClick={()=>window.location.href=`/new/:prodId=${prod.id}`}>
 									<div className='collectionPanel__item--name'>
 										<p>{prod.name}</p>
 									</div>

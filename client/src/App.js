@@ -22,6 +22,7 @@ function App() {
 
 	const [lang, setLang] = useState('NL')
 	const [shoppingCart, setShoppingCart] = useState([])
+	const [user, setUser] = useState({})
 
   return (
   	<Router>
@@ -40,7 +41,7 @@ function App() {
 
 	     	<Route path="/women/:prodId"  exact={true} render={({match})=><Women match={match} lang={lang}/>} />
 	     	<Route path='/contact' exact={true} component={Contact} />
-	     	<Route path='/login' exact={true} component={Login}/>
+	     	<Route path='/login' exact={true} render={()=><Login lang={lang} user={user} setUser={setUser}/>}/>
 	     	<Footer lang={lang}/>
 	    </div>
 	    </ScrollToTop>

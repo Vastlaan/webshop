@@ -10,7 +10,7 @@ const InformativePanel = (props) =>{
 	if(props.lang==='EN'){
 		return(
 		<nav className='informativePanel'>
-			<ul className='informativePanel__section'>
+			<ul className='invisibleForSmallDevices  informativePanel__section'>
 				<li><a href='/contact'>Contact</a></li>
 				<li><a href='/klantenservice'>Customer Service</a></li>
 			</ul>
@@ -30,8 +30,7 @@ const InformativePanel = (props) =>{
 									}}><img src={FlagNL} alt='Netherlands flag'/>Nederlands</div>
 									<div className='informativePanel__section--flag'onClick={()=>{
 										props.setLang('EN')
-										setDisplayLangPanel(false)
-										return
+										return setDisplayLangPanel(false)
 									}}><img src={FlagUK} alt='UK flag'/>English</div>
 								</div>
 							</li>
