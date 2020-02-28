@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import {Products} from '../data/Products'
 import { FiSearch, FiShoppingCart} from "react-icons/fi";
 import { MdClose} from "react-icons/md";
@@ -29,10 +30,10 @@ const Header = (props) =>{
 
 	return(
 		<div className='header'>
-			<div className='header__name' onClick={()=>window.location.href='/'}>
+			<Link className='header__name' to='/'>
 				<h1>Claire Hempbury</h1>
 				<h2>outstanding fashion</h2>
-			</div>
+			</Link>
 			<div className='header__search'>
 				<input type='text' id='searchField' onChange={(event)=>renderSearchedItems(event)} />
 				<FiSearch className='header__search--icon'/>

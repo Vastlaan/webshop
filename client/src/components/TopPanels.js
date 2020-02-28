@@ -22,7 +22,7 @@ const TopPanels = (props) =>{
 	})
 	return(
 		<div style={{width:'100%', position:'fixed',top:0, left:0, zIndex:99}}>
-			{displayInformativePanel?<InformativePanel lang={props.lang} setLang={props.setLang}/>:null}	
+			{displayInformativePanel?<InformativePanel lang={props.lang} setLang={props.setLang}  user={props.user}/>:null}	
 	      	<Header shoppingCart={props.shoppingCart} setShoppingCart={props.setShoppingCart}/>
 	      	<CategoriesMenuPanel lang={props.lang}/>
 	    </div>

@@ -7,6 +7,8 @@ const InformativePanel = (props) =>{
 
 	const [displayLangPanel, setDisplayLangPanel] = useState(false)
 
+	console.log(props.user==={})
+
 	if(props.lang==='EN'){
 		return(
 		<nav className='informativePanel'>
@@ -86,7 +88,7 @@ const InformativePanel = (props) =>{
 						)
 					}
 					
-				<li><a href='/login'><FiUser className='iconLeft'/>Inloggen</a></li>
+				{props.user.name? <li style={{flex:1}}><a href='/'><FiUser className='iconLeft'/>Welkom {props.user.name} {props.user.surname}</a></li> : <li><a href='/login'><FiUser className='iconLeft'/>Inloggen</a></li> }
 				<li><a href='/register'>Registeren</a></li>
 				
 			</ul>

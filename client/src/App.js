@@ -28,7 +28,7 @@ function App() {
   	<Router>
   		<ScrollToTop>
 	    <div className="App">
-	    	<TopPanels lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
+	    	<TopPanels lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} user={user}/>
 	    	<Route exact={true} path='/' render={()=><Landing lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />} />
 	     	<Route path="/new/:prodId"  render={({match})=><NewCollection match={match} lang={lang}/>} />
 	     	<Route path="/bestsellers/:prodId"  render={({match})=><Bestsellers match={match} lang={lang}/>} />

@@ -8,38 +8,85 @@ const pool = new Pool({
 	port: 5432,
 })
 
-const Users = [
-	{
-		email: "ml.antczak@gmail.com",
-		password:"12345678",
-		name:"Michal",
-		surname:"Antczak",
-		address:{
-			street:"Oostervenne",
-			number:"397",
-			toe:'',
-			postcode:'1444XN',
-			city:'Purmerend'
-		},
-		phone:'0682307051',
-		gender:'male'
-	},
-	{
-		email: "grazyna@gmail.com",
-		password:"12345678",
-		name:"Grażyna",
-		surname:"Antczak",
-		address:{
-			street:"Daal",
-			number:"12",
-			toe:'',
-			postcode:'1432LP',
-			city:'Amersfort'
-		},
-		phone:'0652444059',
-		gender:'female'
-	}
-]
+async function getClients(){
+	const res = await pool.query('SELECT * FROM clients')
+	const clientsArray = res.rows
+	return clientsArray
+}
+
+
+module.exports = {
+	getClients
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const Users = [
+// 	{
+// 		email: "ml.antczak@gmail.com",
+// 		password:"12345678",
+// 		name:"Michal",
+// 		surname:"Antczak",
+// 		address:{
+// 			street:"Oostervenne",
+// 			number:"397",
+// 			toe:'',
+// 			postcode:'1444XN',
+// 			city:'Purmerend'
+// 		},
+// 		phone:'0682307051',
+// 		gender:'male'
+// 	},
+// 	{
+// 		email: "grazyna@gmail.com",
+// 		password:"12345678",
+// 		name:"Grażyna",
+// 		surname:"Antczak",
+// 		address:{
+// 			street:"Daal",
+// 			number:"12",
+// 			toe:'',
+// 			postcode:'1432LP',
+// 			city:'Amersfort'
+// 		},
+// 		phone:'0652444059',
+// 		gender:'female'
+// 	}
+// ]
 
 //============================================CREATE TABLE clients======================================================
 
@@ -51,10 +98,14 @@ const Users = [
 //============================================INSERT INTO clients Users ======================================================
 
 // Users.map(user=>{
-// 	const address = JSON.stringify({street:user.street, number:user.number, toe:user.toe, postcode:user.postcode, city:user.city})
+// 	const address = `{"street":"${user.address.street}", "number" : "${user.address.number}", "toe": "${user.address.toe}", "postcode": "${user.address.postcode}", "city":"${user.address.city}"}`
 // 	console.log(address)
-// 	pool.query(`INSERT INTO clients VALUES(${user.email}, ${user.password}, ${user.name}, ${user.surname},  ${address}, ${user.phone}, ${user.gender}, [],[])`)
+// 	pool.query(`INSERT INTO clients ( email, password,name,surname,address,phone,gender,purchasehistory,watchedproducts, created_on) VALUES ('${user.email}', '${user.password}', '${user.name}', '${user.surname}',  '${address}', '${user.phone}', '${user.gender}', ARRAY[''],ARRAY[''], NOW())`)
 // })
 
 //==============================================PROPER DECLARATION JSON and ARRAY=====================================================
 //INSERT INTO clients ( email, password,name,surname,address,phone,gender,purchasehistory,watchedproducts, created_on) VALUES ('ml.antczak@gmail.com', '12345678', 'Michal', 'Antczak',  '{"street":"Oostervenne","number":"397","toe":"","postcode":"1444XN","city":"Purmerend"}', '0682307051', 'male', ARRAY[''],ARRAY[''], NOW());
+
+
+
+//=============================================

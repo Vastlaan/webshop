@@ -11,10 +11,7 @@ const Login =(props)=>{
 
 	const authorize = (e) =>{
 		e.preventDefault()
-		const user = Users.find(user=>{
-			return user.email===email && user.password===password
-		})
-		console.log(user)
+	
 		fetch('/auth/login', {
 			method: 'POST',
 			credentials:'include',
@@ -24,10 +21,14 @@ const Login =(props)=>{
 			body: JSON.stringify({email, password})
 		})
 		 .then(res=>res.json())
-		 .then(data=>console.log(data))
+		 .then(data=>{
+		 	return setUser(data)
+		 	 //return window.location.href='/'
+		 })
 		 .catch(err=>console.log(err))
-		return user
+		 return
 	}
+	console.log(user)
 
 	return(
 		<div className='login'>

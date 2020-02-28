@@ -8,7 +8,7 @@ require('./queries')
 const app = express()
 app.use(bodyParser.json())
 
-require('./authRoutes/login')(app)
+app.post('/auth/login', require('./authRoutes/login'))
 
 if(process.env.NODE_ENV==='production'){
 
