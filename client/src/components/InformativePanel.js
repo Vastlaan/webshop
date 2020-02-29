@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import FlagNL from '../img/flagNL.png';
 import FlagUK from '../img/flagUK.png';
 import { FiUser, FiChevronDown, FiChevronUp } from "react-icons/fi";
@@ -7,56 +8,15 @@ const InformativePanel = (props) =>{
 
 	const [displayLangPanel, setDisplayLangPanel] = useState(false)
 
-	console.log(props.user==={})
-
-	if(props.lang==='EN'){
-		return(
-		<nav className='informativePanel'>
-			<ul className='invisibleForSmallDevices  informativePanel__section'>
-				<li><a href='/contact'>Contact</a></li>
-				<li><a href='/klantenservice'>Customer Service</a></li>
-			</ul>
-			<ul className='informativePanel__section'>
-				
-					{
-						displayLangPanel?(
-							<li style={{position:'relative'}} >
-								<div className='informativePanel__section--flag'><img src={FlagUK} alt='Netherlands flag'/>EN</div>
-								<FiChevronUp className='iconRight informativePanel__section--lang' onClick={()=>setDisplayLangPanel(false)}/>
-
-								<div className='informativePanel__langMenu'>
-									<div className='informativePanel__section--flag' onClick={()=>{
-										props.setLang('NL')
-										return setDisplayLangPanel(false)
-										
-									}}><img src={FlagNL} alt='Netherlands flag'/>Nederlands</div>
-									<div className='informativePanel__section--flag'onClick={()=>{
-										props.setLang('EN')
-										return setDisplayLangPanel(false)
-									}}><img src={FlagUK} alt='UK flag'/>English</div>
-								</div>
-							</li>
-						)
-						:(
-							<li>
-								<div className='informativePanel__section--flag'><img src={FlagUK} alt='Netherlands flag'/>{props.lang}</div>
-								<FiChevronDown className='iconRight informativePanel__section--lang' onClick={()=>setDisplayLangPanel(true)}/>
-							</li>
-						)
-					}
-					
-				<li><a href='/login'><FiUser className='iconLeft'/>Log In</a></li>
-				<li><a href='/register'>Register</a></li>
-				
-			</ul>
-		</nav>
-		)
+	const checkLang = (e, n) =>{
+		return props.lang==='NL'?n:e
 	}
+	
 	return(
 		<nav className='informativePanel'>
 			<ul className='invisibleForSmallDevices informativePanel__section '>
-				<li><a href='/contact'>Contact</a></li>
-				<li><a href='/klantenservice'>Klantenservice</a></li>
+				<li><Link to='/contact'>{checkLang('Contact', 'Contact')}</Link></li>
+				<li><Link to='/klantenservice'>{checkLang('Customer Service', 'Klantenservice')}</Link></li>
 			</ul>
 			<ul className='informativePanel__section'>
 				
@@ -88,8 +48,11 @@ const InformativePanel = (props) =>{
 						)
 					}
 					
-				{props.user.name? <li style={{flex:1}}><a href='/'><FiUser className='iconLeft'/>Welkom {props.user.name} {props.user.surname}</a></li> : <li><a href='/login'><FiUser className='iconLeft'/>Inloggen</a></li> }
-				<li><a href='/register'>Registeren</a></li>
+				{props.user.name
+					?<li style={{flex:1}}><Link to='/'><FiUser className='iconLeft'/>{checkLang('Welcome', 'Welkom')} {props.user.name} {props.user.surname}</Link></li> 
+					: <li><Link to='/login'><FiUser className='iconLeft'/>{checkLang('Log in', 'Inloggen')}</Link></li>
+				}
+				<li><Link to='/register'>{checkLang('Register', 'Registreren')}</Link></li>
 				
 			</ul>
 		</nav>

@@ -843,6 +843,7 @@ body {
     font-weight: 300;
     text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
     font-size: 5rem;
+    margin-top: 5rem;
     width: 100%;
     text-transform: uppercase; }
   .men__categories {

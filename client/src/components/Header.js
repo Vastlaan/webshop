@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {Products} from '../data/Products'
 import { FiSearch, FiShoppingCart} from "react-icons/fi";
 import { MdClose} from "react-icons/md";
@@ -8,6 +8,12 @@ import {renderDescription} from '../utils/renderDescription'
 const Header = (props) =>{
 
 	const [searchedItems, setSearchedItems] = useState([])
+
+	const history = useHistory()
+
+	const checkLang = (e, n) =>{
+		return props.lang==='NL'?n:e
+	}
 
 	const renderSearchedItems = async (event)=>{
 		const phrase = event.target.value
@@ -51,7 +57,7 @@ const Header = (props) =>{
 			{
 				searchedItems.map(prod=>{
 						return(
-							<div className='collectionPanel__item'  style={{width:'100%', transform:'scale(0.9)'}} key={`collpan-${prod.id}`} onClick={()=>window.location.href=`/all/${prod.id}`}>
+							<div className='collectionPanel__item'  style={{width:'100%', transform:'scale(0.9)'}} key={`collpan-${prod.id}`} onClick={()=>history.push(`/all/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -67,8 +73,8 @@ const Header = (props) =>{
 								</div>
 								
 								<div className='collectionPanel__item--btn'>
-									<div onClick={()=>window.location.href=`/all/${prod.id}`}>
-										<p>Shop nu</p>
+									<div onClick={()=>history.push(`/all/${prod.id}`)}>
+										<p>{checkLang('Shop now', 'Shop nu')}</p>
 									</div>
 								</div>
 								

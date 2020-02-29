@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
@@ -11,6 +12,8 @@ function Sale(props) {
 	const allProducts = Products.filter(prod=>prod.categories.includes('new'))
 	const interval = 3
 	const maxPages = Math.ceil(allProducts.length / interval)
+	//pull out Router history for navigation purposes
+	const history = useHistory()
 
 	const [page, setPage] = useState(1)
 
@@ -25,6 +28,9 @@ function Sale(props) {
 	if(prodId!=="home"){
 		item=allProducts.find(p=>p.id===prodId)
 	}
+	const checkLang = (e, n) =>{
+		return props.lang==='NL'?n:e
+	}
 
 	return(
 		 <div className="newCollection" style={{marginTop: '17rem', paddingTop:'5rem'}}>
@@ -38,7 +44,7 @@ function Sale(props) {
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`sale-${prod.name}`} onClick={()=>window.location.href=`/new/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`sale-${prod.name}`} onClick={()=>history.push(`/new/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -54,8 +60,8 @@ function Sale(props) {
 								</div>
 								
 								<div className='collectionPanel__item--btn'>
-									<div onClick={()=>window.location.href=`/new/:${prod.id}`}>
-										<p>Shop now</p>
+									<div onClick={()=>history.push(`/new/${prod.id}`)}>
+										<p>{checkLang('Shop now','Shop nu')}</p>
 									</div>
 								</div>
 							</div>

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import { FaCheck } from "react-icons/fa";
 
 
@@ -6,18 +7,24 @@ function Item(props) {
 
 	const {item} = props
 
+      const history = useHistory()
+
 	const [selectedColor, setSelectedColor] = useState(item.colors[0])
 	const [selectedSize, setSelectedSize] = useState(item.sizes[0])
 	const [selectedTab, setSelectedTab] = useState('description') // possible: 'description', 'shipping', 'reviews'
 
 	const renderShoppingCard =()=>{
 		console.log(item.id, selectedColor, selectedSize)
+            return history.push('/contact')//temporaray '/contact'
 	}
 	const claculateScore = (item) =>{
 		const l = item.score.length
 		const s = item.score.reduce((acc, s)=>acc+s,0)
 		return s/l
 	}
+      const checkLang = (e, n) =>{
+            return props.lang==='NL'?n:e
+      }
 
   return (
     <div className="item">
@@ -54,23 +61,23 @@ function Item(props) {
       			}
       			</div>
       			<div className='item__main--info-btn'>
-      				<button onClick={renderShoppingCard}>Bestel</button>
+      				<button onClick={renderShoppingCard}>{checkLang('Order','Bestel')}</button>
       			</div>
       			<ul className='item__main--info-shipping'>
-      				<li><FaCheck/>Gratis verzenden & retourneren</li>
-      				<li><FaCheck/>Op werkdagen voor 18.00u besteld = morgen in huis</li>
+      				<li><FaCheck/>{checkLang('Free shipping','Gratis verzenden & retourneren')}</li>
+      				<li><FaCheck/>{checkLang('Order before 18:00 at working days and get your delivery tomorrow!','Op werkdagen voor 18.00u besteld = morgen in huis')}</li>
       			</ul>
       		</div>
       		<div className='item__main--details'>
       			<div className='item__main--details-tabs'>
       				<div onClick={()=>setSelectedTab('description')} className={selectedTab==='description'?'highlightedTab':''}>
-      					Omschrijving
+      					{checkLang('Descrition', 'Omschrijving')}
       				</div>
       				<div onClick={()=>setSelectedTab('shipping')} className={selectedTab==='shipping'?'highlightedTab':''}>
-      					Verzending
+      					{checkLang('Shipping','Verzending')}
       				</div>
       				<div onClick={()=>setSelectedTab('reviews')} className={selectedTab==='reviews'?'highlightedTab':''}>
-      					Reviews
+      					{checkLang('Reviews','Reviews')}
       				</div>
       			</div>
       			<div className='item__main--details-content'>
@@ -82,16 +89,16 @@ function Item(props) {
       						</div> 
       					: selectedTab==='shipping'?
       						<div>
-      							<h3>Verzending</h3>
-      							<p>Op werkdagen voor 18:00 uur besteld is de volgende dag in huis. Je bestelling wordt gratis bezorgd door DHL. Levering op afspraak is helaas niet mogelijk.</p>
-      							<h3>RUILEN EN RETOURNEREN</h3>
-      							<p>Wil je een artikel ruilen? Stuur het artikel/de artikelen retour en plaats vervolgens zelf een nieuwe bestelling. Wil je een artikel retourneren? Dat is mogelijk binnen 14 dagen na ontvangst van je pakket.</p>    														
+      							<h3>{checkLang('Shipping','Verzending')}</h3>
+      							<p>{checkLang('Ordered during working days before 18:00, next day deliver to your house. Your order will be delivered for free by DHL. Delivery on demand hour is unfortunately not possible.','Op werkdagen voor 18:00 uur besteld is de volgende dag in huis. Je bestelling wordt gratis bezorgd door DHL. Levering op afspraak is helaas niet mogelijk.')}</p>
+      							<h3>{checkLang('EXCHANGE AND RETURN','RUILEN EN RETOURNEREN')}</h3>
+      							<p>{checkLang('Do you want to exchange your package? Send back the package and simply place new order. Do you want to retun the package? This is possible within 14 working days?','Wil je een artikel ruilen? Stuur het artikel/de artikelen retour en plaats vervolgens zelf een nieuwe bestelling. Wil je een artikel retoureren? Dat is mogelijk binnen 14 dagen na ontvangst van je pakket')}.</p>    														
 							</div> 
       						: <div>
-      							<h3>Reviews</h3>
-      							<h4>Dit product scored:</h4>
+      							<h3>{checkLang('Reviews','Reviews')}</h3>
+      							<h4>{checkLang('This product has scored:','Dit product scored:')}</h4>
       							{
-      								item.score.length===0?<p>Er zijn nog geen reviews</p>:<h1>{claculateScore(item)}</h1>
+      								item.score.length===0?<p>{checkLang('There are no reviews.','Er zijn nog geen reviews')}</p>:<h1>{claculateScore(item)}</h1>
       							}
       						</div>
       					

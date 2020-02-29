@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
@@ -9,15 +10,19 @@ const CATEGORIES =  ["sweaters", "vests", "shirts", "underwear", "trousers", "dr
     return 0;
 })
 
-const Men = (props) =>{
+const Women = (props) =>{
 
 	const products = Products.filter(prod=>prod.categories.includes('women'))
 	const {prodId} = props.match.params
+	const history = useHistory()
 
 	let item 
 
 	if(prodId!=="home"){
 		item=products.find(p=>p.id===prodId)
+	}
+	const checkLang = (e, n) =>{
+		return props.lang==='NL'?n:e
 	}
 
 	return(
@@ -31,7 +36,7 @@ const Men = (props) =>{
 				{
 					CATEGORIES.map((cat,i)=>{
 						return(
-							<div key={`women-cat-${i}`} className='men__categories--each' onClick={()=>window.location.href=`/women/${cat}/home`}>
+							<div key={`women-cat-${i}`} className='men__categories--each' onClick={()=>history.push(`/women/${cat}/home`)}>
 								{cat}
 							</div>
 							)
@@ -47,7 +52,7 @@ const Men = (props) =>{
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`women-${prod.name}`} onClick={()=>window.location.href=`/women/${prod.id}`}>
+	      					<div className='collectionPanel__item' key={`women-${prod.name}`} onClick={()=>history.push(`/women/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -63,8 +68,8 @@ const Men = (props) =>{
 								</div>
 								
 								<div className='collectionPanel__item--btn'>
-									<div onClick={()=>window.location.href=`/men/:${prod.id}`}>
-										<p>Shop now</p>
+									<div onClick={()=>history.push(`/women/${prod.id}`)}>
+										<p>{checkLang('Shop now','Shop nu')}</p>
 									</div>
 								</div>
 							</div>
@@ -78,4 +83,4 @@ const Men = (props) =>{
 	)
 }
 
-export default Men
+export default Women

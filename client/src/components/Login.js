@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {Users} from '../data/Users'
+import {useHistory} from 'react-router-dom';
 
 const Login =(props)=>{
 
 	const {user, setUser} = props
+	const history = useHistory()
 
 
 	const [email, setEmail] = useState('')
@@ -22,19 +24,21 @@ const Login =(props)=>{
 		})
 		 .then(res=>res.json())
 		 .then(data=>{
-		 	return setUser(data)
-		 	 //return window.location.href='/'
+		 	setUser(data)
+		 	return history.push('/')
 		 })
 		 .catch(err=>console.log(err))
 		 return
 	}
-	console.log(user)
+	const checkLang = (e, n) =>{
+		return props.lang==='NL'?n:e
+	}
 
 	return(
 		<div className='login'>
 			<div className='login__header'>
-				<h1>Welkom op Mijn Claire Hempbury</h1>
-				<h3>Log in op uw account.</h3>
+				<h1>{checkLang('Welcome on My Claire Hempbury.','Welkom op Mijn Claire Hempbury')}</h1>
+				<h3>{checkLang('Log in on your account','Log in op uw account')}.</h3>
 			</div>
 			<form className='login__form' onSubmit={authorize}>
 				<div className='login__form--field'>
@@ -42,11 +46,11 @@ const Login =(props)=>{
 					<input type='email' name='email' id='form_email' onChange={(e)=>setEmail(e.target.value)}/>
 				</div>
 				<div className='login__form--field'>
-					<label>Wachtword:</label>
+					<label>{checkLang('Password','Wachtword')}:</label>
 					<input type='password' name='password' id='form_password' onChange={(e)=>setPassword(e.target.value)}/>
 				</div>
 				<div className='login__form--field'>
-					<button type='submit'>Inloggen</button>
+					<button type='submit'>{checkLang('Log In','Inloggen')}</button>
 				</div>
 			</form>
 		</div>
