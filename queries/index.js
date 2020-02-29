@@ -14,9 +14,16 @@ async function getClients(){
 	return clientsArray
 }
 
+async function updateClientRecentItems(data){
+	console.log(data)
+	//const res = await pool.query(`INSERT INTO clients (watchedproducts) VALUES (${data.item})`)
+	return data.item
+}
+
 
 module.exports = {
-	getClients
+	getClients,
+	updateClientRecentItems
 }
 
 

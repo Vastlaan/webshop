@@ -1,4 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useReducer, useContext} from 'react';
+import { 
+  Context, 
+  initialState, 
+  reducer 
+} from './store'
 import './css/style.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Landing from './components/Landing'
@@ -23,27 +28,30 @@ function App() {
 	const [lang, setLang] = useState('NL')
 	const [shoppingCart, setShoppingCart] = useState([])
 	const [user, setUser] = useState({})
+	const [store, dispatch] = useReducer(reducer, initialState);
 
   return (
   	<Router>
   		<ScrollToTop>
-	    <div className="App">
-	    	<TopPanels lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} user={user}/>
-	    	<Route exact={true} path='/' render={()=><Landing lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />} />
-	     	<Route path="/new/:prodId"  render={({match})=><NewCollection match={match} lang={lang}/>} />
-	     	<Route path="/bestsellers/:prodId"  render={({match})=><Bestsellers match={match} lang={lang}/>} />
-	     	<Route path="/sale/:prodId"  render={({match})=><Sale match={match} lang={lang}/>} />
-	     	<Route path="/men/:prodId"  exact={true} render={({match})=><Men match={match} lang={lang}/>} />
-	     	<Route path="/all/:prodId"  exact={true} render={({match})=><All match={match} lang={lang}/>} />
-	     	
-	     	{CATEGORIES_MEN.map((cat,i)=> <Route key={`app-route-men-${i}`} path={`/men/${cat}/:prodId`}  render={({match})=><SubCategory match={match} lang={lang} subCategory={cat} parentCategory='men'/>} />)}
-	     	{CATEGORIES_WOMEN.map((cat,i)=> <Route key={`app-route-women-${i}`} path={`/women/${cat}/:prodId`}  render={({match})=><SubCategory match={match} lang={lang} subCategory={cat} parentCategory='women'/>} />)}
+  		<Context.Provider value={{ store, dispatch }}>
+		    <div className="App">
+		    	<TopPanels lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} user={user}/>
+		    	<Route exact={true} path='/' render={()=><Landing lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />} />
+		     	<Route path="/new/:prodId"  render={({match})=><NewCollection match={match} lang={lang}/>} />
+		     	<Route path="/bestsellers/:prodId"  render={({match})=><Bestsellers match={match} lang={lang}/>} />
+		     	<Route path="/sale/:prodId"  render={({match})=><Sale match={match} lang={lang}/>} />
+		     	<Route path="/men/:prodId"  exact={true} render={({match})=><Men match={match} lang={lang}/>} />
+		     	<Route path="/all/:prodId"  exact={true} render={({match})=><All match={match} lang={lang}/>} />
+		     	
+		     	{CATEGORIES_MEN.map((cat,i)=> <Route key={`app-route-men-${i}`} path={`/men/${cat}/:prodId`}  render={({match})=><SubCategory match={match} lang={lang} subCategory={cat} parentCategory='men'/>} />)}
+		     	{CATEGORIES_WOMEN.map((cat,i)=> <Route key={`app-route-women-${i}`} path={`/women/${cat}/:prodId`}  render={({match})=><SubCategory match={match} lang={lang} subCategory={cat} parentCategory='women'/>} />)}
 
-	     	<Route path="/women/:prodId"  exact={true} render={({match})=><Women match={match} lang={lang}/>} />
-	     	<Route path='/contact' exact={true} component={Contact} />
-	     	<Route path='/login' exact={true} render={()=><Login lang={lang} user={user} setUser={setUser}/>}/>
-	     	<Footer lang={lang}/>
-	    </div>
+		     	<Route path="/women/:prodId"  exact={true} render={({match})=><Women match={match} lang={lang}/>} />
+		     	<Route path='/contact' exact={true} component={Contact} />
+		     	<Route path='/login' exact={true} render={()=><Login lang={lang} user={user} setUser={setUser}/>}/>
+		     	<Footer lang={lang}/>
+		    </div>
+	    </Context.Provider>
 	    </ScrollToTop>
     </Router>
   );

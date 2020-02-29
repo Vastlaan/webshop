@@ -5,8 +5,6 @@ const {getClients} = require('../queries')
 
  	const clients = await getClients()	//array of objects
 	const epjson = req.body
-
-	console.log(clients, epjson)
 	let u = undefined
 	clients.map(user=>{
 		if(user.email===epjson.email && user.password === epjson.password){

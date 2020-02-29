@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useHistory} from 'react-router-dom';
+import {  Context } from '../store'
 import { FaCheck } from "react-icons/fa";
 
 
@@ -8,6 +9,28 @@ function Item(props) {
 	const {item} = props
 
       const history = useHistory()
+      const { store, dispatch } = useContext(Context)
+      const {user} = store
+
+      console.log(user)
+      
+      useEffect(()=>{
+            if(user){
+                  fetch('/auth/updateClient',{
+                        method:'POST',
+                        headers:{
+                              "Content-Type":"application/json"
+                        },
+                        body:JSON.stringify({item: item.id})
+                  }).then(res=>res.json())
+                  .then(data=>console.log(data))
+                  .catch(e=>console.error(e))
+            }
+            
+      })  
+      
+      
+
 
 	const [selectedColor, setSelectedColor] = useState(item.colors[0])
 	const [selectedSize, setSelectedSize] = useState(item.sizes[0])

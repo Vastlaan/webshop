@@ -2,13 +2,12 @@ const express = require('express');
 const path = require('path')
 const bodyParser = require('body-parser')
 
-require('./queries')
-
 
 const app = express()
 app.use(bodyParser.json())
 
 app.post('/auth/login', require('./authRoutes/login'))
+app.post('/auth/updateClient', require('./authRoutes/updateClient'))
 
 if(process.env.NODE_ENV==='production'){
 
