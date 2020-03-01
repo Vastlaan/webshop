@@ -54,10 +54,14 @@ const InformativePanel = (props) =>{
 					}
 					
 				{store.user.name
-					?<li style={{flex:1}}><Link to='/'><FiUser className='iconLeft'/>{checkLang('Welcome', 'Welkom')} {store.user.name} {store.user.surname}</Link></li> 
+					?<li style={{flex:'0 0 100%'}}><Link to='/'><FiUser className='iconLeft'/>{checkLang('Welcome', 'Welkom')} {store.user.name} {store.user.surname}</Link></li> 
 					: <li><Link to='/login'><FiUser className='iconLeft'/>{checkLang('Log in', 'Inloggen')}</Link></li>
 				}
-				<li><Link to='/register'>{checkLang('Register', 'Registreren')}</Link></li>
+				{store.user.name
+					?null
+					:<li><Link to='/register'>{checkLang('Register', 'Registreren')}</Link></li>
+				}
+				
 				
 			</ul>
 		</nav>

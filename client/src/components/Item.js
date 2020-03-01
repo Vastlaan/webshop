@@ -11,8 +11,6 @@ function Item(props) {
       const history = useHistory()
       const { store, dispatch } = useContext(Context)
       const {user} = store
-
-      console.log(user)
       
       useEffect(()=>{
             if(user){
@@ -23,10 +21,19 @@ function Item(props) {
                         },
                         body:JSON.stringify({item: item.id, userId: user.id})
                   }).then(res=>res.json())
-                  .then(data=>console.log(data))
+                  .then(data=>{
+                        if(data.error){
+                              return console.log(data.error)
+                        }
+                        if(data.user){
+                              return dispatch({
+                                    type:'updateUser',
+                                    payload: data.user
+                              })
+                        }
+                  })
                   .catch(e=>console.error(e))
-            }
-            
+            }        
       })  
       
       

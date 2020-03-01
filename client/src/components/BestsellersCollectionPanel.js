@@ -13,12 +13,9 @@ const BestsellersCollectionPanel = (props) =>{
 	let products = shuffle(Products)
 	if(store.user.watchedproducts){
 		products = Products.filter(prod=> {
-			console.log(prod.id, store.user.watchedproducts)
 			return store.user.watchedproducts.includes(prod.id)
 		})
 	}
-	
-	console.log(products)
 
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
@@ -39,9 +36,9 @@ const BestsellersCollectionPanel = (props) =>{
 			</div>
 			<div className='collectionPanel__collection'>
 			{
-				products.map(prod=>{
+				products.map((prod,i)=>{
 						return(
-							<div className='collectionPanel__item' key={`collpan-${prod.name}`} onClick={()=>history.push(`/all/${prod.id}`)}>
+							<div className='collectionPanel__item' key={`${i}-collpan-${prod.name}`} onClick={()=>history.push(`/all/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>

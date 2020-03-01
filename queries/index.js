@@ -1,11 +1,12 @@
 const {Pool} = require('pg')
+const keys = require('../config/keys')
 
 const pool = new Pool({
-	user: 'postgres',
-	host: 'localhost',
-	database: 'claire',
-	password: 'psychedryna66',
-	port: 5432,
+	user: keys.DATABASE_USER,
+	host: keys.DATABASE_HOST,
+	database: keys.DATABASE_NAME,
+	password: keys.DATABASE_SECRET,
+	port: keys.DATABASE_PORT,
 })
 
 async function getClients(){
@@ -15,9 +16,33 @@ async function getClients(){
 }
 
 async function updateClientRecentItems(data){
+	const maxProducts = 5
+	const client = await pool.query(`SELECT * from clients WHERE id = ${data.userId}`)
+	//retrive watchedproduts array from res from above query
+	const wp = client.rows[0].watchedproducts
+	//already exist in array 
+	if(wp.includes(data.item)){
+		return client
+	}
+	//recent products too long
+	if(wp.length>=maxProducts){
+		wp.pop().concat(data.item)
+		let newArray = '\'{'
+		wp.map((w,i)=>{
+			if(i+1 === wp.length){
+				newArray = newArray+`${w}}'`
+			}else{
+				newArray = newArray+`${w},`
+			}
+			
+		})
+		console.log(newArray)
+
+		const res = await pool.query(`UPDATE clients SET watchedproducts = ${newArray} WHERE id = ${data.userId} RETURNING * `)
+		return res.rows
+	}
 	// syntax to add value to array dont forget to check by id, otherwise it update all clients
 	const res = await pool.query(`UPDATE clients SET watchedproducts = watchedproducts || '{${data.item}}' WHERE id = ${data.userId} RETURNING * `)
-	console.log(data, res.rows, res)
 	return res.rows
 }
 

@@ -32,8 +32,9 @@ const Login =(props)=>{
 		 	}
 		 	dispatch({
 		 		type:'updateUser',
-		 		payload: data
+		 		payload: data.user
 		 	})
+		 	localStorage.setItem('claireAuthToken',data.token)
 		 	return history.push('/')
 		 })
 		 .catch(err=>console.log(err))

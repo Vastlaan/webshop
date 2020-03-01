@@ -1,4 +1,4 @@
-import React, {useState, useReducer, useContext} from 'react';
+import React, {useState, useReducer, useContext, useEffect} from 'react';
 import { 
   Context, 
   initialState, 
@@ -29,6 +29,30 @@ function App() {
 	const [shoppingCart, setShoppingCart] = useState([])
 	const [user, setUser] = useState({})
 	const [store, dispatch] = useReducer(reducer, initialState);
+
+	useEffect(()=>{
+		if(localStorage.claireAuthToken){
+			fetch('/auth/login', {
+				method:'POST',
+				headers:{
+					"Content-Type":"application/json"
+				},
+				body: JSON.stringify({token: localStorage.claireAuthToken})
+			})
+			.then(res=>res.json())
+			.then(data=>{
+				if(data.error){
+			 		return 
+			 	}
+			 	console.log(data.user)
+			 	return dispatch({
+			 		type:'updateUser',
+			 		payload: data.user
+			 	})
+			})
+		}
+		
+	},[user])
 
   return (
   	<Router>
