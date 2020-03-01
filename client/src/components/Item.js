@@ -21,7 +21,7 @@ function Item(props) {
                         headers:{
                               "Content-Type":"application/json"
                         },
-                        body:JSON.stringify({item: item.id})
+                        body:JSON.stringify({item: item.id, userId: user.id})
                   }).then(res=>res.json())
                   .then(data=>console.log(data))
                   .catch(e=>console.error(e))

@@ -43,7 +43,7 @@ function Bestsellers(props) {
 	      		{
 	      			products.map(prod=>{
 	      				return(
-	      					<div className='collectionPanel__item' key={`bestsellers-${prod.name}`} onClick={()=>history.push(`/bestsellers/:${prod.id}`)}>
+	      					<div className='collectionPanel__item' key={`bestsellers-${prod.name}`} onClick={()=>history.push(`/bestsellers/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -59,7 +59,7 @@ function Bestsellers(props) {
 								</div>
 								
 								<div className='collectionPanel__item--btn'>
-									<div onClick={()=>history.push(`/bestsellers/:${prod.id}`)}>
+									<div onClick={()=>history.push(`/bestsellers/${prod.id}`)}>
 										<p>Shop now</p>
 									</div>
 								</div>

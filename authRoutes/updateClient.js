@@ -5,6 +5,7 @@ const {updateClientRecentItems} = require('../queries')
  	console.log(req.body)
 
  	const updatedClient = await updateClientRecentItems(req.body)	//array of objects
+ 	console.log(updatedClient)
  	res.status(200).json(updatedClient)
 	
 } 

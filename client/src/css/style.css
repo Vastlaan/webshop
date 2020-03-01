@@ -470,7 +470,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10rem auto;
+  margin: 5rem auto;
   padding: 2rem;
   overflow: hidden; }
   .collectionPanel__header {
@@ -508,16 +508,16 @@ body {
         min-width: 50%; }
   .collectionPanel__collection {
     width: 100%;
-    height: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    overflow-x: scroll;
     position: relative;
     padding-bottom: 1rem; }
     @media only screen and (max-width: 40.5em) {
       .collectionPanel__collection {
-        justify-content: center; } }
+        flex-wrap: nowrap;
+        overflow-x: scroll; } }
     .collectionPanel__collection--right {
       position: absolute;
       top: 40%;
@@ -528,7 +528,7 @@ body {
       left: 2rem; }
   .collectionPanel__item {
     flex: 0 0 30%;
-    margin: 0 1%;
+    margin: 2rem 1%;
     display: flex;
     flex-direction: column;
     position: relative; }

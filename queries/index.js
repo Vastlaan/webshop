@@ -15,9 +15,10 @@ async function getClients(){
 }
 
 async function updateClientRecentItems(data){
-	console.log(data)
-	//const res = await pool.query(`INSERT INTO clients (watchedproducts) VALUES (${data.item})`)
-	return data.item
+	// syntax to add value to array dont forget to check by id, otherwise it update all clients
+	const res = await pool.query(`UPDATE clients SET watchedproducts = watchedproducts || '{${data.item}}' WHERE id = ${data.userId} RETURNING * `)
+	console.log(data, res.rows, res)
+	return res.rows
 }
 
 
