@@ -32,7 +32,7 @@ function App() {
 
 	useEffect(()=>{
 		if(localStorage.claireAuthToken){
-			fetch('/auth/login', {
+			fetch('/auth/loginWithToken', {
 				method:'POST',
 				headers:{
 					"Content-Type":"application/json"
@@ -44,7 +44,6 @@ function App() {
 				if(data.error){
 			 		return 
 			 	}
-			 	console.log(data.user)
 			 	return dispatch({
 			 		type:'updateUser',
 			 		payload: data.user
@@ -52,7 +51,7 @@ function App() {
 			})
 		}
 		
-	},[user])
+	},[])
 
   return (
   	<Router>

@@ -6,13 +6,24 @@ import {Link} from 'react-router-dom';
 import FlagNL from '../img/flagNL.png';
 import FlagUK from '../img/flagUK.png';
 import { FiUser, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import {useHistory} from 'react-router-dom';
 
 const InformativePanel = (props) =>{
 
 	const [displayLangPanel, setDisplayLangPanel] = useState(false)
+	const [displayUserPanel, setDisplayUserPanel] = useState(false)
 
-	const { store } = useContext(Context)
+	const { store, dispatch } = useContext(Context)
 
+	const history = useHistory()
+
+	const logout = () =>{
+		localStorage.removeItem('claireAuthToken')
+		dispatch({
+			type:'resetUser'
+		})
+		return history.push('/')
+	}
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
 	}
@@ -54,8 +65,23 @@ const InformativePanel = (props) =>{
 					}
 					
 				{store.user.name
-					?<li style={{flex:'0 0 100%'}}><Link to='/'><FiUser className='iconLeft'/>{checkLang('Welcome', 'Welkom')} {store.user.name} {store.user.surname}</Link></li> 
-					: <li><Link to='/login'><FiUser className='iconLeft'/>{checkLang('Log in', 'Inloggen')}</Link></li>
+					?<li style={{flex:'0 0 100%', position:'relative', textDecoration:'none'}}>
+						<div to='#' style={{cursor:'pointer'}} onClick={()=>setDisplayUserPanel(prevState=>{
+							return !prevState
+						})}>
+							<FiUser className='iconLeft'/>
+							{checkLang('Welcome', 'Welkom')} {store.user.name} {store.user.surname}
+							{displayUserPanel?
+								<div style={{position:'absolute', bottom:'-8rem',left:0,  height:'8rem',width:'25rem',backgroundColor:'white', zIndex:'99',padding:'2rem'}}>
+									<p style={{cursor: 'pointer'}} onClick={logout}>{checkLang('Log out','Log uit')}</p>
+								</div>
+								:null
+							}
+						</div>
+					</li> 
+					: <li>
+						<Link to='/login'><FiUser className='iconLeft'/>{checkLang('Log in', 'Inloggen')}</Link>
+					  </li>
 				}
 				{store.user.name
 					?null

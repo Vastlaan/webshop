@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react';
-import {Users} from '../data/Users'
 import {useHistory} from 'react-router-dom';
 import { 
   Context
