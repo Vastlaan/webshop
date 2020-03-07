@@ -46,10 +46,18 @@ async function updateClientRecentItems(data){
 	return res.rows
 }
 
+async function registerNewClient({email,password}){
+	const address = `{"street":"", "number" : "", "toe": "", "postcode": "", "city":""}`
+	const res= await pool.query(`INSERT INTO clients ( email, password,name,surname,address,phone,gender,purchasehistory,watchedproducts, created_on) VALUES ('${email}', '${password}', '', '',  '${address}', '', '', ARRAY[''],ARRAY[''], NOW()) RETURNING *`)
+	console.log(res.rows)
+	return res.rows
+}
+
 
 module.exports = {
 	getClients,
-	updateClientRecentItems
+	updateClientRecentItems,
+	registerNewClient
 }
 
 

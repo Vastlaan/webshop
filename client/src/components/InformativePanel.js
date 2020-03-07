@@ -64,7 +64,7 @@ const InformativePanel = (props) =>{
 						)
 					}
 					
-				{store.user.name
+				{store.user.email
 					?<li style={{flex:'0 0 100%', position:'relative', textDecoration:'none'}}>
 						<div to='#' style={{cursor:'pointer'}} onClick={()=>setDisplayUserPanel(prevState=>{
 							return !prevState
@@ -83,7 +83,7 @@ const InformativePanel = (props) =>{
 						<Link to='/login'><FiUser className='iconLeft'/>{checkLang('Log in', 'Inloggen')}</Link>
 					  </li>
 				}
-				{store.user.name
+				{store.user.email
 					?null
 					:<li><Link to='/register'>{checkLang('Register', 'Registreren')}</Link></li>
 				}

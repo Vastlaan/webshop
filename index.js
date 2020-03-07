@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json())
 
+app.post('/auth/register', require('./routes/register'))
 app.post('/auth/login', require('./routes/login'))
 app.post('/auth/loginWithToken', require('./routes/loginWithToken'))
 app.post('/auth/updateClient', require('./routes/updateClient'))

@@ -30,7 +30,7 @@ const Women = (props) =>{
 
 			{item?<Item item={item} lang={props.lang}/>:null}
 
-			<h1 className='men__header'>Vrouwen Categories</h1>
+			<h1 className='men__header'>{checkLang('Women Categories','Vrouwen Categories')}</h1>
 			<div className='men__categories'>
 
 				{
@@ -46,7 +46,7 @@ const Women = (props) =>{
 
 			<div className="newCollection">
 
-	      	<h1 className="newCollection__header">Meest gekozen</h1>
+	      	<h1 className="newCollection__header">{checkLang('Popular','Meest gekozen')}</h1>
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 	      		{
