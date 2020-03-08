@@ -16,34 +16,46 @@ async function getClients(){
 }
 
 async function updateClientRecentItems(data){
-	const maxProducts = 5
-	const client = await pool.query(`SELECT * from clients WHERE id = ${data.userId}`)
-	//retrive watchedproduts array from res from above query
-	const wp = client.rows[0].watchedproducts
-	//already exist in array 
-	if(wp.includes(data.item)){
-		return client
-	}
-	//recent products too long
-	if(wp.length>=maxProducts){
-		wp.pop().concat(data.item)
-		let newArray = '\'{'
-		wp.map((w,i)=>{
-			if(i+1 === wp.length){
-				newArray = newArray+`${w}}'`
-			}else{
-				newArray = newArray+`${w},`
-			}
+	try{
+		const maxProducts = 5
+		const client = await pool.query(`SELECT * from clients WHERE id = ${data.userId}`)
+		//retrive watchedproduts array from res from above query
+		const wp = client.rows[0].watchedproducts
+		//already exist in array 
+		if(wp.includes(data.item)){
+			console.log('here I was')
+			return client.rows[0]
+		}
+		//recent products too long
+		if(wp.length>=maxProducts){
+			wp.shift()
+			wp.push(data.item)
+			let newArray = '\'{'
+			wp.map((w,i)=>{
+				if(i+1 === wp.length){
+					newArray = newArray+`${w}}'`
+				}else if(w===''){
+					newArray=newArray+''
+				}
+				else{
+					newArray = newArray+`${w},`
+				}
+				
+			})
 			
-		})
-		console.log(newArray)
+			const res = await pool.query(`UPDATE clients SET watchedproducts = ${newArray} WHERE id = ${data.userId} RETURNING * `)
+			return res.rows[0]
+		}
+		// syntax to add value to array dont forget to check by id, otherwise it update all clients
+		const res = await pool.query(`UPDATE clients SET watchedproducts = watchedproducts || '{${data.item}}' WHERE id = ${data.userId} RETURNING * `)
+		
+		return res.rows[0]
 
-		const res = await pool.query(`UPDATE clients SET watchedproducts = ${newArray} WHERE id = ${data.userId} RETURNING * `)
-		return res.rows
+	}catch(e){
+		console.log(e)
+		return {error:e}
 	}
-	// syntax to add value to array dont forget to check by id, otherwise it update all clients
-	const res = await pool.query(`UPDATE clients SET watchedproducts = watchedproducts || '{${data.item}}' WHERE id = ${data.userId} RETURNING * `)
-	return res.rows
+	
 }
 
 async function registerNewClient({email,password}){

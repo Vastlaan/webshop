@@ -13,6 +13,7 @@ const Register =(props)=>{
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [controlPassword, setControlPassword] = useState('')
 	const [message, setMessage] = useState('')
 
 	const validateEmail = (email) =>{
@@ -25,6 +26,10 @@ const Register =(props)=>{
 	}
 	const register = (e) =>{
 		e.preventDefault()
+
+		if(controlPassword!==password){
+			return setMessage('Password doesn\'t match')
+		}			
 
 		if(!validateEmail(email)){
 			return setMessage('Email is not valid')
@@ -83,6 +88,10 @@ const Register =(props)=>{
 				<div className='login__form--field'>
 					<label>{checkLang('Password','Wachtword')}:</label>
 					<input type='password' name='password' id='form_password' onChange={(e)=>setPassword(e.target.value)}/>
+				</div>
+				<div className='login__form--field'>
+					<label>{checkLang('Repeat Password','Herhaal Wachtword')}:</label>
+					<input type='password' name='password' id='form_password' onChange={(e)=>setControlPassword(e.target.value)} />
 				</div>
 				<div className='login__form--field'>
 					<button type='submit'>{checkLang('Register','Registreren')}</button>

@@ -22,19 +22,20 @@ function Item(props) {
                         body:JSON.stringify({item: item.id, userId: user.id})
                   }).then(res=>res.json())
                   .then(data=>{
+                        
                         if(data.error){
                               return console.log(data.error)
                         }
-                        if(data.user){
+                        if(data.email){
                               return dispatch({
                                     type:'updateUser',
-                                    payload: data.user
+                                    payload: data
                               })
                         }
                   })
                   .catch(e=>console.error(e))
             }        
-      })  
+      }, [])  
       
       
 
