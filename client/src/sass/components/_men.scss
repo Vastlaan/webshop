@@ -18,7 +18,7 @@
 
 	&__categories{
 		
-		border:1px solid $color-grey;
+		border:1px solid $color-primary-light;
 		border-radius: 3px;
 		padding:2rem;
 		margin:5rem auto;
@@ -43,10 +43,10 @@
 			cursor:pointer;
 			transition:all .3s;
 			letter-spacing: .2rem;
-			color:$color-primary-light;
+			color:$color-reddish;
 
 			&:hover{
-				color:$color-primary;
+				color:$color-primary-light;
 			}
 
 		}

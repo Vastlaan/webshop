@@ -1,0 +1,108 @@
+.contact{
+	margin-top: 18rem;
+	padding:2rem;
+	display:flex;
+
+	@include respond(m){
+		flex-direction: column;
+	}
+
+	@include respond(s){
+		margin-top: 22rem;
+	}
+
+	&__form{
+		flex:0 0 60%;
+		padding:2rem;
+		border-right: 1px solid $color-primary-light;
+
+		@include respond(m){
+			border-right: 1px solid transparent;
+		}
+
+		&--header{
+			font-family: $font-poiret;
+			font-size: 3.2rem;
+			font-weight: 300;
+			letter-spacing: .3rem;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		&--info{
+			margin:2rem auto;
+			font-family: $font-dosis;
+			font-size: 1.6rem;
+			color:$color-primary;
+
+		}
+		&--field{
+			display:flex;
+			justify-content: flex-end;
+			margin:2rem auto;
+
+			label{
+				margin-right: 2rem;
+				font-family: $font-rajdhani;
+				font-size: 2rem;
+				color:$color-primary;
+			}
+
+			input,textarea{
+				width:50%;
+				padding:1rem;
+				font-family: $font-dosis;
+				font-size: 1.6rem;
+				border:1px solid $color-primary-light;
+
+				&:focus{
+					outline:none;
+					box-shadow: 0 0 1rem rgba(0,0,0,.3);
+				}
+			}
+			textarea{
+				height:20rem;
+			}
+		}
+
+		&--btn{
+			display:flex;
+			justify-content: center;
+			margin:2rem auto 5rem auto;
+
+			button{
+				border:none;
+				padding:1rem 4rem;
+				background-color: $color-reddish;
+				color:white;
+				font-family: $font-rajdhani;
+				font-size: 3rem;
+				transition:all .3s;
+				
+
+				&:focus{
+					outline:none;
+					box-shadow: 0 0 1rem rgba(0,0,0,.3);
+				}
+
+				&:hover{
+					background-color: $color-primary-light;
+				}
+			}
+		}
+	}
+	&__details{
+		flex:0 0 40%;
+
+		&--header{
+			font-family: $font-poiret;
+			font-size: 2.8rem;
+			font-weight: 900;
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+
+	
+
+	
+}

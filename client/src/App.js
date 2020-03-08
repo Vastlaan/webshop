@@ -71,7 +71,7 @@ function App() {
 		     	{CATEGORIES_WOMEN.map((cat,i)=> <Route key={`app-route-women-${i}`} path={`/women/${cat}/:prodId`}  render={({match})=><SubCategory match={match} lang={lang} subCategory={cat} parentCategory='women'/>} />)}
 
 		     	<Route path="/women/:prodId"  exact={true} render={({match})=><Women match={match} lang={lang}/>} />
-		     	<Route path='/contact' exact={true} component={Contact} />
+		     	<Route path='/contact' exact={true} render={()=><Contact lang={lang}/>} />
 		     	<Route path='/login' exact={true} render={()=><Login lang={lang} user={user} setUser={setUser}/>}/>
 		     	<Route path='/register' exact={true} render={()=><Register lang={lang} user={user} setUser={setUser}/>}/>
 		     	<Footer lang={lang}/>

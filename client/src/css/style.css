@@ -385,6 +385,81 @@ body {
       text-align: center;
       letter-spacing: .2rem; }
 
+.contact {
+  margin-top: 18rem;
+  padding: 2rem;
+  display: flex; }
+  @media only screen and (max-width: 48.5em) {
+    .contact {
+      flex-direction: column; } }
+  @media only screen and (max-width: 40.5em) {
+    .contact {
+      margin-top: 22rem; } }
+  .contact__form {
+    flex: 0 0 60%;
+    padding: 2rem;
+    border-right: 1px solid #be9b7b; }
+    @media only screen and (max-width: 48.5em) {
+      .contact__form {
+        border-right: 1px solid transparent; } }
+    .contact__form--header {
+      font-family: "Poiret One", cursive;
+      font-size: 3.2rem;
+      font-weight: 300;
+      letter-spacing: .3rem;
+      text-align: center;
+      text-transform: uppercase; }
+    .contact__form--info {
+      margin: 2rem auto;
+      font-family: "Dosis", sans-serif;
+      font-size: 1.6rem;
+      color: #4b3832; }
+    .contact__form--field {
+      display: flex;
+      justify-content: flex-end;
+      margin: 2rem auto; }
+      .contact__form--field label {
+        margin-right: 2rem;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 2rem;
+        color: #4b3832; }
+      .contact__form--field input, .contact__form--field textarea {
+        width: 50%;
+        padding: 1rem;
+        font-family: "Dosis", sans-serif;
+        font-size: 1.6rem;
+        border: 1px solid #be9b7b; }
+        .contact__form--field input:focus, .contact__form--field textarea:focus {
+          outline: none;
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3); }
+      .contact__form--field textarea {
+        height: 20rem; }
+    .contact__form--btn {
+      display: flex;
+      justify-content: center;
+      margin: 2rem auto 5rem auto; }
+      .contact__form--btn button {
+        border: none;
+        padding: 1rem 4rem;
+        background-color: #854442;
+        color: white;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 3rem;
+        transition: all .3s; }
+        .contact__form--btn button:focus {
+          outline: none;
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3); }
+        .contact__form--btn button:hover {
+          background-color: #be9b7b; }
+  .contact__details {
+    flex: 0 0 40%; }
+    .contact__details--header {
+      font-family: "Poiret One", cursive;
+      font-size: 2.8rem;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase; }
+
 .login {
   padding-top: 18rem; }
   @media only screen and (max-width: 40.5em) {
@@ -396,7 +471,7 @@ body {
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin: 5rem auto 3rem auto;
+    margin: 5rem auto 2rem auto;
     font-family: "Poiret One", cursive;
     text-align: center; }
     .login__header h1 {
@@ -423,7 +498,7 @@ body {
     justify-content: center;
     align-items: center; }
     .login__form--field {
-      margin: 2rem auto;
+      margin: 1rem auto;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -443,7 +518,8 @@ body {
           box-shadow: 0 0 1rem rgba(75, 56, 50, 0.3); }
       .login__form--field button {
         border: none;
-        background-color: #be9b7b !important;
+        background-color: #854442 !important;
+        margin-top: 2rem;
         padding: 2rem 5rem;
         background-color: white;
         color: white;
@@ -861,7 +937,7 @@ body {
     width: 100%;
     text-transform: uppercase; }
   .men__categories {
-    border: 1px solid #e1e1e1;
+    border: 1px solid #be9b7b;
     border-radius: 3px;
     padding: 2rem;
     margin: 5rem auto;
@@ -882,6 +958,6 @@ body {
       cursor: pointer;
       transition: all .3s;
       letter-spacing: .2rem;
-      color: #be9b7b; }
+      color: #854442; }
       .men__categories--each:hover {
-        color: #4b3832; }
+        color: #be9b7b; }

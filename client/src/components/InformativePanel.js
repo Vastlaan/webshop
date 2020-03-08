@@ -32,7 +32,7 @@ const InformativePanel = (props) =>{
 		<nav className='informativePanel'>
 			<ul className='invisibleForSmallDevices informativePanel__section '>
 				<li><Link to='/contact'>{checkLang('Contact', 'Contact')}</Link></li>
-				<li><Link to='/klantenservice'>{checkLang('Customer Service', 'Klantenservice')}</Link></li>
+				<li><Link to='/contact'>{checkLang('Customer Service', 'Klantenservice')}</Link></li>
 			</ul>
 			<ul className='informativePanel__section'>
 				
