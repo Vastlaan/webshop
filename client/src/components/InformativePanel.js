@@ -70,7 +70,7 @@ const InformativePanel = (props) =>{
 							return !prevState
 						})}>
 							<FiUser className='iconLeft'/>
-							{checkLang('Welcome', 'Welkom')} {store.user.name} {store.user.surname}
+							{checkLang('Welcome', 'Welkom')} {store.user.name?`${store.user.name} ${store.user.surname}`:`${store.user.email}`}
 							{displayUserPanel?
 								<div style={{position:'absolute', bottom:'-8rem',left:0,  height:'8rem',width:'25rem',backgroundColor:'white', zIndex:'99',padding:'2rem'}}>
 									<p style={{cursor: 'pointer'}} onClick={logout}>{checkLang('Log out','Log uit')}</p>

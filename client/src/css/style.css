@@ -414,6 +414,13 @@ body {
       font-family: "Dosis", sans-serif;
       font-size: 1.6rem;
       color: #4b3832; }
+    .contact__form--warning {
+      font-family: "Rajdhani", sans-serif;
+      color: red;
+      font-size: 1.8rem;
+      text-align: center;
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      padding: 2rem; }
     .contact__form--field {
       display: flex;
       justify-content: flex-end;
@@ -452,13 +459,46 @@ body {
         .contact__form--btn button:hover {
           background-color: #be9b7b; }
   .contact__details {
-    flex: 0 0 40%; }
+    flex: 0 0 40%;
+    padding: 2rem; }
     .contact__details--header {
       font-family: "Poiret One", cursive;
       font-size: 2.8rem;
       font-weight: 900;
       text-align: center;
       text-transform: uppercase; }
+    .contact__details--intro {
+      font-family: "Poiret One", cursive;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      text-transform: lowercase; }
+    .contact__details--info {
+      margin: 2rem auto;
+      font-family: "Dosis", sans-serif;
+      font-size: 1.6rem;
+      color: #4b3832; }
+    .contact__details--field {
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: 2rem auto;
+      padding: 2rem;
+      border: 1px solid #854442;
+      transition: all .3s; }
+      .contact__details--field:not(:last-child):hover {
+        background-color: #be9b7b;
+        cursor: pointer; }
+      .contact__details--field-icon {
+        font-size: 3rem;
+        color: #854442; }
+      .contact__details--field p {
+        font-size: 2.5rem;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 900;
+        color: #4b3832; }
 
 .login {
   padding-top: 18rem; }
