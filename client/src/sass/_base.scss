@@ -9,6 +9,15 @@
 	scrollbar-width:thin;
 }
 
+*::-webkit-scrollbar{
+	width:1rem;
+	background-color: $color-primary-light;
+}
+*::-webkit-scrollbar-thumb{
+	width:.8rem;
+	background-color: $color-primary;
+}
+
 html{
 	font-size: 62.5%;
 	box-sizing: border-box;

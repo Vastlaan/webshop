@@ -51,6 +51,13 @@
 				li{
 					font-size: 3rem;
 					color:$color-primary;
+					transition:all .3s;
+
+
+					&:hover{
+						color:$color-reddish;
+						transform:scale(1.2);
+					}
 				}
 			}
 

@@ -27,16 +27,16 @@ const Footer =(props)=>{
 			</div>
 			<div className='footer__list footer__service'>
 				<ul>
-					<Link to='/contact'><li>{checkLang('Contact')}</li></Link>
-					<Link to='/contact'><li>Betaalmogelijkheiden</li></Link>
-					<Link to='/'><li>Verzending & levering</li></Link>
+					<Link to='/contact'><li>{checkLang('Contact', 'Contact')}</li></Link>
+					<Link to='/contact'><li>{checkLang('Payment options', 'Betaalmogelijkheiden')}</li></Link>
+					<Link to='/'><li>{checkLang('Shipping', 'Verzending & levering')}</li></Link>
 				</ul>
 			</div>
 			<div className='footer__list footer__legal'>
 				<ul>
-					<Link to='/contact'><li>Over Ons</li></Link>
-					<Link to='/contact'><li>Privacy Policy</li></Link>
-					<Link to='/'><li>Cookies</li></Link>
+					<Link to='/contact'><li>{checkLang('About Us', 'Over Ons')}</li></Link>
+					<Link to='/contact'><li>{checkLang('Privacy Policy', 'Privacy Policy')}</li></Link>
+					<Link to='/'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
 				</ul>
 			</div>
 

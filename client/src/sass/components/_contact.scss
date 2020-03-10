@@ -80,11 +80,12 @@
 			button{
 				border:none;
 				padding:1rem 4rem;
-				background-color: $color-reddish;
+				background-color: $color-primary-dark;
 				color:white;
 				font-family: $font-rajdhani;
 				font-size: 3rem;
 				transition:all .3s;
+				cursor:pointer;
 				
 
 				&:focus{
@@ -93,7 +94,7 @@
 				}
 
 				&:hover{
-					background-color: $color-primary-light;
+					background-color: $color-reddish;
 				}
 			}
 		}

@@ -1,25 +1,42 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import { Context } from '../store'
 import {Products} from '../data/Products'
 import {renderDescription} from '../utils/renderDescription'
+import Page from './Page'
 
 
 const BestsellersCollectionPanel = (props) =>{
 
 	//this panel navigate to item through category "bestsellers" so path should be '/bestsellers/item_id'
+	const productsBestsellers = Products.filter(prod=>prod.categories.includes("bestsellers"))
 	const history = useHistory()
 	const { store, dispatch } = useContext(Context)
-	let products = shuffle(Products)
+	const [page, setPage] = useState(1)
+	let products = shuffle(productsBestsellers)
+	//interval determine how many products display per page
+	const interval = 3
+	// determines number of pages based of amount of products and interval
+	const maxPages = Math.ceil(productsBestsellers.length / interval)
+	
+
+	
 	if(store.user.watchedproducts){
 		products = Products.filter(prod=> {
 			return store.user.watchedproducts.includes(prod.id)
 		})
 	}
+	//responsible for displaing proper products on each page
+	products = products.filter((prod,i)=>{
+		const first = (page * interval) - interval
+		const last = (page * interval) -1
+		return i>=first && i<=last
+	})
 
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
 	}
+	// algoritm to shuffle array
 	function shuffle(a) {
 	    for (let i = a.length - 1; i > 0; i--) {
 	        const j = Math.floor(Math.random() * (i + 1));
@@ -63,6 +80,7 @@ const BestsellersCollectionPanel = (props) =>{
 				})
 			}
 			</div>
+			<Page page={page} setPage={setPage} maxPages={maxPages} toTop={false}/>
 		</div>
 		)
 }

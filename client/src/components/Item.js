@@ -13,7 +13,7 @@ function Item(props) {
       const {user} = store
       
       useEffect(()=>{
-            if(user){
+            if(user.email){
                   fetch('/auth/updateClient',{
                         method:'POST',
                         headers:{
