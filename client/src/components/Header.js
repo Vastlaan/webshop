@@ -57,7 +57,15 @@ const Header = (props) =>{
 			{
 				searchedItems.map(prod=>{
 						return(
-							<div className='collectionPanel__item'  style={{width:'100%', transform:'scale(0.9)'}} key={`collpan-${prod.id}`} onClick={()=>history.push(`/all/${prod.id}`)}>
+							<div 
+								className='collectionPanel__item'  
+								style={{width:'100%', transform:'scale(0.9)'}} 
+								key={`collpan-${prod.id}`} 
+								onClick={()=>{
+										setSearchedItems([])
+										return history.push(`/all/${prod.id}`)
+										}
+									}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
@@ -73,7 +81,10 @@ const Header = (props) =>{
 								</div>
 								
 								<div className='collectionPanel__item--btn'>
-									<div onClick={()=>history.push(`/all/${prod.id}`)}>
+									<div onClick={()=>{
+										setSearchedItems([])
+										return history.push(`/all/${prod.id}`)}
+									}>
 										<p>{checkLang('Shop now', 'Shop nu')}</p>
 									</div>
 								</div>
@@ -82,11 +93,11 @@ const Header = (props) =>{
 								
 							</div>
 						)
-				})
-			}
+					})
+				}
 
 			
-			</div>
+					</div>
 				</div>
 				:null
 			}

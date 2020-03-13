@@ -11,6 +11,9 @@ app.post('/auth/login', require('./routes/login'))
 app.post('/auth/loginWithToken', require('./routes/loginWithToken'))
 app.post('/auth/updateClient', require('./routes/updateClient'))
 
+//===============================test or initial db routes=====================================
+// app.get('/auth/createProducts', require('./routes/createProducts'))
+
 if(process.env.NODE_ENV==='production'){
 
 	app.use(express.static('client/build'));

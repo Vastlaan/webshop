@@ -11,6 +11,7 @@ export default class Product{
 		this.categories=categories
 		this.isPromoted = isPromoted
 		this.imageUrl = imageUrl
+		this.images = []
 		this.score = []
 	}
 }

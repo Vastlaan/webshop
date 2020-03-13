@@ -50,6 +50,7 @@ function App() {
 			 		payload: data.user
 			 	})
 			})
+			.catch(e=>console.error(e))
 		}
 		
 	},[])

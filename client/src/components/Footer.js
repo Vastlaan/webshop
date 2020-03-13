@@ -2,6 +2,7 @@ import React from 'react'
 import {Link, useHistory} from 'react-router-dom';
 import { FaFacebook, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
 
+
 const Footer =(props)=>{
 
 	const history = useHistory()
@@ -11,6 +12,13 @@ const Footer =(props)=>{
 	}
 
 	const currentYear = new Date().getFullYear()
+
+	const createProducts = () =>{
+		fetch('/auth/createProducts')
+		.then(res=>res.json())
+		.then(data=>console.log(data))
+		.catch(e=>console.error(e))
+	}
 	return(
 		<div className='footer'>
 			<div className='footer__name'>
@@ -29,14 +37,15 @@ const Footer =(props)=>{
 				<ul>
 					<Link to='/contact'><li>{checkLang('Contact', 'Contact')}</li></Link>
 					<Link to='/contact'><li>{checkLang('Payment options', 'Betaalmogelijkheiden')}</li></Link>
-					<Link to='/'><li>{checkLang('Shipping', 'Verzending & levering')}</li></Link>
+					<Link to='/contact'><li>{checkLang('Shipping', 'Verzending & levering')}</li></Link>
 				</ul>
 			</div>
 			<div className='footer__list footer__legal'>
 				<ul>
 					<Link to='/contact'><li>{checkLang('About Us', 'Over Ons')}</li></Link>
 					<Link to='/contact'><li>{checkLang('Privacy Policy', 'Privacy Policy')}</li></Link>
-					<Link to='/'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
+					<Link to='/contact'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
+					<a onClick={createProducts}>CP</a>
 				</ul>
 			</div>
 
