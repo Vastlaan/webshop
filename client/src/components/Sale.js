@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
@@ -9,7 +8,14 @@ import Page from './Page'
 function Sale(props) {
 
 	const {prodId} = props.match.params
-	const allProducts = Products.filter(prod=>prod.categories.includes('new'))
+	const [products, setProducts] = useState([])
+	useEffect(()=>{
+		fetch('/auth/getProducts')
+		.then(res=>res.json())
+		.then(data=>setProducts(data))
+		.catch(e=>console.error(e))
+	},[])
+	const allProducts = products.filter(prod=>prod.categories.includes('new'))
 	const interval = 3
 	const maxPages = Math.ceil(allProducts.length / interval)
 	//pull out Router history for navigation purposes
@@ -17,7 +23,7 @@ function Sale(props) {
 
 	const [page, setPage] = useState(1)
 
-	const products = allProducts.filter((prod,i)=>{
+	const prod = allProducts.filter((prod,i)=>{
 		const first = (page * interval) - interval
 		const last = (page * interval) -1
 		return i>=first && i<=last
@@ -26,7 +32,7 @@ function Sale(props) {
 	let item 
 
 	if(prodId!=="home"){
-		item=allProducts.find(p=>p.id===prodId)
+		item=allProducts.find(p=>p.id.toString()===prodId)
 	}
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
@@ -42,14 +48,14 @@ function Sale(props) {
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 	      		{
-	      			products.map(prod=>{
+	      			prod.map(prod=>{
 	      				return(
 	      					<div className='collectionPanel__item' key={`sale-${prod.name}`} onClick={()=>history.push(`/new/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
 								<div className='collectionPanel__item--image'>
-									<img src={prod.imageUrl} alt={prod.name} />
+									<img src={prod.imageurl} alt={prod.name} />
 								</div>
 								
 								<div className='collectionPanel__item--description'>

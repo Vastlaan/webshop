@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
 
@@ -12,18 +11,32 @@ const CATEGORIES =  ["sweaters", "vests", "shirts", "underwear", "trousers", "dr
 
 const Women = (props) =>{
 
-	const products = Products.filter(prod=>prod.categories.includes('women'))
+	useEffect(()=>{
+		fetch('/auth/getProducts')
+		.then(res=>res.json())
+		.then(data=>setProducts(data))
+		.catch(e=>console.error(e))
+	},[])
+
+	const [products, setProducts] = useState([])
+
+	const prod = products.filter(prod=>prod.categories.includes('women'))
 	const {prodId} = props.match.params
 	const history = useHistory()
 
 	let item 
 
 	if(prodId!=="home"){
-		item=products.find(p=>p.id===prodId)
+		item=prod.find(p=>{
+			console.log(p.id, prodId, p.id.toString()===prodId)
+			return p.id.toString()===prodId
+		})
+		console.log(item, prodId)
 	}
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
 	}
+	
 
 	return(
 		<div  className='men' >
@@ -50,14 +63,14 @@ const Women = (props) =>{
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 	      		{
-	      			products.map(prod=>{
+	      			prod.map(prod=>{
 	      				return(
 	      					<div className='collectionPanel__item' key={`women-${prod.name}`} onClick={()=>history.push(`/women/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
 								<div className='collectionPanel__item--image'>
-									<img src={prod.imageUrl} alt={prod.name} />
+									<img src={prod.imageurl} alt={prod.name} />
 								</div>
 								
 								<div className='collectionPanel__item--description'>

@@ -713,19 +713,21 @@ body {
     justify-content: center;
     margin: 2rem; }
     .collectionPanel__header h1 {
-      font-family: "Rajdhani", sans-serif;
-      font-weight: 300;
+      font-family: "Dosis", sans-serif;
+      font-weight: 500;
       text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
-      font-size: 5rem;
-      position: relative; }
+      font-size: 4rem;
+      position: relative;
+      text-transform: uppercase;
+      color: #854442; }
       .collectionPanel__header h1:after {
         content: "";
         display: inline-block;
         position: absolute;
         top: 50%;
-        left: -50%;
+        left: -55%;
         height: 1px;
-        background-color: black;
+        background-color: #854442;
         max-width: 50%;
         min-width: 50%; }
       .collectionPanel__header h1:before {
@@ -733,9 +735,9 @@ body {
         display: inline-block;
         position: absolute;
         top: 50%;
-        right: -50%;
+        right: -55%;
         height: 1px;
-        background-color: black;
+        background-color: #854442;
         max-width: 50%;
         min-width: 50%; }
   .collectionPanel__collection {

@@ -17,21 +17,24 @@
 		justify-content: center;
 		margin:2rem;
 
+
 		h1{
-			font-family: $font-rajdhani;
-			font-weight: 300;
+			font-family: $font-dosis;
+			font-weight: 500;
 			text-shadow: .2rem .2rem .2rem rgba(0,0,0,.3);
-			font-size: 5rem;
+			font-size:4rem;
 			position:relative;
+			text-transform: uppercase;
+			color:$color-reddish;
 
 			&:after{
 				content:"";
 				display:inline-block;
 				position:absolute;
 				top:50%;
-				left:-50%;
+				left:-55%;
 				height:1px;
-				background-color: black;
+				background-color: $color-reddish;
 				max-width:50%;
 				min-width: 50%;
 
@@ -41,9 +44,9 @@
 				display:inline-block;
 				position:absolute;
 				top:50%;
-				right:-50%;
+				right:-55%;
 				height:1px;
-				background-color: black;
+				background-color: $color-reddish;
 				max-width:50%;
 				min-width: 50%;
 

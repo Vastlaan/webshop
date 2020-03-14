@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
@@ -10,7 +9,12 @@ import Page from './Page'
 function SubCategory(props) {
 	//destructure product id passed as query parameter and served by the Router component in props
 	const {prodId} = props.match.params
-	const allProducts = Products.filter(prod=>prod.categories.includes(props.subCategory)&&prod.categories.includes(props.parentCategory))
+
+	const [products, setProducts] = useState([])
+	const [page, setPage] = useState(1)
+
+	const allProducts = products.filter(prod=>prod.categories.includes(props.subCategory)&&prod.categories.includes(props.parentCategory))
+	console.log(allProducts)
 	//interval determine how many products display per page
 	const interval = 3
 	// determines number of pages based of amount of products and interval
@@ -18,9 +22,17 @@ function SubCategory(props) {
 	//pull out Router history for navigation purposes
 	const history = useHistory()
 
-	const [page, setPage] = useState(1)
+	
+	useEffect(()=>{
+		fetch('/auth/getProducts')
+		.then(res=>res.json())
+		.then(data=>setProducts(data))
+		.catch(e=>console.error(e))
+	},[])
 
-	const products = allProducts.filter((prod,i)=>{
+	
+
+	const prod = allProducts.filter((prod,i)=>{
 		const first = (page * interval) - interval
 		const last = (page * interval) -1
 		return i>=first && i<=last
@@ -28,7 +40,7 @@ function SubCategory(props) {
 	let item 
 
 	if(prodId!=="home"){
-		item=allProducts.find(p=>p.id===prodId)
+		item=prod.find(p=>p.id.toString()===prodId)
 	}
 	//change categories tabs language based on props.lang
 	const {parentCategory} = props
@@ -55,7 +67,7 @@ function SubCategory(props) {
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 
 	      		{
-	      			products.length<1?
+	      			prod.length<1?
 	      			<div style={{display:'flex', justifyContent:'center', width:'100%', fontSize:'2.5rem', fontFamily:'Courier', color:'orangered', margin:'15rem auto'}}>
 	      				{checkLang('No produts found','Geen artikelen gevonden')}
 	      			</div>
@@ -63,14 +75,14 @@ function SubCategory(props) {
 	      		}
 
 	      		{
-	      			products.map(prod=>{
+	      			prod.map(prod=>{
 	      				return(
 	      					<div className='collectionPanel__item' key={`newcoll-${prod.id}`} onClick={()=>history.push(`/all/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
 								<div className='collectionPanel__item--image'>
-									<img src={prod.imageUrl} alt={prod.name} />
+									<img src={prod.imageurl} alt={prod.name} />
 								</div>
 								
 								<div className='collectionPanel__item--description'>

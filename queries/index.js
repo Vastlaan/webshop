@@ -65,19 +65,36 @@ async function registerNewClient({email,password}){
 	return res.rows
 }
 
-// async function createProductsTable(productsArray){
-// 	const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , colors TEXT[], sizes TEXT[], categories TEXT[] , description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
-// 	const res = await pool.query(query)
-// 	console.log(res.rows)
-// 	return res.rows
-// }
+async function createProductsTable(productsArray){
+	const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , colors TEXT[], sizes TEXT[], categories TEXT[] ,images TEXT[], description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
+	const res = await pool.query(query)
+	console.log(res.rows)
+	return res.rows
+}
+
+async function addProduct(values){
+
+	const query = `INSERT INTO products(name, price, colors, sizes, categories, images, description, isPromoted, imageUrl) VALUES(${values}) RETURNING *`
+	const res = await pool.query(query)
+	console.log(res.rows)
+	return res.rows
+}
+async function getProd(){
+
+	const query = `SELECT * FROM products`
+	const res = await pool.query(query)
+	console.log(res.rows)
+	return res.rows
+}
 
 
 module.exports = {
 	getClients,
 	updateClientRecentItems,
 	registerNewClient,
-	// createProductsTable
+	createProductsTable,
+	addProduct,
+	getProd
 }
 
 

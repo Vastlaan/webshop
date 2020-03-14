@@ -20,6 +20,7 @@ import ScrollToTop from './components/ScrollToTop'
 import SubCategory from './components/SubCategory'
 import Login from './components/Login'
 import Register from './components/Register'
+import ShoppingBag from './components/ShoppingBag'
 
 const CATEGORIES_MEN =  ["sweaters", "vests", "shirts", "underwear", "trousers", "suits", "jackets", "additions","shoes"]
 const CATEGORIES_WOMEN =  ["sweaters", "vests", "shirts", "underwear", "trousers", "dresses", "jackets", "additions","shoes"]
@@ -27,7 +28,7 @@ const CATEGORIES_WOMEN =  ["sweaters", "vests", "shirts", "underwear", "trousers
 function App() {
 
 	const [lang, setLang] = useState('NL')
-	const [shoppingCart, setShoppingCart] = useState([])
+	const [shoppingBag, setShoppingBag] = useState([])
 	const [user, setUser] = useState({})
 	const [store, dispatch] = useReducer(reducer, initialState);
 
@@ -43,7 +44,7 @@ function App() {
 			.then(res=>res.json())
 			.then(data=>{
 				if(data.error){
-			 		return 
+			 		return console.log(data.error) 
 			 	}
 			 	return dispatch({
 			 		type:'updateUser',
@@ -60,8 +61,8 @@ function App() {
   		<ScrollToTop>
   		<Context.Provider value={{ store, dispatch }}>
 		    <div className="App">
-		    	<TopPanels lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} user={user}/>
-		    	<Route exact={true} path='/' render={()=><Landing lang={lang} setLang={setLang} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />} />
+		    	<TopPanels lang={lang} setLang={setLang} shoppingCart={shoppingBag} setShoppingCart={setShoppingBag} user={user}/>
+		    	<Route exact={true} path='/' render={()=><Landing lang={lang} setLang={setLang} shoppingCart={shoppingBag} setShoppingCart={setShoppingBag} />} />
 		     	<Route path="/new/:prodId"  render={({match})=><NewCollection match={match} lang={lang}/>} />
 		     	<Route path="/bestsellers/:prodId"  render={({match})=><Bestsellers match={match} lang={lang}/>} />
 		     	<Route path="/sale/:prodId"  render={({match})=><Sale match={match} lang={lang}/>} />
@@ -75,6 +76,7 @@ function App() {
 		     	<Route path='/contact' exact={true} render={()=><Contact lang={lang}/>} />
 		     	<Route path='/login' exact={true} render={()=><Login lang={lang} user={user} setUser={setUser}/>}/>
 		     	<Route path='/register' exact={true} render={()=><Register lang={lang} user={user} setUser={setUser}/>}/>
+		     	<Route path='/shoppingBag' exact={true} render={()=><ShoppingBag shoppingCart={shoppingBag} setShoppingCart={setShoppingBag} lang={lang}/>}/>
 		     	<Footer lang={lang}/>
 		    </div>
 	    </Context.Provider>

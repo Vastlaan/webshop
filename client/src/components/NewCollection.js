@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
@@ -10,8 +9,15 @@ import Page from './Page'
 function NewCollection(props) {
 	//destructure product id passed as query parameter and served by the Router component in props
 	const {prodId} = props.match.params
+	const [products, setProducts] = useState([])
+	useEffect(()=>{
+		fetch('/auth/getProducts')
+		.then(res=>res.json())
+		.then(data=>setProducts(data))
+		.catch(e=>console.error(e))
+	},[])
 
-	const allProducts = Products.filter(prod=>prod.categories.includes('new'))
+	const allProducts = products.filter(prod=>prod.categories.includes('new'))
 	//interval determine how many products display per page
 	const interval = 3
 	// determines number of pages based of amount of products and interval
@@ -22,7 +28,7 @@ function NewCollection(props) {
 	const [page, setPage] = useState(1)
 
 	//responsible for displaing proper products on each page
-	const products = allProducts.filter((prod,i)=>{
+	const prod = allProducts.filter((prod,i)=>{
 		const first = (page * interval) - interval
 		const last = (page * interval) -1
 		return i>=first && i<=last
@@ -31,7 +37,7 @@ function NewCollection(props) {
 	let item 
 	//if prodId has been passed in query, find item in all Products
 	if(prodId!=="home"){
-		item=allProducts.find(p=>p.id===prodId)
+		item=allProducts.find(p=>p.id.toString()===prodId)
 	}
 
 	const checkLang = (e, n) =>{
@@ -48,14 +54,14 @@ function NewCollection(props) {
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 	      		{
-	      			products.map(prod=>{
+	      			prod.map(prod=>{
 	      				return(
 	      					<div className='collectionPanel__item' key={`newcoll-${prod.id}`} onClick={()=>history.push(`/new/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
 								<div className='collectionPanel__item--image'>
-									<img src={prod.imageUrl} alt={prod.name} />
+									<img src={prod.imageurl} alt={prod.name} />
 								</div>
 								
 								<div className='collectionPanel__item--description'>

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom';
 import { Context } from '../store'
 import {Products} from '../data/Products'
@@ -9,11 +9,18 @@ import Page from './Page'
 const BestsellersCollectionPanel = (props) =>{
 
 	//this panel navigate to item through category "bestsellers" so path should be '/bestsellers/item_id'
-	const productsBestsellers = Products.filter(prod=>prod.categories.includes("bestsellers"))
+	const [products, setProducts] = useState([])
+	useEffect(()=>{
+		fetch('/auth/getProducts')
+		.then(res=>res.json())
+		.then(data=>setProducts(data))
+		.catch(e=>console.error(e))
+	},[])
+	const productsBestsellers = products.filter(prod=>prod.categories.includes("bestsellers"))
 	const history = useHistory()
 	const { store, dispatch } = useContext(Context)
 	const [page, setPage] = useState(1)
-	let products = shuffle(productsBestsellers)
+	let prod = shuffle(productsBestsellers)
 	//interval determine how many products display per page
 	const interval = 3
 	// determines number of pages based of amount of products and interval
@@ -22,12 +29,12 @@ const BestsellersCollectionPanel = (props) =>{
 
 	
 	if(store.user.watchedproducts){
-		products = Products.filter(prod=> {
+		prod = prod.filter(prod=> {
 			return store.user.watchedproducts.includes(prod.id)
 		})
 	}
 	//responsible for displaing proper products on each page
-	products = products.filter((prod,i)=>{
+	prod = prod.filter((prod,i)=>{
 		const first = (page * interval) - interval
 		const last = (page * interval) -1
 		return i>=first && i<=last
@@ -53,14 +60,14 @@ const BestsellersCollectionPanel = (props) =>{
 			</div>
 			<div className='collectionPanel__collection'>
 			{
-				products.map((prod,i)=>{
+				prod.map((prod,i)=>{
 						return(
 							<div className='collectionPanel__item' key={`${i}-collpan-${prod.name}`} onClick={()=>history.push(`/all/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
 								<div className='collectionPanel__item--image'>
-									<img src={prod.imageUrl} alt={prod.name} />
+									<img src={prod.imageurl} alt={prod.name} />
 								</div>
 								
 								<div className='collectionPanel__item--description'>

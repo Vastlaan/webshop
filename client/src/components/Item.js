@@ -65,7 +65,7 @@ function Item(props) {
       			<h3>{item.name}</h3>
       		</div>
       		<div className='item__main--image'>
-      			<img src={item.imageUrl} alt={`product ${item.name}`}/>
+      			<img src={item.imageurl} alt={`product ${item.name}`}/>
       		</div>
       		<div className='item__main--info'>
       			<div className='item__main--info-price'>&euro; {item.price}</div>

@@ -4,7 +4,7 @@ import Product from '../models/product.js';
 export const Products = [
 	new Product(
 		"Long sleeved dress",
-		 29.99,
+		 "29.99",
 		 ["black", "grey", "red"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
 		 ["S","M","L","XL"],
@@ -15,7 +15,7 @@ export const Products = [
 	),
 	new Product(
 		"Trui",
-		 23.49,
+		 "23.49",
 		 ["blue", "grey", "creamy"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
 		 ["S","M","L"],
@@ -26,7 +26,7 @@ export const Products = [
 	),
 	new Product(
 		"Nike Free",
-		 19.99,
+		 "19.99",
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
 		 ["38", "39", "40", "41","42","43","44","45","46"],
@@ -37,7 +37,7 @@ export const Products = [
 	),
 	new Product(
 		"Mannen pak",
-		 119.00,
+		 "119.00",
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisiminim veniam",
 		 ["S","M","L"],
@@ -48,7 +48,7 @@ export const Products = [
 	),
 	new Product(
 		"Striped dress",
-		 79.00,
+		 "79.00",
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur veniam. Cconsectetur adipisicing elit, sed do eiusmod tempor.",
 		 ["S","M","L"],
@@ -59,7 +59,7 @@ export const Products = [
 	),
 	new Product(
 		"Charmfull dress",
-		 79.00,
+		 "79.00",
 		 ["red", "orange", "blue", "green"],
 		 "Lorem ipsum dolor sit amet, consectetur veniam. Cconsectetur adipisicing elit, sed do eiusmod tempor.",
 		 ["S","M","L"],
@@ -70,7 +70,7 @@ export const Products = [
 	),
 	new Product(
 		"Shirt Men",
-		 17.49,
+		 "17.49",
 		 ["blue", "grey", "red"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
 		 ["S","M","L"],
@@ -81,7 +81,7 @@ export const Products = [
 	),
 	new Product(
 		"Shirt Men",
-		 19.99,
+		 "19.99",
 		 ["blue"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
 		 ["S","M","L", "XL", "XXL"],
@@ -92,7 +92,7 @@ export const Products = [
 	),
 	new Product(
 		"Jacket Men",
-		 99.99,
+		 "99.99",
 		 ["black"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut laboelit, sed do eiusmod tempor incidire et dolore magna aliqua. Ut enim ad melit, sed do eiusmod tempor incelit, sed do eiusmod tempor incidiidiinim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
 		 ["S","M","L", "XL"],
@@ -103,7 +103,7 @@ export const Products = [
 	),
 	new Product(
 		"Jacket elegant women",
-		 19.99,
+		 "19.99",
 		 ["creamy", "white", "brown"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmoLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiud tempor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiu Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
 		 ["S","M","L"],
@@ -114,7 +114,7 @@ export const Products = [
 	),
 	new Product(
 		"Underwear complet",
-		 19.99,
+		 "19.99",
 		 ["white"],
 		 "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
 		 ["S","M","L"],

@@ -1,6 +1,5 @@
-import React ,{useState} from 'react';
+import React ,{useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {Products} from '../data/Products'
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
@@ -10,15 +9,25 @@ import Page from './Page'
 function Bestsellers(props) {
 
 	const history = useHistory()
+	const [products, setProducts] = useState([])
 
 	const {prodId} = props.match.params
-	const allProducts = Products.filter(prod=>prod.categories.includes('bestsellers'))
+	const allProducts = products.filter(prod=>prod.categories.includes('bestsellers'))
 	const interval = 3
 	const maxPages = Math.ceil(allProducts.length / interval)
 
 	const [page, setPage] = useState(1)
 
-	const products = allProducts.filter((prod,i)=>{
+	useEffect(()=>{
+		fetch('/auth/getProducts')
+		.then(res=>res.json())
+		.then(data=>setProducts(data))
+		.catch(e=>console.error(e))
+	},[])
+
+	
+
+	const prod = allProducts.filter((prod,i)=>{
 		const first = (page * interval) - interval
 		const last = (page * interval) -1
 		return i>=first && i<=last
@@ -27,7 +36,7 @@ function Bestsellers(props) {
 	let item 
 
 	if(prodId!=="home"){
-		item=allProducts.find(p=>p.id===prodId)
+		item=allProducts.find(p=>p.id.toString()===prodId)
 	}
 
 
@@ -41,14 +50,14 @@ function Bestsellers(props) {
 
 	      	<div className='collectionPanel__collection' style={{flexWrap:'wrap', overflow:'hidden'}}>
 	      		{
-	      			products.map(prod=>{
+	      			prod.map(prod=>{
 	      				return(
 	      					<div className='collectionPanel__item' key={`bestsellers-${prod.name}`} onClick={()=>history.push(`/bestsellers/${prod.id}`)}>
 								<div className='collectionPanel__item--name'>
 									<p>{prod.name}</p>
 								</div>
 								<div className='collectionPanel__item--image'>
-									<img src={prod.imageUrl} alt={prod.name} />
+									<img src={prod.imageurl} alt={prod.name} />
 								</div>
 								
 								<div className='collectionPanel__item--description'>

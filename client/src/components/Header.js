@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import {Products} from '../data/Products'
 import { FiSearch, FiShoppingCart} from "react-icons/fi";
 import { MdClose} from "react-icons/md";
 import {renderDescription} from '../utils/renderDescription'
@@ -8,6 +7,13 @@ import {renderDescription} from '../utils/renderDescription'
 const Header = (props) =>{
 
 	const [searchedItems, setSearchedItems] = useState([])
+	const [products, setProducts] = useState([])
+	useEffect(()=>{
+		fetch('/auth/getProducts')
+		.then(res=>res.json())
+		.then(data=>setProducts(data))
+		.catch(e=>console.error(e))
+	},[])
 
 	const history = useHistory()
 
@@ -20,7 +26,7 @@ const Header = (props) =>{
 		if(phrase===""){
 			return await setSearchedItems([])
 		}
-		const matchingItems = Products.filter(prod=>prod.name.toUpperCase().includes(phrase.toUpperCase()))
+		const matchingItems = products.filter(prod=>prod.name.toUpperCase().includes(phrase.toUpperCase()))
 		
 		return await setSearchedItems(matchingItems)
 	}
@@ -45,7 +51,7 @@ const Header = (props) =>{
 				<FiSearch className='header__search--icon'/>
 
 			</div>
-			<div className='header__shopping'>
+			<div className='header__shopping' onClick={()=>{history.push('/shoppingBag')}}>
 				<h1><FiShoppingCart className='iconRight header__shopping--icon'/></h1>
 				<div className='header__shopping--amount'>{props.shoppingCart.length}</div>
 			</div>
@@ -70,7 +76,7 @@ const Header = (props) =>{
 									<p>{prod.name}</p>
 								</div>
 								<div className='collectionPanel__item--image'>
-									<img src={prod.imageUrl} alt={prod.name} />
+									<img src={prod.imageurl} alt={prod.name} />
 								</div>
 								
 								<div className='collectionPanel__item--description'>
