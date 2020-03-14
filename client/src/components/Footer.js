@@ -45,7 +45,7 @@ const Footer =(props)=>{
 					<Link to='/contact'><li>{checkLang('About Us', 'Over Ons')}</li></Link>
 					<Link to='/contact'><li>{checkLang('Privacy Policy', 'Privacy Policy')}</li></Link>
 					<Link to='/contact'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
-					<a onClick={createProducts}>CP</a>
+					<a >CP</a>
 				</ul>
 			</div>
 

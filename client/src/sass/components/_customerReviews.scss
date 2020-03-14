@@ -1,0 +1,131 @@
+.customerReviews{
+	margin: 10rem auto;
+	width:100%;
+	display:flex;
+
+	@include respond(m){
+		flex-direction: column;
+	}
+
+	&__header{
+		flex:0 0 60%;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+
+		&--main{
+			width:100%;
+			padding:10rem 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			h1{
+				font-family: $font-dosis;
+				font-size: 6rem;
+				font-weight: 900;
+				letter-spacing: .3rem;
+				line-height: 1;
+			}
+
+		}
+		&--small{
+			width:100%;
+			padding:2rem 5rem;
+
+			@include respond(m){
+				padding:2rem;
+			}
+			h3{
+				text-align: center;
+				font-family: $font-rajdhani;
+				font-size: 2rem;
+
+			}
+			
+		}
+		&--btn{
+			margin-bottom: 10rem;
+
+			button{
+				border:none;
+				padding:1rem 4rem;
+				background-color: $color-reddish;
+				display:flex;
+				align-items: center;
+				color:white;
+				font-family: $font-rajdhani;
+				font-size: 2rem;
+				cursor:pointer;
+				transition:all .3s;
+
+				&:hover{
+					background-color: $color-primary-light;
+					color:black;
+				}
+				&:focus{
+					outline:none;
+				}
+			}
+			
+		}
+
+	}
+	&__reviews{
+		flex:0 0 40%;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+
+		&--each{
+			width:100%;
+			height:33%;
+			display:flex;
+
+			&-image{
+				flex:0 0 40%;
+				display:flex;
+				align-items: center;
+				overflow:hidden;
+
+				img{
+					width:100%;
+
+				}
+			}
+			&-text{
+				flex:0 0 60%;
+				padding:3rem;
+
+				h1{
+					font-family: $font-poiret;
+					font-size: 3rem;
+					font-weight: 300;
+					color:snow;
+				}
+				h3{
+					font-family: $font-rajdhani;
+					font-size: 2rem;
+					font-weight: 300;
+					letter-spacing: .3rem;
+					color:rgba(white,.6);
+				}
+				p{
+					margin:2rem auto;
+					font-family: $font-dosis;
+					font-size: 2rem;
+					font-weight: 500;
+				}
+			}
+		}
+		&--top{
+			background-color: rgba($color-primary-dark,.6);
+		}
+		&--middle{
+			background-color: $color-reddish;
+		}
+		&--bottom{
+			background-color: rgba($color-reddish,.7);
+		}
+	}
+}
