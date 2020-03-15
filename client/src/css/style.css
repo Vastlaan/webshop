@@ -51,6 +51,9 @@ body {
   background-color: black;
   color: white; }
 
+.bbg {
+  border-bottom: 1px solid #be9b7b; }
+
 .informativePanel {
   max-width: 100%;
   padding: 1rem 2rem;
@@ -682,6 +685,60 @@ body {
       background-color: #854442; }
     .customerReviews__reviews--bottom {
       background-color: rgba(133, 68, 66, 0.7); }
+
+.shoppingBag {
+  margin-top: 18rem;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap; }
+  @media only screen and (max-width: 48.5em) {
+    .shoppingBag {
+      flex-direction: column; } }
+  @media only screen and (max-width: 40.5em) {
+    .shoppingBag {
+      margin-top: 22rem; } }
+  .shoppingBag__header {
+    width: 100%; }
+    .shoppingBag__header h1 {
+      font-family: "Poiret One", cursive;
+      font-size: 3rem;
+      letter-spacing: .2rem; }
+  .shoppingBag__table {
+    width: 70%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column; }
+    @media only screen and (max-width: 48.5em) {
+      .shoppingBag__table {
+        width: 100%; } }
+    .shoppingBag__table--grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 50% 15% 15% 20%;
+      grid-template-rows: 10rem 1fr; }
+      .shoppingBag__table--grid-each {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 2rem;
+        font-weight: 700; }
+      .shoppingBag__table--grid-product {
+        grid-column: 1/2; }
+      .shoppingBag__table--grid-size {
+        grid-column: 2/3; }
+      .shoppingBag__table--grid-amount {
+        grid-column: 3/4; }
+      .shoppingBag__table--grid-subtotal {
+        grid-column: 4/5; }
+      .shoppingBag__table--grid-all {
+        grid-column: 1/5; }
+  .shoppingBag__total {
+    width: 30%;
+    padding: 2rem; }
+    @media only screen and (max-width: 48.5em) {
+      .shoppingBag__total {
+        width: 100%; } }
 
 .newCollection {
   padding-top: 18rem; }

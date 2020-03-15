@@ -28,10 +28,8 @@ const Women = (props) =>{
 
 	if(prodId!=="home"){
 		item=prod.find(p=>{
-			console.log(p.id, prodId, p.id.toString()===prodId)
 			return p.id.toString()===prodId
 		})
-		console.log(item, prodId)
 	}
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e

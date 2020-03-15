@@ -1,0 +1,81 @@
+.shoppingBag{
+	margin-top: 18rem;
+	padding:2rem;
+	display:flex;
+	flex-wrap: wrap;
+
+	@include respond(m){
+		flex-direction: column;
+	}
+
+	@include respond(s){
+		margin-top: 22rem;
+	}
+
+	&__header{
+		width:100%;
+		h1{
+			font-family: $font-poiret;
+			font-size: 3rem;
+			letter-spacing: .2rem;
+		}
+	}
+
+	&__table{
+		width:70%;
+		padding:2rem;
+		display:flex;
+		flex-direction: column;
+
+		@include respond(m){
+			width:100%;
+		}
+		
+
+		&--grid{
+			width:100%;
+			display:grid;
+			grid-template-columns: 50% 15% 15% 20%;
+			grid-template-rows: 10rem 1fr;
+
+			&-each{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: $font-rajdhani;
+				font-size: 2rem;
+				font-weight: 700;
+			}
+
+			&-product{
+				grid-column: 1/2;
+				
+			}
+			&-size{
+				grid-column: 2/3;
+				
+			}
+			&-amount{
+				grid-column: 3/4;
+				
+			}
+			&-subtotal{
+				grid-column: 4/5;
+				
+			}
+			&-all{
+				grid-column: 1/5;
+				
+			}
+		}
+	}
+
+	&__total{
+		width:30%;
+		padding:2rem;
+
+		@include respond(m){
+			width:100%;
+		}
+	}
+}

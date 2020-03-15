@@ -45,8 +45,11 @@ function Item(props) {
 	const [selectedTab, setSelectedTab] = useState('description') // possible: 'description', 'shipping', 'reviews'
 
 	const renderShoppingCard =()=>{
-		console.log(item.id, selectedColor, selectedSize)
-            return history.push('/contact')//temporaray '/contact'
+		dispatch({
+                  type:'addToShoppingBag',
+                  payload:[{item, selectedColor, selectedSize, amount: 1}]
+            })
+            return history.push('/shoppingBag')//temporaray '/contact'
 	}
 	const claculateScore = (item) =>{
 		const l = item.score.length
