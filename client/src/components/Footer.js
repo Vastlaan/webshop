@@ -40,7 +40,7 @@ const Footer =(props)=>{
 	// 		.catch(e=>console.error(e))
 	// 	})
 		
-	}
+	//}
 	return(
 		<div className='footer'>
 			<div className='footer__name'>
