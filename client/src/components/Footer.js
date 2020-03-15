@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, useHistory} from 'react-router-dom';
 import { FaFacebook, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
-//import {Products} from '../data/Products'
+import {Products} from '../data/Products'
 
 
 const Footer =(props)=>{
@@ -14,25 +14,31 @@ const Footer =(props)=>{
 
 	const currentYear = new Date().getFullYear()
 
-	// const createProducts = () =>{
-	// 	fetch('/auth/createProducts')
-	// 	.then(res=>res.json())
-	// 	.then(data=>console.log(data))
-	// 	.catch(e=>console.error(e))
-	// }
-	// const addProducts = () =>{
-	// 	console.log(Products[10])
-	// 	fetch('/auth/addProducts', {
-	// 		method:'POST',
-	// 		headers:{
-	// 			'Content-Type':'application/json'
-	// 		},
-	// 		body: JSON.stringify(Products[10])
-	// 	})
-	// 	.then(res=>res.json())
-	// 	.then(data=>console.log(data))
-	// 	.catch(e=>console.error(e))
-	// }
+	const createProducts = () =>{
+		fetch('/auth/createProducts')
+		.then(res=>res.json())
+		.then(data=>console.log(data))
+		.catch(e=>console.error(e))
+	}
+	const createClients = () =>{
+		fetch('/auth/createClients')
+		.then(res=>res.json())
+		.then(data=>console.log(data))
+		.catch(e=>console.error(e))
+	}
+	const addProducts = () =>{
+		console.log(Products[10])
+		fetch('/auth/addProducts', {
+			method:'POST',
+			headers:{
+				'Content-Type':'application/json'
+			},
+			body: JSON.stringify(Products[10])
+		})
+		.then(res=>res.json())
+		.then(data=>console.log(data))
+		.catch(e=>console.error(e))
+	}
 	return(
 		<div className='footer'>
 			<div className='footer__name'>
@@ -60,7 +66,12 @@ const Footer =(props)=>{
 					<Link to='/contact'><li>{checkLang('Privacy Policy', 'Privacy Policy')}</li></Link>
 					<Link to='/contact'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
 					{
-						//<a onClick={addProducts} >CP</a>
+						<a onClick={()=>{
+							createClients()
+							createProducts()
+							return console.log('done')
+						}
+						} >CP</a>
 					}
 				</ul>
 			</div>

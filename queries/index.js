@@ -65,6 +65,14 @@ async function registerNewClient({email,password}){
 	return res.rows
 }
 
+async function createClientsTable(productsArray){
+
+	const query = `CREATE TABLE clients(id SERIAL PRIMARY KEY, email VARCHAR(50) UNIQUE, password VARCHAR(100) NOT NULL , name VARCHAR(50), surname VARCHAR(50), address json NOT NULL , phone VARCHAR(50), gender VARCHAR(10), purchaseHistory TEXT[], watchedProducts TEXT[], created_on TIMESTAMP NOT NULL)`
+	const res = await pool.query(query)
+	console.log(res.rows)
+	return res.rows
+}
+
 async function createProductsTable(productsArray){
 	const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , colors TEXT[], sizes TEXT[], categories TEXT[] ,images TEXT[], description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
 	const res = await pool.query(query)
@@ -92,6 +100,7 @@ module.exports = {
 	getClients,
 	updateClientRecentItems,
 	registerNewClient,
+	createClientsTable,
 	createProductsTable,
 	addProduct,
 	getProd
