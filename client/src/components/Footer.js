@@ -27,17 +27,19 @@ const Footer =(props)=>{
 		.catch(e=>console.error(e))
 	}
 	const addProducts = () =>{
-		console.log(Products[10])
-		fetch('/auth/addProducts', {
-			method:'POST',
-			headers:{
-				'Content-Type':'application/json'
-			},
-			body: JSON.stringify(Products[10])
+		Products.map(prod=>{
+			fetch('/auth/addProducts', {
+				method:'POST',
+				headers:{
+					'Content-Type':'application/json'
+				},
+				body: JSON.stringify(prod)
+			})
+			.then(res=>res.json())
+			.then(data=>console.log(data))
+			.catch(e=>console.error(e))
 		})
-		.then(res=>res.json())
-		.then(data=>console.log(data))
-		.catch(e=>console.error(e))
+		
 	}
 	return(
 		<div className='footer'>
@@ -67,8 +69,7 @@ const Footer =(props)=>{
 					<Link to='/contact'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
 					{
 						<a onClick={()=>{
-							createClients()
-							createProducts()
+							addProducts()
 							return console.log('done')
 						}
 						} >CP</a>
