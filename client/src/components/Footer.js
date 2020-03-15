@@ -14,31 +14,31 @@ const Footer =(props)=>{
 
 	const currentYear = new Date().getFullYear()
 
-	const createProducts = () =>{
-		fetch('/auth/createProducts')
-		.then(res=>res.json())
-		.then(data=>console.log(data))
-		.catch(e=>console.error(e))
-	}
-	const createClients = () =>{
-		fetch('/auth/createClients')
-		.then(res=>res.json())
-		.then(data=>console.log(data))
-		.catch(e=>console.error(e))
-	}
-	const addProducts = () =>{
-		Products.map(prod=>{
-			fetch('/auth/addProducts', {
-				method:'POST',
-				headers:{
-					'Content-Type':'application/json'
-				},
-				body: JSON.stringify(prod)
-			})
-			.then(res=>res.json())
-			.then(data=>console.log(data))
-			.catch(e=>console.error(e))
-		})
+	// const createProducts = () =>{
+	// 	fetch('/auth/createProducts')
+	// 	.then(res=>res.json())
+	// 	.then(data=>console.log(data))
+	// 	.catch(e=>console.error(e))
+	// }
+	// const createClients = () =>{
+	// 	fetch('/auth/createClients')
+	// 	.then(res=>res.json())
+	// 	.then(data=>console.log(data))
+	// 	.catch(e=>console.error(e))
+	// }
+	// const addProducts = () =>{
+	// 	Products.map(prod=>{
+	// 		fetch('/auth/addProducts', {
+	// 			method:'POST',
+	// 			headers:{
+	// 				'Content-Type':'application/json'
+	// 			},
+	// 			body: JSON.stringify(prod)
+	// 		})
+	// 		.then(res=>res.json())
+	// 		.then(data=>console.log(data))
+	// 		.catch(e=>console.error(e))
+	// 	})
 		
 	}
 	return(
@@ -68,11 +68,11 @@ const Footer =(props)=>{
 					<Link to='/contact'><li>{checkLang('Privacy Policy', 'Privacy Policy')}</li></Link>
 					<Link to='/contact'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
 					{
-						<a onClick={()=>{
-							addProducts()
-							return console.log('done')
-						}
-						} >CP</a>
+						// <a onClick={()=>{
+						// 	addProducts()
+						// 	return console.log('done')
+						// }
+						// } >CP</a>
 					}
 				</ul>
 			</div>

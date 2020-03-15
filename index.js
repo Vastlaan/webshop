@@ -16,7 +16,7 @@ app.post('/auth/updateClient', require('./routes/updateClient'))
 //===============================test or initial db routes=====================================
 // app.get('/auth/createClients', require('./routes/createClients'))
 // app.get('/auth/createProducts', require('./routes/createProducts'))
-app.post('/auth/addProducts', require('./routes/addProducts'))
+// app.post('/auth/addProducts', require('./routes/addProducts'))
 
 if(process.env.NODE_ENV==='production'){
 
