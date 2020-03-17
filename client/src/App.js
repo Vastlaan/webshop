@@ -61,8 +61,8 @@ function App() {
   		<ScrollToTop>
   		<Context.Provider value={{ store, dispatch }}>
 		    <div className="App">
-		    	<TopPanels lang={lang} setLang={setLang} shoppingCart={shoppingBag} setShoppingCart={setShoppingBag} user={user}/>
-		    	<Route exact={true} path='/' render={()=><Landing lang={lang} setLang={setLang} shoppingCart={shoppingBag} setShoppingCart={setShoppingBag} />} />
+		    	<TopPanels lang={lang} setLang={setLang} user={user}/>
+		    	<Route exact={true} path='/' render={()=><Landing lang={lang} setLang={setLang} />} />
 		     	<Route path="/new/:prodId"  render={({match})=><NewCollection match={match} lang={lang}/>} />
 		     	<Route path="/bestsellers/:prodId"  render={({match})=><Bestsellers match={match} lang={lang}/>} />
 		     	<Route path="/sale/:prodId"  render={({match})=><Sale match={match} lang={lang}/>} />
@@ -76,7 +76,7 @@ function App() {
 		     	<Route path='/contact' exact={true} render={()=><Contact lang={lang}/>} />
 		     	<Route path='/login' exact={true} render={()=><Login lang={lang} user={user} setUser={setUser}/>}/>
 		     	<Route path='/register' exact={true} render={()=><Register lang={lang} user={user} setUser={setUser}/>}/>
-		     	<Route path='/shoppingBag' exact={true} render={()=><ShoppingBag shoppingCart={shoppingBag} setShoppingCart={setShoppingBag} lang={lang}/>}/>
+		     	<Route path='/shoppingBag' exact={true} render={()=><ShoppingBag lang={lang}/>}/>
 		     	<Footer lang={lang}/>
 		    </div>
 	    </Context.Provider>

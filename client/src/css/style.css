@@ -54,6 +54,12 @@ body {
 .bbg {
   border-bottom: 1px solid #be9b7b; }
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 .informativePanel {
   max-width: 100%;
   padding: 1rem 2rem;
@@ -219,7 +225,7 @@ body {
       justify-content: center;
       align-items: center;
       width: 10rem;
-      font-size: 3rem;
+      font-size: 4rem;
       color: #3c2f2f;
       cursor: pointer;
       transition: all .3s;
@@ -701,8 +707,33 @@ body {
     width: 100%; }
     .shoppingBag__header h1 {
       font-family: "Poiret One", cursive;
-      font-size: 3rem;
+      font-size: 5rem;
       letter-spacing: .2rem; }
+  .shoppingBag__routeButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 5rem auto; }
+    .shoppingBag__routeButtons--box {
+      width: 70%;
+      display: flex;
+      justify-content: space-between; }
+      @media only screen and (max-width: 64.5em) {
+        .shoppingBag__routeButtons--box {
+          width: 100%; } }
+      .shoppingBag__routeButtons--box div {
+        padding: 1rem 3rem;
+        background-color: #be9b7b;
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        cursor: pointer; }
+        @media only screen and (max-width: 48.5em) {
+          .shoppingBag__routeButtons--box div {
+            padding: .5rem 1.5rem; } }
+        .shoppingBag__routeButtons--box div span {
+          font-family: "Rajdhani", sans-serif;
+          margin: 0 1rem; }
   .shoppingBag__table {
     width: 70%;
     padding: 2rem;
@@ -724,7 +755,11 @@ body {
         font-size: 2rem;
         font-weight: 700; }
       .shoppingBag__table--grid-product {
-        grid-column: 1/2; }
+        grid-column: 1/2;
+        justify-content: space-between; }
+        @media only screen and (max-width: 64.5em) {
+          .shoppingBag__table--grid-product {
+            justify-content: space-between; } }
       .shoppingBag__table--grid-size {
         grid-column: 2/3; }
       .shoppingBag__table--grid-amount {
@@ -735,10 +770,35 @@ body {
         grid-column: 1/5; }
   .shoppingBag__total {
     width: 30%;
-    padding: 2rem; }
+    padding: 2rem;
+    border-left: 1px solid #be9b7b; }
     @media only screen and (max-width: 48.5em) {
       .shoppingBag__total {
         width: 100%; } }
+    .shoppingBag__total--header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 5rem; }
+      .shoppingBag__total--header h3 {
+        font-size: 4rem;
+        font-family: "Rajdhani", sans-serif; }
+    .shoppingBag__total--list div {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap; }
+      .shoppingBag__total--list div p {
+        font-size: 2rem;
+        font-family: "Dosis", sans-serif; }
+    .shoppingBag__total--amount {
+      width: 100%;
+      display: flex;
+      border-top: 1px solid black;
+      justify-content: flex-end;
+      margin: 5rem auto; }
+      .shoppingBag__total--amount p {
+        font-size: 2.5rem;
+        font-family: "Dosis", sans-serif; }
 
 .newCollection {
   padding-top: 18rem; }
@@ -998,6 +1058,14 @@ body {
               width: 2rem; } }
           .item__main--info-colors div:hover {
             transform: scale(1.2); }
+      .item__main--info-selected {
+        margin: 2rem auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center; }
+        .item__main--info-selected p {
+          font-size: 2rem; }
       .item__main--info-btn {
         margin: 5rem auto;
         display: flex;

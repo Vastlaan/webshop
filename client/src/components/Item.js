@@ -13,6 +13,7 @@ function Item(props) {
       const {user} = store
       
       useEffect(()=>{
+            //responsible for adding item to watched products array in db
             if(user.email){
                   fetch('/auth/updateClient',{
                         method:'POST',
@@ -56,6 +57,9 @@ function Item(props) {
 		const s = item.score.reduce((acc, s)=>acc+s,0)
 		return s/l
 	}
+      const renderRandomScore = () =>{
+            return( (Math.random() * 9) + 7).toFixed(1);
+      }
       const checkLang = (e, n) =>{
             return props.lang==='NL'?n:e
       }
@@ -75,6 +79,13 @@ function Item(props) {
       			<div className='item__main--info-sizes'>
       			{
       				item.sizes.map((size,i)=>{
+                                    if(size===selectedSize){
+                                          return(
+                                                <div key={`${size}-${i}`} style={{ transform:'scale(1.2)', boxShadow:'0 0 1rem rgba(0,0,0,.3)'}} onClick={()=>setSelectedSize(size)} >
+                                                      {size}
+                                                </div>
+                                          )
+                                    }
       					return(
       						<div key={`${size}-${i}`} onClick={()=>setSelectedSize(size)}>
       							{size}
@@ -86,14 +97,25 @@ function Item(props) {
       			<div className='item__main--info-colors'>
       			{
       				item.colors.map((color,i)=>{
+                                    if(color===selectedColor){
+                                          return(
+                                                <div key={`${color}-${i}`} style={{backgroundColor:color, transform:'scale(1.2)', boxShadow:'0 0 1rem rgba(0,0,0,.3)'}} onClick={()=>setSelectedColor(color)}>
+                                                      
+                                                </div>
+                                          )
+                                    }
       					return(
       						<div key={`${color}-${i}`} style={{backgroundColor:color}} onClick={()=>setSelectedColor(color)}>
       							
       						</div>
-      						)
+      					)
       				})
       			}
       			</div>
+                        <div className='item__main--info-selected'>
+                              <p>Selected size: {selectedSize}</p>
+                              <p>Selected color: {selectedColor}</p>
+                        </div>
       			<div className='item__main--info-btn'>
       				<button onClick={renderShoppingCard}>{checkLang('Order','Bestel')}</button>
       			</div>
@@ -131,14 +153,15 @@ function Item(props) {
       						: <div>
       							<h3>{checkLang('Reviews','Reviews')}</h3>
       							<h4>{checkLang('This product has scored:','Dit product scored:')}</h4>
-      							{
-      								item.score.length===0?<p>{checkLang('There are no reviews.','Er zijn nog geen reviews')}</p>:<h1>{claculateScore(item)}</h1>
-      							}
+                                                <h1>{renderRandomScore()}</h1>
+      							{//{
+      								//item.score.length===0?<p>{checkLang('There are no reviews.','Er zijn nog geen reviews')}</p>:<h1>{claculateScore(item)}</h1>
+      							//}
+                                                }
       						</div>
       					
       				}
       			</div>
-
       		</div>
       	</div>
 	     

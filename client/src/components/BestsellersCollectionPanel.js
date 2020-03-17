@@ -1,7 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom';
 import { Context } from '../store'
-import {Products} from '../data/Products'
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
 
@@ -27,11 +26,15 @@ const BestsellersCollectionPanel = (props) =>{
 	const maxPages = Math.ceil(productsBestsellers.length / interval)
 	
 
-	
+	//check if user logged
 	if(store.user.watchedproducts){
-		prod = prod.filter(prod=> {
-			return store.user.watchedproducts.includes(prod.id)
+		//then make prod all products
+		prod = products
+		//and pick the one which id matches those in array of ids in watchedproducts array
+		prod = prod.filter(p=> {
+			return store.user.watchedproducts.includes(p.id.toString())
 		})
+
 	}
 	//responsible for displaing proper products on each page
 	prod = prod.filter((prod,i)=>{
@@ -39,6 +42,7 @@ const BestsellersCollectionPanel = (props) =>{
 		const last = (page * interval) -1
 		return i>=first && i<=last
 	})
+
 
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e

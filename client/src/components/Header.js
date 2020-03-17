@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link, useHistory} from 'react-router-dom';
+import {  Context } from '../store'
 import { FiSearch, FiShoppingCart} from "react-icons/fi";
 import { MdClose} from "react-icons/md";
 import {renderDescription} from '../utils/renderDescription'
@@ -16,6 +17,7 @@ const Header = (props) =>{
 	},[])
 
 	const history = useHistory()
+	 const { store, dispatch } = useContext(Context)
 
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
@@ -53,7 +55,7 @@ const Header = (props) =>{
 			</div>
 			<div className='header__shopping' onClick={()=>{history.push('/shoppingBag')}}>
 				<h1><FiShoppingCart className='iconRight header__shopping--icon'/></h1>
-				<div className='header__shopping--amount'>{props.shoppingCart.length}</div>
+				<div className='header__shopping--amount'>{store.shoppingCart.length}</div>
 			</div>
 			{
 				searchedItems.length>0?

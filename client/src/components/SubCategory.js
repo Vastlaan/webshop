@@ -3,6 +3,8 @@ import {Link, useHistory} from 'react-router-dom';
 import Item from './Item'
 import {renderDescription} from '../utils/renderDescription'
 import Page from './Page'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 
 
 
@@ -11,10 +13,10 @@ function SubCategory(props) {
 	const {prodId} = props.match.params
 
 	const [products, setProducts] = useState([])
+	const [status, setStatus] = useState('loading')
 	const [page, setPage] = useState(1)
 
 	const allProducts = products.filter(prod=>prod.categories.includes(props.subCategory)&&prod.categories.includes(props.parentCategory))
-	console.log(allProducts)
 	//interval determine how many products display per page
 	const interval = 3
 	// determines number of pages based of amount of products and interval
@@ -23,10 +25,14 @@ function SubCategory(props) {
 	const history = useHistory()
 
 	
+
 	useEffect(()=>{
 		fetch('/auth/getProducts')
 		.then(res=>res.json())
-		.then(data=>setProducts(data))
+		.then(data=>{
+			setStatus('loaded')
+			setProducts(data)
+		})
 		.catch(e=>console.error(e))
 	},[])
 
@@ -68,9 +74,15 @@ function SubCategory(props) {
 
 	      		{
 	      			prod.length<1?
-	      			<div style={{display:'flex', justifyContent:'center', width:'100%', fontSize:'2.5rem', fontFamily:'Courier', color:'orangered', margin:'15rem auto'}}>
-	      				{checkLang('No produts found','Geen artikelen gevonden')}
-	      			</div>
+	      				status==='loading'
+	      					?<div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%', fontSize:'2.5rem', fontFamily:'Ariel', color:'black', margin:'15rem auto'}}>
+	      						<AiOutlineLoading3Quarters style={{marginRight:'2rem', color:'purple', animation:'rotate 1s ease-out'}}/>
+	      						<p>{checkLang('Loading... Please wait','Even geduld a.u.b.')}</p>
+	      					</div>
+	      					:<div style={{display:'flex', justifyContent:'center', width:'100%', fontSize:'2.5rem', fontFamily:'Courier', color:'orangered', margin:'15rem auto'}}>
+			      				{checkLang('No produts found','Geen artikelen gevonden')}
+			      			</div>
+	      			
 	      			:null
 	      		}
 
@@ -98,7 +110,6 @@ function SubCategory(props) {
 									</div>
 								</div>
 							</div>
-	      					
 		      			)
 	      			})
 	      		}

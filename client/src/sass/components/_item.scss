@@ -120,6 +120,17 @@
 					}
 				}
 			}
+			&-selected{
+				margin:2rem auto;
+				display:flex;
+				justify-content: center;
+				flex-direction: column;
+				align-items: center;
+
+				p{
+					font-size: 2rem;
+				}
+			}
 			&-btn{
 				
 				margin:5rem auto;

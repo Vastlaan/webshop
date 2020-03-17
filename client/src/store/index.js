@@ -5,7 +5,9 @@ export const initialState = {
 	shoppingCart:[]
 }
 export const reducer =(state, action)=>{
+
 	switch(action.type){
+
 		case 'resetUser':
 			return {
 				user:initialState.user,
@@ -16,15 +18,6 @@ export const reducer =(state, action)=>{
 				user:action.payload,
 				shoppingCart:state.shoppingCart
 			}
-		case 'updateUserRecentItems':{
-			fetch('/updateUser', (req,res)=>{
-
-			})
-			return{
-				user: null ,
-				shoppingCart:state.shoppingCart
-			}
-		}
 		case 'addToShoppingBag':{
 
 			let flag = false
@@ -56,6 +49,20 @@ export const reducer =(state, action)=>{
 				}
 			}
 		}
+
+		case 'removeItemFromShoppingCart':
+			const newShoppingCart = state.shoppingCart.filter((each,i)=>{
+				return each.item.id!==action.payload
+			})
+			return{
+				user:state.user,
+				shoppingCart: newShoppingCart
+			}
+		default:
+			return{
+				user:state.user,
+				shoppingCart: state.shoppingCart
+			}
 	}
 }
 export const Context = React.createContext()

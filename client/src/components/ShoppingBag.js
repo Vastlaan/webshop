@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import {  Context } from '../store'
 import {Link, useHistory} from 'react-router-dom';
-
+import { MdArrowBack, MdArrowForward, MdRemoveShoppingCart } from "react-icons/md";
 
 
 const ShoppingBag =(props)=>{
@@ -17,10 +17,34 @@ const ShoppingBag =(props)=>{
 	}
 	const total = shoppingCart.reduce((acc, item)=>{ return Number(acc)+(Number(item.item.price)*item.amount)},0)
 
+	const removeItem = (itemId) =>{
+		dispatch({
+			type:'removeItemFromShoppingCart',
+			payload: itemId
+		})
+		return
+	}
+
 	return(
 		<div className='shoppingBag' style={{marginTop:'22rem'}}>
 			<div className='shoppingBag__header'>
 				<h1>{checkLang('Shopping Bag','Winkelmaand')}</h1>
+			</div>
+			<div className='shoppingBag__routeButtons'>
+				<div className='shoppingBag__routeButtons--box'>
+					<div onClick={()=>{
+						return history.goBack()
+					}}>
+						<MdArrowBack/>
+						<span>{checkLang('Go back shopping','Meer boodshappen doen')}</span>
+					</div>
+					<div onClick={()=>{
+						return history.push('/checkout')
+					}}>
+						<span>{checkLang('Details & Checkout','Uw gegevens & Betalen')}</span>
+						<MdArrowForward/>
+					</div>
+				</div>
 			</div>
 			<div className='shoppingBag__table'>
 				<div className='shoppingBag__table--grid bbg'>
@@ -45,6 +69,7 @@ const ShoppingBag =(props)=>{
 								return(
 									<div className='shoppingBag__table--grid' key={`${i}-wm-tb-e-${i*13.79}`}>
 										<div className='shoppingBag__table--grid-product shoppingBag__table--grid-each'>
+											<MdRemoveShoppingCart style={{color:'#854442', cursor:'pointer'}} onClick={()=>removeItem(item.item.id)}/>
 											<p>{item.item.name}</p>
 										</div>
 										<div className='shoppingBag__table--grid-size shoppingBag__table--grid-each'>
@@ -54,7 +79,7 @@ const ShoppingBag =(props)=>{
 											<p>{item.amount || 1}</p>
 										</div>
 										<div className='shoppingBag__table--grid-subtotal shoppingBag__table--grid-each'>
-											<p>{item.item.price * item.amount||item.item.price}</p>
+											<p>{(item.item.price * item.amount).toFixed(2)||(item.item.price).toFixed(2)}</p>
 										</div>
 									</div>
 								)
@@ -69,8 +94,25 @@ const ShoppingBag =(props)=>{
 			</div>
 
 			<div className='shoppingBag__total'>
-				<h3>{checkLang('Total','Totaal')}</h3>
-				{total.toFixed(2)}
+				<div className='shoppingBag__total--header'>
+					<h3>{checkLang('Total','Totaal')}</h3>
+				</div>
+				<div className='shoppingBag__total--list'>
+					{
+						shoppingCart.map((each,i)=>{
+							return(
+								<div key={`${i*99.69}-shoppingBagItem`}>
+									<p>{each.item.name}</p>
+									<p>{each.item.price}</p>
+								</div>
+								)
+						})
+					}
+				</div>
+				<div className='shoppingBag__total--amount'>
+					<p>{total.toFixed(2)}</p>
+				</div>
+				
 			</div>
 			
 		</div>

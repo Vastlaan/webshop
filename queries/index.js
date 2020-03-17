@@ -61,22 +61,20 @@ async function updateClientRecentItems(data){
 async function registerNewClient({email,password}){
 	const address = `{"street":"", "number" : "", "toe": "", "postcode": "", "city":""}`
 	const res= await pool.query(`INSERT INTO clients ( email, password,name,surname,address,phone,gender,purchasehistory,watchedproducts, created_on) VALUES ('${email}', '${password}', '', '',  '${address}', '', '', ARRAY[''],ARRAY[''], NOW()) RETURNING *`)
-	console.log(res.rows)
 	return res.rows
 }
 
 async function createClientsTable(productsArray){
-
+//	const query = `CREATE TABLE clients(id SERIAL PRIMARY KEY, email VARCHAR(50) UNIQUE, password VARCHAR(100) NOT NULL , name VARCHAR(50), surname VARCHAR(50), address json NOT NULL , phone VARCHAR(50), gender VARCHAR(10), purchaseHistory TEXT[], shoppingcart TEXT{}, watchedProducts TEXT[], created_on TIMESTAMP NOT NULL)`
 	const query = `CREATE TABLE clients(id SERIAL PRIMARY KEY, email VARCHAR(50) UNIQUE, password VARCHAR(100) NOT NULL , name VARCHAR(50), surname VARCHAR(50), address json NOT NULL , phone VARCHAR(50), gender VARCHAR(10), purchaseHistory TEXT[], watchedProducts TEXT[], created_on TIMESTAMP NOT NULL)`
 	const res = await pool.query(query)
-	console.log(res.rows)
 	return res.rows
 }
 
 async function createProductsTable(productsArray){
+	//const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , colors TEXT[], sizes TEXT[], categories TEXT[] ,images TEXT[],score VARCHAR(10), description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
 	const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , colors TEXT[], sizes TEXT[], categories TEXT[] ,images TEXT[], description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
 	const res = await pool.query(query)
-	console.log(res.rows)
 	return res.rows
 }
 
@@ -84,14 +82,12 @@ async function addProduct(values){
 
 	const query = `INSERT INTO products(name, price, colors, sizes, categories, images, description, isPromoted, imageUrl) VALUES(${values}) RETURNING *`
 	const res = await pool.query(query)
-	console.log(res.rows)
 	return res.rows
 }
 async function getProd(){
 
 	const query = `SELECT * FROM products`
 	const res = await pool.query(query)
-	console.log(res.rows)
 	return res.rows
 }
 
