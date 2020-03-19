@@ -25,7 +25,6 @@ const BestsellersCollectionPanel = (props) =>{
 	// determines number of pages based of amount of products and interval
 	const maxPages = Math.ceil(productsBestsellers.length / interval)
 	
-
 	//check if user logged
 	if(store.user.watchedproducts){
 		//then make prod all products

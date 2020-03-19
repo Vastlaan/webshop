@@ -18,12 +18,13 @@ const ShoppingBag =(props)=>{
 
 	useEffect(()=>{
 
-
-		if(shoppingCart.length<1 && JSON.parse(localStorage.claireShoppingCart).length>0){
-			dispatch({
-                  type:'uploadShoppingCart',
-                  payload:JSON.parse(localStorage.claireShoppingCart)
-            })
+		if(localStorage.claireShoppingCart){
+			if(shoppingCart.length<1 && JSON.parse(localStorage.claireShoppingCart).length>0){
+				dispatch({
+	                  type:'uploadShoppingCart',
+	                  payload:JSON.parse(localStorage.claireShoppingCart)
+	            })
+			}
 		}
 
 		if(shoppingCart.length>0){
@@ -129,6 +130,10 @@ const ShoppingBag =(props)=>{
 				</div>
 				<div className='shoppingBag__total--amount'>
 					<p>{total.toFixed(2)}</p>
+				</div>
+				<div className='shoppingBag__total--btn'>
+					<Link to='/checkout' >{checkLang('Pay','Betaal')} &nbsp; <MdArrowForward/></Link>
+
 				</div>
 				
 			</div>
