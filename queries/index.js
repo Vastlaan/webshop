@@ -1,13 +1,24 @@
 const {Pool} = require('pg')
 const keys = require('../config/keys')
+const parse = require('pg-connection-string').parse;
 
-const pool = new Pool({
-	user: keys.DATABASE_USER,
-	host: keys.DATABASE_HOST,
-	database: keys.DATABASE_NAME,
-	password: keys.DATABASE_SECRET,
-	port: keys.DATABASE_PORT,
-})
+let config 
+
+if(process.env.NODE_ENV==='production'){
+
+	config = parse(process.env.DATABASE_URL)
+
+}else{
+	config = {
+		user: keys.DATABASE_USER,
+		host: keys.DATABASE_HOST,
+		database: keys.DATABASE_NAME,
+		password: keys.DATABASE_SECRET,
+		port: keys.DATABASE_PORT,
+	}
+}
+
+const pool = new Pool(config)
 
 async function getClients(){
 	const res = await pool.query('SELECT * FROM clients')
