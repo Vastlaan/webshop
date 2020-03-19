@@ -47,6 +47,10 @@
 				@include respond(m){
 					padding:.5rem 1.5rem;
 				}
+				@include respond(xs){
+					padding:.2rem .5rem;
+					font-size: 1.8rem;
+				}
 
 				span{
 					font-family: $font-rajdhani;

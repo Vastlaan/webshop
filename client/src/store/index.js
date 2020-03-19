@@ -51,13 +51,23 @@ export const reducer =(state, action)=>{
 		}
 
 		case 'removeItemFromShoppingCart':
+
 			const newShoppingCart = state.shoppingCart.filter((each,i)=>{
 				return each.item.id!==action.payload
 			})
+			localStorage.setItem('claireShoppingCart',JSON.stringify(newShoppingCart))
 			return{
 				user:state.user,
 				shoppingCart: newShoppingCart
 			}
+
+		case 'uploadShoppingCart':
+			console.log(action.payload)
+			return{
+				user:state.user,
+				shoppingCart: action.payload
+			}
+
 		default:
 			return{
 				user:state.user,

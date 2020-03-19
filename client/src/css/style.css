@@ -731,6 +731,10 @@ body {
         @media only screen and (max-width: 48.5em) {
           .shoppingBag__routeButtons--box div {
             padding: .5rem 1.5rem; } }
+        @media only screen and (max-width: 26em) {
+          .shoppingBag__routeButtons--box div {
+            padding: .2rem .5rem;
+            font-size: 1.8rem; } }
         .shoppingBag__routeButtons--box div span {
           font-family: "Rajdhani", sans-serif;
           margin: 0 1rem; }

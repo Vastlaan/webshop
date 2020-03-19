@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {  Context } from '../store'
 import {Link, useHistory} from 'react-router-dom';
 import { MdArrowBack, MdArrowForward, MdRemoveShoppingCart } from "react-icons/md";
@@ -15,6 +15,24 @@ const ShoppingBag =(props)=>{
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
 	}
+
+	useEffect(()=>{
+
+
+		if(shoppingCart.length<1 && JSON.parse(localStorage.claireShoppingCart).length>0){
+			dispatch({
+                  type:'uploadShoppingCart',
+                  payload:JSON.parse(localStorage.claireShoppingCart)
+            })
+		}
+
+		if(shoppingCart.length>0){
+			return localStorage.setItem('claireShoppingCart',JSON.stringify(shoppingCart))
+		}
+		
+	}, [shoppingCart])
+
+
 	const total = shoppingCart.reduce((acc, item)=>{ return Number(acc)+(Number(item.item.price)*item.amount)},0)
 
 	const removeItem = (itemId) =>{
@@ -22,7 +40,7 @@ const ShoppingBag =(props)=>{
 			type:'removeItemFromShoppingCart',
 			payload: itemId
 		})
-		return
+		return 
 	}
 
 	return(

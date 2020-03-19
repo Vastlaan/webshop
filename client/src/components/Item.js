@@ -58,7 +58,7 @@ function Item(props) {
 		return s/l
 	}
       const renderRandomScore = () =>{
-            return( (Math.random() * 9) + 7).toFixed(1);
+            return  (Math.random() * (9 - 6 + 1) + 6).toFixed(1);
       }
       const checkLang = (e, n) =>{
             return props.lang==='NL'?n:e
