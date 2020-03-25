@@ -851,6 +851,32 @@ body {
       font-family: "Rajdhani", sans-serif;
       font-size: 2.5rem;
       color: #3c2f2f; }
+    .checkout__form--fieldArea {
+      width: 100%;
+      margin: 2rem 0; }
+      .checkout__form--fieldArea-header {
+        width: 100%;
+        background-color: #e1e1e1; }
+        .checkout__form--fieldArea-header p {
+          font-family: "Rajdhani", sans-serif;
+          font-size: 2.5rem; }
+      .checkout__form--fieldArea-inputArea {
+        margin: 2rem auto;
+        display: flex;
+        flex-direction: column; }
+        .checkout__form--fieldArea-inputArea label {
+          font-family: "Rajdhani", sans-serif;
+          font-size: 2rem; }
+        .checkout__form--fieldArea-inputArea input {
+          min-width: 30rem;
+          max-width: 50%;
+          border: none;
+          margin: 1rem 0;
+          padding: 1rem 3rem;
+          font-size: 1.8rem;
+          background-color: rgba(190, 155, 123, 0.3); }
+          .checkout__form--fieldArea-inputArea input:active, .checkout__form--fieldArea-inputArea input:focus {
+            outline: none; }
   .checkout__summary {
     flex: 0 0 30%;
     padding: 2rem;

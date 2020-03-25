@@ -9,6 +9,7 @@ const Checkout = (props) =>{
     const history = useHistory()
 
     const [step, setStep] = useState(1)
+    const [warning, setWarning] = useState('')
     //user state details
     const [gender, setGender] = useState('')
     const [name, setName] = useState('')
@@ -62,16 +63,73 @@ const Checkout = (props) =>{
         }
     },[])
 
+    const validateEmail = (email) =>{
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    	return re.test(String(email).toLowerCase());
+	}
+
+    const renderStep2 = () =>{
+        if(!validateEmail(email)){
+            return setWarning('email adress not valid!')
+        }else{
+            return setStep(2)
+        }
+    }
+
 	return(
 		<div className='checkout'>
-            <form className='checkout__form'>
-                <div className='checkout__form--1'>
+            {
+                warning?(
                     <div>
-                        <p>{checkLang('Step 1: Your email address','Stap 1: Uw email adress')}</p>
-                        <div>
-                            <input type='email' value={email} name='email' onChange={(e)=>setEmail(e.target.value)}/>
-                        </div>
+                        {warning}
                     </div>
+                ):null
+            }
+            <form className='checkout__form'>
+                <div className='checkout__form--fieldArea'>
+                    <div  className='checkout__form--fieldArea-header'>
+                        <p>{checkLang('Step 1: Your email address','Stap 1: Uw email adress')} {step!==1?`: ${email}`:null}</p>
+                    </div>
+                    
+                    {
+                        step===1?(
+                            <div className='checkout__form--fieldArea-inputArea'>
+                                <label>{checkLang('Fill here your email address:','Vul hieronder uw email adress:')}</label>
+                                <input type='email' value={email} name='email' onChange={(e)=>setEmail(e.target.value)}/>
+                                <div className='checkout__form--fieldArea-btn'>
+                                    <button onClick={renderStep2}>{checkLang('Next','Volgende')}</button>
+                                </div>
+                            </div>
+                        ):null
+                    }
+                    
+                    
+                </div>
+
+                <div className='checkout__form--fieldArea'>
+                    <div  className='checkout__form--fieldArea-header'>
+                        <p>{checkLang('Step 2: Your address details','Stap 2: Uw adress gegevens')}</p>
+                    </div>
+                    
+                    {
+                        step===2?(
+                            <div className='checkout__form--fieldArea-inputArea'>
+                                <label>{checkLang('Fill here your name:','Vul hieronder uw naam:')}</label>
+                                <input type='name' value={name} name='name' onChange={(e)=>setName(e.target.value)}/>
+                                <label>{checkLang('Fill here your last name:','Vul hieronder uw achternaam:')}</label>
+                                <input type='name' value={surname} name='surname' onChange={(e)=>setSurname(e.target.value)}/>
+                                <label>{checkLang('Fill here street name:','Vul hieronder straat:')}</label>
+                                <input type='name' value={street} name='street' onChange={(e)=>setStreet(e.target.value)}/>
+                                <label>{checkLang('Fill here your street number:','Vul hieronder uw achternaam:')}</label>
+                                <input type='text' value={number} name='number' onChange={(e)=>setNumber(e.target.value)}/>
+                                <div className='checkout__form--fieldArea-btn'>
+                                    <button onClick={()=>setStep(1)}>{checkLang('Back','Terug')}</button>
+                                    <button onClick={renderStep2}>{checkLang('Next','Volgende')}</button>
+                                </div>
+                            </div>
+                        ):null
+                    }
+                    
                     
                 </div>
                 
