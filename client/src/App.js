@@ -21,6 +21,7 @@ import SubCategory from './components/SubCategory'
 import Login from './components/Login'
 import Register from './components/Register'
 import ShoppingBag from './components/ShoppingBag'
+import Checkout from './components/Checkout'
 
 const CATEGORIES_MEN =  ["sweaters", "vests", "shirts", "underwear", "trousers", "suits", "jackets", "additions","shoes"]
 const CATEGORIES_WOMEN =  ["sweaters", "vests", "shirts", "underwear", "trousers", "dresses", "jackets", "additions","shoes"]
@@ -77,6 +78,7 @@ function App() {
 		     	<Route path='/login' exact={true} render={()=><Login lang={lang} user={user} setUser={setUser}/>}/>
 		     	<Route path='/register' exact={true} render={()=><Register lang={lang} user={user} setUser={setUser}/>}/>
 		     	<Route path='/shoppingBag' exact={true} render={()=><ShoppingBag lang={lang}/>}/>
+				<Route path='/checkout' exact={true} render={()=><Checkout lang={lang}/>}/>
 		     	<Footer lang={lang}/>
 		    </div>
 	    </Context.Provider>

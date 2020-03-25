@@ -26,9 +26,11 @@ module.exports = async function addProducts(req,res){
 		return categories = categories + `'${cat}',`
 	})
 	const images = 'ARRAY[\'\']'
+	const score = 'ARRAY[\'\']'
+
 	const isPromoted = product.isPromoted?'TRUE':'FALSE'
 	
-	let values = `'${product.name}', '${product.price}', ${colors}, ${sizes}, ${categories}, ${images}, '${product.description}', '${isPromoted}', '${product.imageUrl}'`
+	let values = `'${product.name}', '${product.price}', '${product.tax}', ${colors}, ${sizes}, ${categories}, ${images}, ${score}, '${product.description}', '${isPromoted}', '${product.imageUrl}'`
 	console.log(values)
 	const response = addProduct(values)
 	return res.status(200).json({message:"Ok"})

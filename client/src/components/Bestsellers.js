@@ -39,6 +39,10 @@ function Bestsellers(props) {
 		item=allProducts.find(p=>p.id.toString()===prodId)
 	}
 
+	const claculatePrice =(price, tax) =>{
+		return (Number(price) + (Number(price)*Number(tax))).toFixed(2)
+	}
+
 
 	return(
 		 <div className="newCollection" style={{marginTop: '18rem', paddingTop:'5rem'}}>
@@ -64,7 +68,7 @@ function Bestsellers(props) {
 									<p>{renderDescription(prod.description)}</p>
 								</div>
 								<div className='collectionPanel__item--price'>
-									<p> &euro; {prod.price}</p>
+									<p> &euro; {claculatePrice(prod.price, prod.tax)}</p>
 								</div>
 								
 								<div className='collectionPanel__item--btn'>

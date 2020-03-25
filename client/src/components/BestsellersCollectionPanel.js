@@ -54,6 +54,9 @@ const BestsellersCollectionPanel = (props) =>{
 	    }
 	    return a;
 	}
+	const claculatePrice =(price, tax) =>{
+		return (Number(price) + (Number(price)*Number(tax))).toFixed(2)
+	}
 
 	return(
 		<div className='collectionPanel'>
@@ -77,7 +80,7 @@ const BestsellersCollectionPanel = (props) =>{
 									<p>{renderDescription(prod.description)}</p>
 								</div>
 								<div className='collectionPanel__item--price'>
-									<p> &euro; {prod.price}</p>
+									<p> &euro; {claculatePrice(prod.price, prod.tax)}</p>
 								</div>
 								
 								<div className='collectionPanel__item--btn'>

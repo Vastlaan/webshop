@@ -1,0 +1,92 @@
+.checkout{
+	padding-top: 18rem;
+	display:flex;
+
+
+	@include respond(xs){
+		padding:1rem ;
+		padding-top: 22rem;
+	}
+	@include respond(m){
+		flex-direction: column;
+	}
+
+	&__form{
+		flex:0 0 70%;
+		padding: 2rem;
+		display:flex;
+		flex-direction: column;;
+
+		&--header{
+			font-family: $font-rajdhani;
+			font-size: 2.5rem;
+			color:$color-primary-dark;
+		}
+
+	}
+
+	&__summary{
+		flex:0 0 30%;
+		padding: 2rem;
+		border-left:1px solid $color-primary;
+		display:flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		@include respond(m){
+			border-left:none;
+		}
+
+		&--header{
+			width:100%;
+			text-align:center;
+			font-family: $font-rajdhani;
+			font-size: 2.5rem;
+			color:$color-primary-dark;
+		}
+
+		&--item{
+			width:100%;
+			display:flex;
+			flex-direction: column;
+			margin:2rem auto;
+			border: 1px solid rgba($color-reddish,.3);
+			padding:1rem;
+			font-family: $font-dosis;
+			font-size:1.8rem;
+			color:$color-primary-dark;
+
+			&-name{
+				font-family: $font-rajdhani;
+				font-size: 2rem;
+				font-weight: 700;
+				width:100%;
+			}
+			&-photo{
+				display:flex;
+				justify-content: space-between;
+				align-items: center;
+				width:100%;
+
+				img{
+					width:5rem;
+				}
+			}
+			&-price{
+				display:flex;
+				justify-content: space-around;
+				width:100%;
+			}
+			
+		}
+		&--total{
+			font-family: $font-rajdhani;
+			font-size: 2rem;
+			font-weight: 700;
+			width:100%;
+			text-align:center;
+		}
+
+	}
+
+}

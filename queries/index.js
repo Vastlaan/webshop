@@ -82,16 +82,18 @@ async function createClientsTable(productsArray){
 	return res.rows
 }
 
-async function createProductsTable(productsArray){
+async function createProductsTable(){
 	//const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , colors TEXT[], sizes TEXT[], categories TEXT[] ,images TEXT[],score VARCHAR(10), description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
-	const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , colors TEXT[], sizes TEXT[], categories TEXT[] ,images TEXT[], description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
+
+	const query = `CREATE TABLE products(id SERIAL PRIMARY KEY, name VARCHAR(100) , price VARCHAR(20) , tax VARCHAR(10), colors TEXT[], sizes TEXT[], categories TEXT[] ,images TEXT[], score TEXT[], description VARCHAR(10000), isPromoted BOOLEAN, imageUrl VARCHAR(500) )`
 	const res = await pool.query(query)
+	console.log(res)
 	return res.rows
 }
 
 async function addProduct(values){
 
-	const query = `INSERT INTO products(name, price, colors, sizes, categories, images, description, isPromoted, imageUrl) VALUES(${values}) RETURNING *`
+	const query = `INSERT INTO products(name, price, tax, colors, sizes, categories, images, score, description, isPromoted, imageUrl) VALUES(${values}) RETURNING *`
 	const res = await pool.query(query)
 	return res.rows
 }

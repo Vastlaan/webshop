@@ -15,6 +15,9 @@ const ShoppingBag =(props)=>{
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
 	}
+	const claculatePrice =(price, tax) =>{
+		return (Number(price) + (Number(price)*Number(tax))).toFixed(2)
+	}
 
 	useEffect(()=>{
 
@@ -34,7 +37,7 @@ const ShoppingBag =(props)=>{
 	}, [shoppingCart])
 
 
-	const total = shoppingCart.reduce((acc, item)=>{ return Number(acc)+(Number(item.item.price)*item.amount)},0)
+	const total = shoppingCart.reduce((acc, item)=>{ return Number(acc)+(Number(claculatePrice(item.item.price,item.item.tax))*item.amount)},0)
 
 	const removeItem = (itemId) =>{
 		dispatch({
@@ -57,12 +60,23 @@ const ShoppingBag =(props)=>{
 						<MdArrowBack/>
 						<span>{checkLang('Go back shopping','Meer boodshappen doen')}</span>
 					</div>
-					<div onClick={()=>{
-						return history.push('/checkout')
-					}}>
-						<span>{checkLang('Details & Checkout','Uw gegevens & Betalen')}</span>
-						<MdArrowForward/>
-					</div>
+					{
+						shoppingCart.length<1?(
+							<div className='notActiveButton' onClick={()=>{
+								return history.push('/checkout')
+							}}>
+								<span>{checkLang('Details & Checkout','Uw gegevens & Betalen')}</span>
+								<MdArrowForward/>
+							</div>
+						):(
+							<div onClick={()=>{
+								return history.push('/checkout')
+							}}>
+								<span>{checkLang('Details & Checkout','Uw gegevens & Betalen')}</span>
+								<MdArrowForward/>
+							</div>
+						)
+					}
 				</div>
 			</div>
 			<div className='shoppingBag__table'>
@@ -86,10 +100,13 @@ const ShoppingBag =(props)=>{
 						{
 							shoppingCart.map((item,i)=>{
 								return(
-									<div className='shoppingBag__table--grid' key={`${i}-wm-tb-e-${i*13.79}`}>
+									<div className='shoppingBag__table--grid' key={`${i}-wm-tb-e-${i*13.79}`} >
 										<div className='shoppingBag__table--grid-product shoppingBag__table--grid-each'>
 											<MdRemoveShoppingCart style={{color:'#854442', cursor:'pointer'}} onClick={()=>removeItem(item.item.id)}/>
-											<p>{item.item.name}</p>
+											<div>
+												<img src={item.item.imageurl} alt='product' />
+											</div>
+											<p style={{cursor:'pointer'}} onClick={()=>history.push(`/all/${item.item.id}`)}>{item.item.name}</p>
 										</div>
 										<div className='shoppingBag__table--grid-size shoppingBag__table--grid-each'>
 											<p>{item.selectedSize}</p>
@@ -98,7 +115,7 @@ const ShoppingBag =(props)=>{
 											<p>{item.amount || 1}</p>
 										</div>
 										<div className='shoppingBag__table--grid-subtotal shoppingBag__table--grid-each'>
-											<p>{(item.item.price * item.amount).toFixed(2)||(item.item.price).toFixed(2)}</p>
+											<p>{(claculatePrice(item.item.price,item.item.tax) * item.amount).toFixed(2)||(item.item.price).toFixed(2)}</p>
 										</div>
 									</div>
 								)
@@ -122,7 +139,7 @@ const ShoppingBag =(props)=>{
 							return(
 								<div key={`${i*99.69}-shoppingBagItem`}>
 									<p>{each.item.name}</p>
-									<p>{each.item.price}</p>
+									<p>{claculatePrice(each.item.price,each.item.tax)}</p>
 								</div>
 								)
 						})
@@ -132,7 +149,8 @@ const ShoppingBag =(props)=>{
 					<p>{total.toFixed(2)}</p>
 				</div>
 				<div className='shoppingBag__total--btn'>
-					<Link to='/checkout' >{checkLang('Pay','Betaal')} &nbsp; <MdArrowForward/></Link>
+					{shoppingCart.length<1?<a href='#' className='notActiveButton' >{checkLang('Pay','Betaal')} &nbsp; <MdArrowForward/></a>:<Link to='/checkout' >{checkLang('Pay','Betaal')} &nbsp; <MdArrowForward/></Link>}
+					
 
 				</div>
 				

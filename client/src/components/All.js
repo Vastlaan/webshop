@@ -26,6 +26,9 @@ function All(props) {
 	const checkLang = (e, n) =>{
 		return props.lang==='NL'?n:e
 	}
+	const claculatePrice =(price, tax) =>{
+		return (Number(price) + (Number(price)*Number(tax))).toFixed(2)
+	}
 
 	return(
 		 <div className="newCollection">
@@ -51,7 +54,7 @@ function All(props) {
 									<p>{renderDescription(prod.description)}</p>
 								</div>
 								<div className='collectionPanel__item--price'>
-									<p> &euro; {prod.price}</p>
+									<p> &euro; {claculatePrice(prod.price, prod.tax)}</p>
 								</div>
 								
 								<div className='collectionPanel__item--btn'>

@@ -82,6 +82,7 @@
 			grid-template-columns: 50% 15% 15% 20%;
 			grid-template-rows: 10rem 1fr;
 
+
 			&-each{
 				display: flex;
 				align-items: center;
@@ -97,6 +98,12 @@
 
 				@include respond(l){
 					justify-content: space-between;
+				}
+
+				div{
+					img{
+						width:5rem;
+					}
 				}
 				
 			}

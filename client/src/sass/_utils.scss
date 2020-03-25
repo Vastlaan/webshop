@@ -19,3 +19,9 @@
 .bbg{
 	border-bottom: 1px solid $color-primary-light;
 }
+
+.notActiveButton{
+	background-color: gray !important;
+	cursor: not-allowed !important;
+	transform:none !important;
+}
