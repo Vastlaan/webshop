@@ -11,7 +11,7 @@ const Checkout = (props) =>{
     const [step, setStep] = useState(1)
     const [warning, setWarning] = useState('')
     //user state details
-    const [gender, setGender] = useState('')
+    const [gender, setGender] = useState('male')  //male , female
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
@@ -72,7 +72,16 @@ const Checkout = (props) =>{
         if(!validateEmail(email)){
             return setWarning('email adress not valid!')
         }else{
+            setWarning('')
             return setStep(2)
+        }
+    }
+    const renderStep3 = () =>{
+        if(!validateEmail(email)){
+            return setWarning('email adress not valid!')
+        }else{
+            setWarning('')
+            return setStep(3)
         }
     }
 
@@ -80,7 +89,7 @@ const Checkout = (props) =>{
 		<div className='checkout'>
             {
                 warning?(
-                    <div>
+                    <div className='checkout__warning'>
                         {warning}
                     </div>
                 ):null
@@ -95,9 +104,9 @@ const Checkout = (props) =>{
                         step===1?(
                             <div className='checkout__form--fieldArea-inputArea'>
                                 <label>{checkLang('Fill here your email address:','Vul hieronder uw email adress:')}</label>
-                                <input type='email' value={email} name='email' onChange={(e)=>setEmail(e.target.value)}/>
+                                <input required type='email' value={email} name='email' onChange={(e)=>setEmail(e.target.value)}/>
                                 <div className='checkout__form--fieldArea-btn'>
-                                    <button onClick={renderStep2}>{checkLang('Next','Volgende')}</button>
+                                    <button type='button' onClick={renderStep2}>{checkLang('Next','Volgende')}</button>
                                 </div>
                             </div>
                         ):null
@@ -114,21 +123,65 @@ const Checkout = (props) =>{
                     {
                         step===2?(
                             <div className='checkout__form--fieldArea-inputArea'>
-                                <label>{checkLang('Fill here your name:','Vul hieronder uw naam:')}</label>
-                                <input type='name' value={name} name='name' onChange={(e)=>setName(e.target.value)}/>
-                                <label>{checkLang('Fill here your last name:','Vul hieronder uw achternaam:')}</label>
-                                <input type='name' value={surname} name='surname' onChange={(e)=>setSurname(e.target.value)}/>
-                                <label>{checkLang('Fill here street name:','Vul hieronder straat:')}</label>
-                                <input type='name' value={street} name='street' onChange={(e)=>setStreet(e.target.value)}/>
-                                <label>{checkLang('Fill here your street number:','Vul hieronder uw achternaam:')}</label>
-                                <input type='text' value={number} name='number' onChange={(e)=>setNumber(e.target.value)}/>
+                                <div  className='checkout__form--fieldArea-inputArea-row'>
+                                    <div>
+                                        <input className='shortInputField' checked={gender==='male'?'checked':'unchecked'} readOnly type="radio" id="male" name="gender" value="Dhr." onClick={()=>setGender('male')} />
+                                        <label htmlFor="male">Dhr.</label>
+                                    </div>
+                                    <div>
+                                        <input className='shortInputField' checked={gender==='female'?'checked':'unchecked'} readOnly type="radio" id="female" name="gender" value="Mevr." onClick={()=>setGender('female')} />
+                                        <label htmlFor="female">Mevr.</label>
+                                    </div>
+                                </div>
+                                <div  className='checkout__form--fieldArea-inputArea-row'>
+                                    <label htmlFor="name">{checkLang('Name:','Naam:')}</label>
+                                    <input required autoComplete='on' type='text' value={name} name='name' onChange={(e)=>setName(e.target.value)}/>
+                                    <label htmlFor="surname">{checkLang('Last name:','Achternaam:')}</label>
+                                    <input required autoComplete='on' type='text' value={surname} name='surname' onChange={(e)=>setSurname(e.target.value)}/>
+                                </div>
+                                
+                                <div className='checkout__form--fieldArea-inputArea-row'>
+                                    <label htmlFor="street">{checkLang('Street name:','Straat:')}</label>
+                                    <input required autoComplete='on' type='text' value={street} name='street' onChange={(e)=>setStreet(e.target.value)}/>
+                                    <label htmlFor="number">{checkLang('Number:','Nummer:')}</label>
+                                    <input required autoComplete='on' type='text' className='shortInputField' value={number} name='number' onChange={(e)=>setNumber(e.target.value)}/>
+                                    <label htmlFor="toe">{checkLang('Extra:','Toe:')}</label>
+                                    <input type='text' className='shortInputField' value={toe} name='toe' onChange={(e)=>setToe(e.target.value)}/>
+                                </div>
+
+                                <div  className='checkout__form--fieldArea-inputArea-row'>
+                                    <label htmlFor="postcode">{checkLang('Postcode:','Postcode:')}</label>
+                                    <input required autoComplete='on' type='text' value={postcode} name='postcode' onChange={(e)=>setPostcode(e.target.value)}/>
+                                    <label htmlFor="city">{checkLang('City:','Stad:')}</label>
+                                    <input required autoComplete='on' type='text' value={city} name='city' onChange={(e)=>setCity(e.target.value)}/>
+                                </div>
+                                
+                                <div  className='checkout__form--fieldArea-inputArea-column'>
+                                    <label htmlFor="phone">{checkLang('Phone number:','Telefoon:')}</label>
+                                    <input required autoComplete='on' type='tel' value={phone} name='phone' onChange={(e)=>setPhone(e.target.value)}/>
+                                </div>
+                                
                                 <div className='checkout__form--fieldArea-btn'>
-                                    <button onClick={()=>setStep(1)}>{checkLang('Back','Terug')}</button>
-                                    <button onClick={renderStep2}>{checkLang('Next','Volgende')}</button>
+                                    <button type='button' onClick={()=>setStep(1)}>{checkLang('Back','Terug')}</button>
+                                    <button type='button' onClick={renderStep3}>{checkLang('Next','Volgende')}</button>
                                 </div>
                             </div>
                         ):null
                     }
+
+                    <div className='checkout__form--fieldArea'>
+                        <div  className='checkout__form--fieldArea-header'>
+                            <p>{checkLang('Step 3: Payment','Stap 3: Afrekenen')}</p>
+                        </div>
+                        
+                        {
+                            step===3?(
+                                <div className='checkout__form--fieldArea-inputArea'>
+                                    PAY
+                                </div>
+                            ):null
+                        }
+                    </div>
                     
                     
                 </div>

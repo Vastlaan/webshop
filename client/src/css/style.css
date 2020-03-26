@@ -59,6 +59,10 @@ body {
   cursor: not-allowed !important;
   transform: none !important; }
 
+.shortInputField {
+  width: 10rem !important;
+  min-width: 5rem !important; }
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg); }
@@ -834,14 +838,22 @@ body {
 
 .checkout {
   padding-top: 18rem;
-  display: flex; }
-  @media only screen and (max-width: 26em) {
+  display: flex;
+  flex-wrap: wrap; }
+  @media only screen and (max-width: 40.5em) {
     .checkout {
       padding: 1rem;
       padding-top: 22rem; } }
   @media only screen and (max-width: 48.5em) {
     .checkout {
       flex-direction: column; } }
+  .checkout__warning {
+    margin: 2rem auto;
+    font-size: 2rem;
+    font-family: "Rajdhani", sans-serif;
+    flex: 0 0 100%;
+    text-align: center;
+    color: red; }
   .checkout__form {
     flex: 0 0 70%;
     padding: 2rem;
@@ -866,7 +878,8 @@ body {
         flex-direction: column; }
         .checkout__form--fieldArea-inputArea label {
           font-family: "Rajdhani", sans-serif;
-          font-size: 2rem; }
+          font-size: 2rem;
+          margin-right: 1rem; }
         .checkout__form--fieldArea-inputArea input {
           min-width: 30rem;
           max-width: 50%;
@@ -877,6 +890,36 @@ body {
           background-color: rgba(190, 155, 123, 0.3); }
           .checkout__form--fieldArea-inputArea input:active, .checkout__form--fieldArea-inputArea input:focus {
             outline: none; }
+        .checkout__form--fieldArea-inputArea-column {
+          margin: 1rem 0;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          border: 1px solid rgba(133, 68, 66, 0.3); }
+        .checkout__form--fieldArea-inputArea-row {
+          margin: 1rem 0;
+          padding: 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: 1px solid rgba(133, 68, 66, 0.3);
+          flex-wrap: wrap; }
+          .checkout__form--fieldArea-inputArea-row div {
+            flex: 0 0 50%;
+            display: flex;
+            justify-content: center; }
+      .checkout__form--fieldArea-btn {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: space-between; }
+        .checkout__form--fieldArea-btn button {
+          padding: 1rem 3rem;
+          border: none;
+          background-color: #854442;
+          font-size: 2rem;
+          font-family: "Rajdhani", sans-serif;
+          color: white; }
   .checkout__summary {
     flex: 0 0 30%;
     padding: 2rem;
