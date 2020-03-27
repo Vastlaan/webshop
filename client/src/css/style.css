@@ -890,6 +890,10 @@ body {
           background-color: rgba(190, 155, 123, 0.3); }
           .checkout__form--fieldArea-inputArea input:active, .checkout__form--fieldArea-inputArea input:focus {
             outline: none; }
+        .checkout__form--fieldArea-inputArea p {
+          font-size: 2rem;
+          font-family: "Rajdhani", sans-serif;
+          text-align: center; }
         .checkout__form--fieldArea-inputArea-column {
           margin: 1rem 0;
           padding: 1rem;

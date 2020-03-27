@@ -66,7 +66,19 @@ const Checkout = (props) =>{
     const validateEmail = (email) =>{
 		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     	return re.test(String(email).toLowerCase());
-	}
+    }
+    const validateName =(name)=>{
+        const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+        return re.test(String(name).toLowerCase())
+    }
+    const validateNumber =(number) =>{
+        const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+        if(re.test(String(number))){
+            return false
+        }
+        const testString = Number(number)
+        return number===0?false:true
+    }
 
     const renderStep2 = () =>{
         if(!validateEmail(email)){
@@ -79,10 +91,41 @@ const Checkout = (props) =>{
     const renderStep3 = () =>{
         if(!validateEmail(email)){
             return setWarning('email adress not valid!')
-        }else{
+        }else if(!validateName(name) || name===''){
+            return setWarning('name is not valid! No numbers or special characters like: \'$%&@\'. No empty field.')
+        }else if(!validateName(surname) || surname===''){
+            return setWarning('last name is not valid! No numbers or special characters like: \'$%&@\'. No empty field.')
+        }else if(!validateName(street) || street===''){
+            return setWarning('street is not valid! No numbers or special characters like: \'$%&@\'. No empty field.')
+        }else if(!validateNumber(number) || number===''){
+            return setWarning('street is not valid! No numbers or special characters like: \'$%&@\'. No empty field.')
+        }
+        else{
             setWarning('')
             return setStep(3)
         }
+    }
+    const pay = () =>{
+        const payment = {
+            shoppingCart,
+            client: {
+                gender,
+                email,
+                phone,
+                name,
+                surname,
+                street,
+                number,
+                toe,
+                postcode,
+                city,
+                country
+            },
+            total,
+            paymentOption: 'Ideal'
+        }
+
+        return console.log(payment)
     }
 
 	return(
@@ -177,7 +220,18 @@ const Checkout = (props) =>{
                         {
                             step===3?(
                                 <div className='checkout__form--fieldArea-inputArea'>
-                                    PAY
+                                    <div className='checkout__form--fieldArea-inputArea-column'>
+                                        <p><strong>{checkLang('Your details:','Uw gegevens:')}</strong></p>
+                                        <p>{name} {surname}</p>
+                                        <p>{street} {number} {toe}</p>
+                                        <p>{postcode} {city} {country}</p>
+                                        <p><strong>Te betalen: {total}</strong></p>
+                                    </div>
+
+                                    <div className='checkout__form--fieldArea-btn'>
+                                        <button type='button' onClick={()=>setStep(2)}>{checkLang('Back','Terug')}</button>
+                                        <button type='button' onClick={pay}>{checkLang('Pay','Betaal')}</button>
+                                    </div>
                                 </div>
                             ):null
                         }
