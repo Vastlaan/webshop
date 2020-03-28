@@ -69,7 +69,7 @@ const Footer =(props)=>{
 					<Link to='/contact'><li>{checkLang('Cookies', 'Cookies')}</li></Link>
 					{
 						<a onClick={()=>{
-							addProducts()
+							createProducts()
 							return console.log('done')
 						}
 						} >CP</a>
