@@ -37,8 +37,9 @@ const Checkout = (props) => {
     };
     const total = shoppingCart.reduce((acc, item) => {
         return (
-            Number(acc) +
-            Number(claculatePrice(item.item.price, item.item.tax)) * item.amount
+            Number(acc).toFixed(2) +
+            Number(claculatePrice(item.item.price, item.item.tax)).toFixed(2) *
+                Number(item.amount).toFixed(2)
         );
     }, 0);
 
