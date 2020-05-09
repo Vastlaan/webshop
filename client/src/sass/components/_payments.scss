@@ -1,0 +1,51 @@
+.payments {
+    margin: 5rem 2rem;
+    padding-top: 18rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 70rem;
+
+    @include respond(s) {
+        padding: 1rem;
+        padding-top: 22rem;
+    }
+    @include respond(m) {
+        flex-direction: column;
+    }
+
+    h1 {
+        margin-top: 2rem;
+        font-family: $font-rajdhani;
+        font-size: 3rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: $color-primary;
+    }
+    p {
+        margin: 5rem auto;
+        font-family: $font-dosis;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    button {
+        margin: 0 auto;
+        display: inline-block;
+        border: none;
+        padding: 1rem 3rem;
+        border-radius: 3px;
+        background-color: $color-reddish;
+        color: white;
+        transition: all 0.3s;
+        cursor: pointer;
+        font-size: 2.5rem;
+        font-family: $font-rajdhani;
+
+        &:hover {
+            background-color: orangered;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+}

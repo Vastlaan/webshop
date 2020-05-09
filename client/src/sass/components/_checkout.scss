@@ -1,187 +1,190 @@
-.checkout{
-	padding-top: 18rem;
-	display:flex;
-	flex-wrap: wrap;
+.checkout {
+    padding-top: 18rem;
+    display: flex;
+    flex-wrap: wrap;
 
+    @include respond(s) {
+        padding: 1rem;
+        padding-top: 22rem;
+    }
+    @include respond(m) {
+        flex-direction: column;
+    }
 
-	@include respond(s){
-		padding:1rem ;
-		padding-top: 22rem;
-	}
-	@include respond(m){
-		flex-direction: column;
-	}
+    &__warning {
+        margin: 2rem auto;
+        font-size: 2rem;
+        font-family: $font-rajdhani;
+        flex: 0 0 100%;
+        text-align: center;
+        color: red;
+    }
 
-	&__warning{
-		margin:2rem auto;
-		font-size: 2rem;
-		font-family: $font-rajdhani;
-		flex:0 0 100%;
-		text-align: center;
-		color:red;
-	}
+    &__form {
+        flex: 0 0 70%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
 
-	&__form{
-		flex:0 0 70%;
-		padding: 2rem;
-		display:flex;
-		flex-direction: column;;
+        &--header {
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
+            color: $color-primary-dark;
+        }
 
-		&--header{
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-			color:$color-primary-dark;
-		}
+        &--fieldArea {
+            width: 100%;
+            margin: 2rem 0;
 
-		&--fieldArea{
-			width:100%;
-			margin:2rem 0;
+            &-header {
+                width: 100%;
+                background-color: $color-grey;
 
-			&-header{
-				width:100%;
-				background-color:$color-grey;
+                p {
+                    font-family: $font-rajdhani;
+                    font-size: 2.5rem;
+                }
+            }
+            &-inputArea {
+                margin: 2rem auto;
+                display: flex;
+                flex-direction: column;
 
-				p{
-					font-family: $font-rajdhani;
-					font-size: 2.5rem;
-				}
-			}
-			&-inputArea{
-				margin:2rem auto;
-				display:flex;
-				flex-direction: column;
+                label {
+                    font-family: $font-rajdhani;
+                    font-size: 2rem;
+                    margin-right: 1rem;
+                }
 
-				label{
-					font-family: $font-rajdhani;
-					font-size: 2rem;
-					margin-right: 1rem;
-				}
-				
-				input{
-					min-width:30rem;
-					max-width:50%;
-					border:none;
-					margin:1rem 0;
-					padding:1rem 3rem;
-					font-size: 1.8rem;
-					background-color: rgba($color-primary-light,.3);
+                input {
+                    min-width: 30rem;
+                    max-width: 50%;
+                    border: none;
+                    margin: 1rem 0;
+                    padding: 1rem 3rem;
+                    font-size: 1.8rem;
+                    background-color: rgba($color-primary-light, 0.3);
+                    text-align: center;
 
-					&:active, &:focus{
-						outline:none;
+                    &:active,
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                p {
+                    font-size: 2rem;
+                    font-family: $font-rajdhani;
+                    text-align: center;
+                }
 
-					}
-				}
-				p{
-					font-size: 2rem;
-					font-family: $font-rajdhani;
-					text-align: center;
-				}
+                &-alwaysRow {
+                    margin: 1rem 0;
+                    padding: 1rem;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    border: 1px solid rgba($color-reddish, 0.3);
+                    flex-wrap: wrap;
+                }
 
-				&-column{
-					margin:1rem 0;
-					padding:1rem;
-					display:flex;
-					flex-direction: column;
-					align-items: flex-start;
-					border:1px solid rgba($color-reddish,.3);
-				}
+                &-row {
+                    margin: 1rem 0;
+                    padding: 1rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border: 1px solid rgba($color-reddish, 0.3);
+                    flex-wrap: wrap;
 
-				&-row{
-					margin:1rem 0;
-					padding:1rem;
-					display:flex;
-					justify-content: space-between;
-					align-items: center;
-					border:1px solid rgba($color-reddish,.3);
-					flex-wrap: wrap;
-					div{
-						flex:0 0 50%;
-						display:flex;
-						justify-content: center;
-					}
-				}
-			}
+                    @include respond(m) {
+                        flex-direction: column;
+                        flex-wrap: nowrap;
+                    }
+                    div {
+                        flex: 0 0 50%;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
 
-			&-btn{
-				margin:2rem 0;
-				display:flex;
-				justify-content: space-between;
-				
-				button{
-					padding:1rem 3rem;
-					border:none;
-					background-color: $color-reddish;
-					font-size: 2rem;
-					font-family: $font-rajdhani;
-					color:white;
-				}
-			}
-		}
+            &-btn {
+                margin: 2rem 0;
+                display: flex;
+                justify-content: space-between;
 
-	}
+                button {
+                    padding: 1rem 3rem;
+                    border: none;
+                    background-color: $color-reddish;
+                    font-size: 2rem;
+                    font-family: $font-rajdhani;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 
-	&__summary{
-		flex:0 0 30%;
-		padding: 2rem;
-		border-left:1px solid $color-primary;
-		display:flex;
-		flex-direction: column;
-		align-items: flex-start;
+    &__summary {
+        flex: 0 0 30%;
+        padding: 2rem;
+        border-left: 1px solid $color-primary;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
-		@include respond(m){
-			border-left:none;
-		}
+        @include respond(m) {
+            border-left: none;
+        }
 
-		&--header{
-			width:100%;
-			text-align:center;
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-			color:$color-primary-dark;
-		}
+        &--header {
+            width: 100%;
+            text-align: center;
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
+            color: $color-primary-dark;
+        }
 
-		&--item{
-			width:100%;
-			display:flex;
-			flex-direction: column;
-			margin:2rem auto;
-			border: 1px solid rgba($color-reddish,.3);
-			padding:1rem;
-			font-family: $font-dosis;
-			font-size:1.8rem;
-			color:$color-primary-dark;
+        &--item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 2rem auto;
+            border: 1px solid rgba($color-reddish, 0.3);
+            padding: 1rem;
+            font-family: $font-dosis;
+            font-size: 1.8rem;
+            color: $color-primary-dark;
 
-			&-name{
-				font-family: $font-rajdhani;
-				font-size: 2rem;
-				font-weight: 700;
-				width:100%;
-			}
-			&-photo{
-				display:flex;
-				justify-content: space-between;
-				align-items: center;
-				width:100%;
+            &-name {
+                font-family: $font-rajdhani;
+                font-size: 2rem;
+                font-weight: 700;
+                width: 100%;
+            }
+            &-photo {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
 
-				img{
-					width:5rem;
-				}
-			}
-			&-price{
-				display:flex;
-				justify-content: space-around;
-				width:100%;
-			}
-			
-		}
-		&--total{
-			font-family: $font-rajdhani;
-			font-size: 2rem;
-			font-weight: 700;
-			width:100%;
-			text-align:center;
-		}
-
-	}
-
+                img {
+                    width: 5rem;
+                }
+            }
+            &-price {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+            }
+        }
+        &--total {
+            font-family: $font-rajdhani;
+            font-size: 2rem;
+            font-weight: 700;
+            width: 100%;
+            text-align: center;
+        }
+    }
 }
