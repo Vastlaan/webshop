@@ -37,9 +37,8 @@ const Checkout = (props) => {
     };
     const total = shoppingCart.reduce((acc, item) => {
         return (
-            Number(acc).toFixed(2) +
-            Number(claculatePrice(item.item.price, item.item.tax)).toFixed(2) *
-                Number(item.amount).toFixed(2)
+            Number(acc) +
+            Number(claculatePrice(item.item.price, item.item.tax)) * item.amount
         );
     }, 0);
 
@@ -135,7 +134,7 @@ const Checkout = (props) => {
                 city,
                 country,
             },
-            total,
+            total: total.toFixed(2),
             paymentOption: "Ideal",
         };
         const response = await fetch("/api/checkoutSession", {
@@ -401,7 +400,9 @@ const Checkout = (props) => {
                                         {postcode} {city} {country}
                                     </p>
                                     <p>
-                                        <strong>Te betalen: {total}</strong>
+                                        <strong>
+                                            Te betalen: {total.toFixed(2)}
+                                        </strong>
                                     </p>
                                 </div>
 
