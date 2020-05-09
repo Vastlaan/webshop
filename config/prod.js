@@ -5,6 +5,7 @@ module.exports = {
     DATABASE_NAME: process.env.DATABASE_NAME,
     DATABASE_PORT: process.env.DATABASE_PORT,
     JWT_SECRET: process.env.JWT_SECRET,
+    STRIPE_SECRET: process.env.STRIPE_SECRET,
     SUCCES_URL: process.env.SUCCES_URL,
     CANCEL_URL: process.env.CANCEL_URL,
 };
