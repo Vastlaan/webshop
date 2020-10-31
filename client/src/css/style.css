@@ -11,7 +11,7 @@
   background-color: #be9b7b; }
 
 *::-webkit-scrollbar-thumb {
-  width: .8rem;
+  width: 0.8rem;
   background-color: #4b3832; }
 
 html {
@@ -32,7 +32,7 @@ html {
       font-size: 40%; } }
   @media only screen and (min-width: 114em) {
     html {
-      font-size: 100%; } }
+      font-size: 65%; } }
 
 body {
   width: 100%; }
